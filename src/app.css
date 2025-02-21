@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './base.css';
 
 @theme {
 	/* Colors */
@@ -43,5 +44,3 @@
 	--font-body: var(--font-family), var(--font-fallback);
 	--font-display: var(--font-body);
 }
-
-@import './base.css';
