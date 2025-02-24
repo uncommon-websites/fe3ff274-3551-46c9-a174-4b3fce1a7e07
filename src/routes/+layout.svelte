@@ -36,7 +36,7 @@
 		class="px sticky top-0 left-0 container mx-auto flex grid-cols-2 content-between items-center justify-between self-start py-4 lg:grid"
 	>
 		<div class="flex justify-start text-xl">
-			<a href="/" class="flex items-center gap-2 text-lg font-medium"
+			<a href="/" class="flex items-center gap-3 text-lg font-medium"
 				><Logo class="size-6" /> {data.meta.companyName}</a
 			>
 		</div>
