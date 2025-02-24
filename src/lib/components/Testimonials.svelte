@@ -8,7 +8,7 @@
 
 	// Utils
 	import { onMount } from 'svelte'
-	import { cubicInOut, cubicOut } from 'svelte/easing'
+	import { cubicIn, cubicOut } from 'svelte/easing'
 	import { blur, fade } from 'svelte/transition'
 
 	// Props
@@ -32,18 +32,19 @@
 </script>
 
 <div
-	class="mx-auto grid aspect-video w-full place-items-center overflow-hidden bg-gray-100 dark:bg-gray-900"
+	class="mx-auto grid aspect-video h-full w-full place-items-center overflow-hidden bg-gray-100 dark:bg-gray-900"
 >
 	{#each testimonials as testimonial, index}
 		{#if index === current}
 			<div
 				class="grid-center testimonial grid size-full bg-cover bg-no-repeat"
-				transition:fade={{ easing: cubicInOut, duration: 500 }}
+				out:fade={{ easing: cubicIn, duration: 1000 }}
+				in:fade={{ easing: cubicOut, duration: 1000 }}
 			>
 				<img
 					src={testimonial.src}
 					alt=""
-					class=" col-span-full row-span-full size-full place-self-stretch object-cover"
+					class="col-span-full row-span-full size-full place-self-stretch object-cover"
 				/>
 				<div
 					class="col-span-full row-span-full grid h-full origin-center content-end lg:container lg:mx-auto lg:content-center lg:items-center lg:justify-end"
@@ -52,11 +53,11 @@
 						class="p lg:m relative grid h-full w-full gap-2 lg:max-w-[65ch] lg:rounded-md"
 					>
 						<div class="mask absolute -inset-[100px] bg-gray-950 mix-blend-overlay"></div>
-						<p class="title-3 z-10 min-h-[6ch] !font-medium">
+						<p class="title-3 z-10 min-h-[6ch] !font-medium text-pretty">
 							{#each testimonial.quote.split(' ') as word, i}
 								{@const words = testimonial.quote.split(' ')}
 								<span
-									in:blur|global={{ duration: 2000, easing: cubicOut, delay: i * 50 + 1000 }}
+									in:blur|global={{ duration: 1500, easing: cubicOut, delay: i * 50 + 1000 }}
 									onintroend={() => {
 										if (i === words.length - 1) {
 											isCiteVisible = true
@@ -71,7 +72,7 @@
 						<div class="z-10 grid h-[2ch]">
 							<cite
 								class={[
-									'text-emphasis-medium grid-center h-[2ch] transition ease-out',
+									'text-emphasis-medium grid-center h-[2ch] transition duration-1000 ease-out',
 									isCiteVisible ? 'visible opacity-100' : 'invisible opacity-0'
 								]}
 								ontransitionend={() => {
