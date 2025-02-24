@@ -2,12 +2,15 @@
 	// Types
 	import type { PageProps } from './$types'
 
+	// Components
+	import Testimonials from '$lib/components/Testimonials.svelte'
+
 	// Props
 	const { data }: PageProps = $props()
 </script>
 
-<header class="px container mx-auto py-20">
-	<h1 class="title-1">
+<header class="px container mx-auto mt-40 mb-20 grid items-end gap-x-24 text-pretty lg:grid-cols-2">
+	<h1 class="title-1 lg:!mb-0">
 		{data.content['hero.title']}
 	</h1>
 
@@ -17,6 +20,4 @@
 </header>
 
 <!-- Large image -->
-<div class="px mx-auto aspect-video max-w-screen-2xl rounded-md bg-gray-100 dark:bg-gray-900">
-	<img src={data.content['hero.image'].src} alt="" />
-</div>
+<Testimonials testimonials={data.content['hero.testimonials']} />

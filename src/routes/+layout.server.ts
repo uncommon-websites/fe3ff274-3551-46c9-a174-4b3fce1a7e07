@@ -1,12 +1,13 @@
 // Types
-import type { PageServerLoad } from './$types'
+import type { LayoutServerLoad } from './$types'
 
 // Content
-import { CONTENT, METADATA } from '$lib/content'
+import { CONTENT, LAYOUT, METADATA } from '$lib/content'
 
-export const load: PageServerLoad = async () => {
+export const load: LayoutServerLoad = async () => {
 	return {
 		content: CONTENT['/'],
+		layout: LAYOUT,
 		meta: {
 			...METADATA
 		}

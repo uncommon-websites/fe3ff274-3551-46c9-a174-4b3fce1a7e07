@@ -1,4 +1,4 @@
-/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
 	--font-fallback:
@@ -17,9 +17,9 @@
 }
 
 @media screen (prefers-color-scheme: dark) {
-	:@theme inline {
+	@theme inline {
 		--color-emphasis-low: var(--color-gray-500);
-		--color-emphasis-medium: var(--color-gray-100);
+		--color-emphasis-medium: var(--color-gray-200);
 		--color-emphasis-high: var(--color-gray-50);
 	}
 }
@@ -83,15 +83,19 @@
 	}
 
 	.title-1 {
-		@apply font-display mb-[.35em] text-3xl font-semibold sm:text-4xl md:text-5xl;
+		@apply font-display mb-[.35em] text-4xl font-semibold sm:text-5xl md:text-6xl;
+		letter-spacing: -0.015em;
 	}
 
 	.title-2 {
-		@apply font-display text-2xl font-semibold sm:text-3xl md:text-4xl;
+		@apply font-display text-3xl font-semibold sm:text-4xl md:text-5xl;
+		letter-spacing: -0.015em;
+		letter-spacing: -0.015em;
 	}
 
 	.title-3 {
-		@apply font-display text-xl font-semibold sm:text-2xl md:text-3xl;
+		@apply font-display text-2xl font-semibold sm:text-3xl md:text-4xl;
+		letter-spacing: -0.015em;
 	}
 
 	.title-4 {
@@ -108,5 +112,25 @@
 
 	.body-sm {
 		@apply text-xs font-normal sm:text-sm md:text-base;
+	}
+
+	.grid-center {
+		@apply col-span-1 col-end-1 row-span-1 row-end-1;
+	}
+
+	.debug {
+		@apply ring-1 ring-red-500 ring-inset;
+		.debug {
+			@apply ring-1 ring-blue-500 ring-inset;
+			.debug {
+				@apply ring-1 ring-green-500 ring-inset;
+				.debug {
+					@apply ring-1 ring-yellow-500 ring-inset;
+					.debug {
+						@apply ring-1 ring-purple-500 ring-inset;
+					}
+				}
+			}
+		}
 	}
 }

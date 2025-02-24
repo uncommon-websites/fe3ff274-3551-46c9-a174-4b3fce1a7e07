@@ -31,35 +31,40 @@
 	/>
 </svelte:head>
 
-<nav
-	class="px container mx-auto flex grid-cols-2 content-between items-center justify-between py-4 lg:grid"
->
-	<div class="flex justify-start text-xl">
-		<a href="/"><Logo /></a>
-	</div>
-	<div class="flex justify-end">
-		<a
-			href="/"
-			class="bg-primary-700 dark:bg-primary-600 rounded-xl px-3.5 py-2 font-medium text-white"
-			>Get started</a
-		>
-	</div>
-</nav>
+<div class="grid min-h-screen">
+	<nav
+		class="px sticky top-0 left-0 container mx-auto flex grid-cols-2 content-between items-center justify-between self-start py-4 lg:grid"
+	>
+		<div class="flex justify-start text-xl">
+			<a href="/" class="flex items-center gap-2 text-lg font-medium"
+				><Logo class="size-6" /> {data.meta.companyName}</a
+			>
+		</div>
+		<div class="flex justify-end">
+			<a
+				href={data.layout['nav.cta'].url}
+				class="bg-primary-700 dark:bg-primary-600 rounded-xl px-3.5 py-2 font-medium text-white"
+				>{data.layout['nav.cta'].label}</a
+			>
+		</div>
+	</nav>
 
-<div>
-	{@render children()}
+	<div class="grid content-start items-start self-end">
+		{@render children()}
+	</div>
+
+	<!-- <footer
+		class=" px py text-emphasis-low container mx-auto flex grid-cols-2 justify-between gap-8 self-end lg:grid"
+	>
+		<div>
+			<p>
+				&copy; {data.meta.companyName}
+				{new Date().getFullYear()}
+			</p>
+		</div>
+		<div class="flex gap-4 lg:justify-end">
+			<a href="/terms" class="hover:underline">Terms </a>
+			<a href="/privacy" class="hover:underline">Privacy</a>
+		</div>
+	</footer> -->
 </div>
-<footer
-	class="px py text-emphasis-low container mx-auto flex grid-cols-2 justify-between gap-8 lg:grid"
->
-	<div>
-		<p>
-			&copy; {data.meta.companyName}
-			{new Date().getFullYear()}
-		</p>
-	</div>
-	<div class="flex gap-4 lg:justify-end">
-		<a href="/terms" class="hover:underline">Terms </a>
-		<a href="/privacy" class="hover:underline">Privacy</a>
-	</div>
-</footer>
