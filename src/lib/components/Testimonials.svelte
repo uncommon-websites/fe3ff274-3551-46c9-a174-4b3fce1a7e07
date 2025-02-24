@@ -1,14 +1,15 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
-	import { cubicInOut, cubicOut } from 'svelte/easing'
-	import { blur, fade, fly, scale } from 'svelte/transition'
-
 	// Types
 	type Testimonial = {
 		quote: string
 		cite: string
 		src: string
 	}
+
+	// Utils
+	import { onMount } from 'svelte'
+	import { cubicInOut, cubicOut } from 'svelte/easing'
+	import { blur, fade } from 'svelte/transition'
 
 	// Props
 	const {
