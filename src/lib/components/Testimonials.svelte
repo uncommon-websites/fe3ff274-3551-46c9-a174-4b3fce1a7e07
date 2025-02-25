@@ -81,8 +81,8 @@
 						<div class="z-10 mt-1 grid h-[2ch]">
 							<cite
 								class={[
-									'text-emphasis-medium grid-center block h-[2ch] not-italic transition duration-500 ease-out',
-									isCiteVisible ? 'visible opacity-100' : 'invisible translate-y-2 opacity-0'
+									'grid-center block h-[2ch] text-white/60 not-italic transition duration-500 ease-out',
+									isCiteVisible ? ' opacity-100' : ' translate-y-2 opacity-0'
 								]}
 								ontransitionend={() => {
 									if (isCiteVisible) {
