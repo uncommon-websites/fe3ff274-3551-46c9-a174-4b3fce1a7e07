@@ -83,18 +83,17 @@
 	}
 
 	.title-1 {
-		@apply font-display mb-[.35em] text-4xl font-medium sm:text-5xl md:text-6xl;
+		@apply font-display mb-[.35em] text-3xl font-medium sm:text-4xl md:text-5xl;
 		letter-spacing: -0.015em;
 	}
 
 	.title-2 {
-		@apply font-display text-3xl font-medium sm:text-4xl md:text-5xl;
-		letter-spacing: -0.015em;
+		@apply font-display text-2xl font-medium sm:text-3xl md:text-4xl;
 		letter-spacing: -0.015em;
 	}
 
 	.title-3 {
-		@apply font-display text-2xl font-medium sm:text-3xl md:text-4xl;
+		@apply font-display text-xl font-medium sm:text-2xl md:text-3xl;
 		letter-spacing: -0.015em;
 	}
 

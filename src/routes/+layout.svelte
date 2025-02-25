@@ -1,6 +1,9 @@
 <script lang="ts">
-	import Logo from '$lib/components/Logo.svelte'
+	// Styles
 	import '../app.css'
+
+	// Components
+	import Logo from '$lib/components/Logo.svelte'
 
 	let { data, children } = $props()
 </script>
@@ -19,6 +22,7 @@
 	<meta name="twitter:title" content={data.meta.title} />
 	<meta name="twitter:description" content={data.meta.description} />
 	<meta name="twitter:image" content={data.meta.image} />
+
 	<title>{data.meta.title}</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,9 +35,9 @@
 	/>
 </svelte:head>
 
-<div class="grid min-h-screen">
+<div class="i grid h-screen max-h-screen min-h-screen">
 	<nav
-		class="px sticky top-0 left-0 container mx-auto flex grid-cols-2 content-between items-center justify-between self-start py-4 lg:grid"
+		class="px sticky top-0 left-0 container mx-auto flex grid-cols-2 content-between items-center justify-between self-start bg-white/80 py-4 backdrop-blur lg:grid dark:bg-gray-950/80"
 	>
 		<div class="flex justify-start text-xl">
 			<a href="/" class="flex items-center gap-3 text-lg font-medium"
@@ -52,19 +56,4 @@
 	<div class="grid content-start items-start self-end">
 		{@render children()}
 	</div>
-
-	<!-- <footer
-		class=" px py text-emphasis-low container mx-auto flex grid-cols-2 justify-between gap-8 self-end lg:grid"
-	>
-		<div>
-			<p>
-				&copy; {data.meta.companyName}
-				{new Date().getFullYear()}
-			</p>
-		</div>
-		<div class="flex gap-4 lg:justify-end">
-			<a href="/terms" class="hover:underline">Terms </a>
-			<a href="/privacy" class="hover:underline">Privacy</a>
-		</div>
-	</footer> -->
 </div>

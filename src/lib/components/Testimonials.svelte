@@ -8,7 +8,7 @@
 
 	// Utils
 	import { onMount } from 'svelte'
-	import { cubicIn, cubicOut } from 'svelte/easing'
+	import { cubicInOut, cubicOut } from 'svelte/easing'
 	import { blur, fade } from 'svelte/transition'
 
 	// Props
@@ -20,7 +20,9 @@
 
 	// State
 	const INTERVAL = 3000
-	let current = $state(-1)
+	const DURATION = 2000
+
+	let current = $state(0)
 	let isCiteVisible = $state(false)
 
 	onMount(increment)
@@ -31,33 +33,40 @@
 	}
 </script>
 
-<div
-	class="mx-auto grid aspect-video h-full w-full place-items-center overflow-hidden bg-gray-100 dark:bg-gray-900"
->
+<!-- <div class="p mx-auto grid aspect-video h-full w-full place-items-center overflow-hidden"> -->
+<div class="px pb mx-auto grid h-full max-h-full w-full place-items-center overflow-hidden">
 	{#each testimonials as testimonial, index}
 		{#if index === current}
-			<div
-				class="grid-center testimonial grid size-full bg-cover bg-no-repeat"
-				out:fade={{ easing: cubicIn, duration: 1000 }}
-				in:fade={{ easing: cubicOut, duration: 1000 }}
-			>
+			<div class="grid-center testimonial grid size-full overflow-clip bg-cover bg-no-repeat">
 				<img
 					src={testimonial.src}
 					alt=""
-					class="col-span-full row-span-full size-full place-self-stretch object-cover"
+					out:fade|global={{ easing: cubicOut, duration: DURATION }}
+					in:fade|global={{ easing: cubicOut, duration: DURATION, delay: 500 }}
+					class="col-span-full row-span-full aspect-video size-full max-h-full place-self-stretch object-cover"
 				/>
+
 				<div
 					class="col-span-full row-span-full grid h-full origin-center content-end lg:container lg:mx-auto lg:content-center lg:items-center lg:justify-end"
 				>
 					<blockquote
 						class="p lg:m relative grid h-full w-full gap-2 lg:max-w-[65ch] lg:rounded-md"
+						out:blur|global={{ duration: 1000, easing: cubicOut }}
 					>
-						<div class="mask absolute -inset-[100px] bg-gray-950 mix-blend-overlay"></div>
-						<p class="title-3 z-10 min-h-[6ch] !font-medium text-pretty">
+						<div
+							class="mask mix-blend-color- absolute -inset-[100px] bg-gray-950 mix-blend-overlay"
+							in:fade|global={{ easing: cubicInOut, duration: 1000, delay: 500 }}
+						></div>
+						<p class="title-3 z-20 !font-medium text-pretty">
 							{#each testimonial.quote.split(' ') as word, i}
 								{@const words = testimonial.quote.split(' ')}
 								<span
-									in:blur|global={{ duration: 1500, easing: cubicOut, delay: i * 50 + 1000 }}
+									in:blur|global={{
+										duration: 1500,
+										easing: cubicOut,
+										delay: i * 100 + 1000,
+										amount: 10
+									}}
 									onintroend={() => {
 										if (i === words.length - 1) {
 											isCiteVisible = true
@@ -69,11 +78,11 @@
 								</span>
 							{/each}
 						</p>
-						<div class="z-10 grid h-[2ch]">
+						<div class="z-10 mt-1 grid h-[2ch]">
 							<cite
 								class={[
-									'text-emphasis-medium grid-center h-[2ch] transition duration-1000 ease-out',
-									isCiteVisible ? 'visible opacity-100' : 'invisible opacity-0'
+									'text-emphasis-medium grid-center block h-[2ch] not-italic transition duration-500 ease-out',
+									isCiteVisible ? 'visible opacity-100' : 'invisible translate-y-2 opacity-0'
 								]}
 								ontransitionend={() => {
 									if (isCiteVisible) {
@@ -83,7 +92,7 @@
 									}
 								}}
 							>
-								— {testimonial.cite}
+								{testimonial.cite}
 							</cite>
 						</div>
 					</blockquote>
@@ -101,6 +110,19 @@
 		@media (width >= 64rem) {
 			mask: radial-gradient(ellipse farthest-side at center, black 0%, transparent 100%);
 			backdrop-filter: blur(8px);
+		}
+	}
+
+	img {
+		animation: slowScale 10s linear forwards;
+	}
+
+	@keyframes slowScale {
+		from {
+			transform: scale(1);
+		}
+		to {
+			transform: scale(1.1);
 		}
 	}
 </style>
