@@ -50,7 +50,7 @@
 					class="col-span-full row-span-full grid h-full origin-center content-end lg:container lg:mx-auto lg:content-center lg:items-center lg:justify-end"
 				>
 					<blockquote
-						class="p lg:m relative grid h-full w-full gap-2 lg:max-w-[65ch] lg:rounded-md"
+						class="p lg:m relative grid h-full w-full gap-2 text-white lg:max-w-[65ch] lg:rounded-md"
 						out:blur|global={{ duration: 1000, easing: cubicOut }}
 					>
 						<div

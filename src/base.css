@@ -5,23 +5,24 @@
 		'Inter Variable', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
-	/* Emphasis */
-	--color-emphasis-low: var(--color-gray-500);
-	--color-emphasis-medium: var(--color-gray-800);
-	--color-emphasis-high: var(--color-gray-950);
-
 	--color-white: #fff;
 	--color-black: #000;
 	--color-transparent: transparent;
 	--color-current: currentColor;
 }
 
-@media screen (prefers-color-scheme: dark) {
-	@theme inline {
-		--color-emphasis-low: var(--color-gray-500);
-		--color-emphasis-medium: var(--color-gray-200);
-		--color-emphasis-high: var(--color-gray-50);
-	}
+@theme inline {
+	/* Emphasis */
+	--color-emphasis-low: var(--color-gray-500);
+	--color-emphasis-medium: var(--color-gray-700);
+	--color-emphasis-high: var(--color-gray-950);
+}
+
+&:where([data-theme='dark'], [data-theme='dark'] *),
+[data-theme='dark'] {
+	--color-emphasis-low: var(--color-gray-500);
+	--color-emphasis-medium: var(--color-gray-200);
+	--color-emphasis-high: var(--color-gray-50);
 }
 
 @layer utilities {
