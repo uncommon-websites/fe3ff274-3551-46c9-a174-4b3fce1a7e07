@@ -4,8 +4,34 @@
 
 	// Components
 	import Logo from '$lib/components/Logo.svelte'
+	import Nav from '$lib/components/layout/Nav.svelte'
 
+	// Utils
+	import { onMount } from 'svelte'
+	import { animate, inView, stagger } from 'motion'
+	import Footer from '$lib/components/layout/Footer.svelte'
+
+	// Props
 	let { data, children } = $props()
+
+	onMount(() => {
+		inView('[data-enter-container]', (e) => {
+			animate(
+				e.querySelectorAll('[data-enter]'),
+				{
+					opacity: [0, 1],
+					y: ['2rem', 0]
+				},
+				{
+					duration: 0.4,
+					ease: 'circOut',
+					delay: stagger(0.15, {
+						ease: 'easeInOut'
+					})
+				}
+			)
+		})
+	})
 </script>
 
 <svelte:head>
@@ -35,7 +61,10 @@
 	/>
 </svelte:head>
 
-<div class="i grid h-screen max-h-screen min-h-screen">
+<Nav />
+
+<!--
+<div class="">
 	<nav
 		class="px sticky top-0 left-0 container mx-auto flex grid-cols-2 content-between items-center justify-between self-start bg-white/80 py-4 backdrop-blur lg:grid dark:bg-gray-950/80"
 	>
@@ -53,7 +82,8 @@
 		</div>
 	</nav>
 
-	<div class="grid content-start items-start self-end">
-		{@render children()}
-	</div>
-</div>
+	<div class="grid content-start items-start self-end"> -->
+{@render children()}
+<!-- </div>
+</div> -->
+<Footer />

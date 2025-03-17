@@ -3,21 +3,21 @@
 	import type { PageProps } from './$types'
 
 	// Components
-	import Testimonials from '$lib/components/Testimonials.svelte'
+	import Button from '$lib/components/ui/Button.svelte'
+	import Hero from '$lib/components/layout/Hero.svelte'
+	import ValueProp from '$lib/components/layout/ValueProp.svelte'
+	import Features from '$lib/components/layout/Features.svelte'
+	import Stats from '$lib/components/layout/Stats.svelte'
 
 	// Props
 	const { data }: PageProps = $props()
 </script>
 
-<header class="px container mx-auto mt-20 mb-12 grid items-end gap-x-24 text-pretty lg:grid-cols-3">
-	<h1 class="title-1 lg:col-span-2 lg:!mb-0">
-		{data.content['hero.title']}
-	</h1>
+<Hero />
+<ValueProp
+	title="Our Mission"
+	content="We believe in creating technology that empowers people to achieve more while respecting their privacy and security. Our platform is built on principles of transparency, accessibility, and continuous innovation to meet evolving needs. We're committed to sustainable development practices that benefit both our users and the environment."
+/>
+<Features />
 
-	<p class="text-emphasis-medium">
-		{data.content['hero.subtitle']}
-	</p>
-</header>
-
-<!-- Large image -->
-<Testimonials testimonials={data.content['hero.testimonials']} />
+<Stats />
