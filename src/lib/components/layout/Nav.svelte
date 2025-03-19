@@ -55,34 +55,39 @@
 		<!-- Desktop Navigation -->
 		<div class="hidden items-center space-x-8 md:flex">
 			{#each navItems as item}
-				{#if item.children}
-					<div class="group relative" role="navigation">
-						<div
-							class="flex cursor-pointer items-center space-x-1 text-lg font-medium transition-colors duration-200 group-hover:text-purple-400"
-						>
+				<svelte:element
+					this={item.children ? 'div' : 'a'}
+					class="group text-emphasis-low hover:text-emphasis-medium select relative transition-colors duration-300 ease-out"
+					role="navigation"
+					href={item.href}
+				>
+					{#if item.children}
+						<div class="flex items-center gap-1.5">
 							<span>{item.label}</span>
 							<ChevronDown class="size-4" />
 						</div>
 						<div
-							class="invisible absolute z-10 mt-2 w-56 rounded-lg bg-white p-2 text-gray-800 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100"
+							class="invisible absolute z-10 mt-1.5 w-56 rounded-(--radius) bg-white p-(--gap) text-gray-800 opacity-0 shadow-lg transition-all
+
+							[--gap:--spacing(1)]
+							[--radius:var(--radius-xl)]
+
+						    group-hover:visible group-hover:opacity-100"
 						>
 							{#each item.children as child}
-								<div class="cursor-pointer rounded px-4 py-2.5 transition-colors hover:bg-gray-100">
+								<div
+									class="cursor-pointer rounded-(--inner-radius) px-4 py-2.5 transition-colors [--inner-radius:calc(var(--radius)-var(--gap))] hover:bg-gray-100/50 active:bg-gray-100"
+								>
 									<a href={child.href} class="block w-full">
 										{child.label}
 									</a>
 								</div>
 							{/each}
 						</div>
-					</div>
-				{:else}
-					<a
-						href={item.href}
-						class="text-lg font-medium transition-colors duration-200 hover:text-purple-400"
-					>
-						{item.label}
-					</a>
-				{/if}
+					{:else}
+						<span>{item.label}</span>
+					{/if}
+				</svelte:element>
 			{/each}
 
 			<Button variant="secondary">Get Started</Button>

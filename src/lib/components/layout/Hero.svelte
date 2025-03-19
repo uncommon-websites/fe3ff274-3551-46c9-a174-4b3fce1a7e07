@@ -8,25 +8,12 @@
 	}
 </script>
 
-<header
-	class="px container mx-auto grid gap-16 py-24 text-pretty lg:grid-cols-2"
-	data-enter-container
->
+<header class="px container mx-auto grid gap-16 py-12 pt-24 text-pretty" data-enter-container>
 	<h1 class="text-display" data-enter>
-		<AnimateText text="The best service for founders" />
+		<span class="block"><AnimateText text="Your US Visa." /></span>
+		<span class="text-emphasis-low block"><AnimateText text="Ten times faster and cheaper." /></span
+		>
 	</h1>
-
-	<div class="grid content-between">
-		<p class="text-gray-700" data-enter>
-			Our platform helps you focus on what matters - building your business without the technical
-			overhead.
-		</p>
-
-		<div class="mt-4 flex gap-4" data-enter>
-			<Button variant="primary">Get Started</Button>
-			<Button variant="secondary">Learn More</Button>
-		</div>
-	</div>
 </header>
 <div class="col-span-full aspect-[2/1] rounded-lg ring-1 ring-gray-50" data-enter>
 	<img
