@@ -1,31 +1,29 @@
-export const navigation = {
-	platform: {
-		name: "Product",
+export const navigation = [
+	{
+		label: "Services",
+		href: "/services",
 		children: [
-			{ name: "Templates", href: "/platform/templates" },
-			{ name: "Features", href: "/platform/features" }
+			{ label: "Consulting", href: "/services/consulting" },
+			{ label: "Development", href: "/services/development" },
+			{ label: "Support", href: "/services/support" }
 		]
 	},
-	industries: {
-		name: "Industries",
+	{
+		label: "Industries",
+		href: "/industries",
 		children: [
-			{ name: "Mining", href: "/industry/mining" },
-			{ name: "Construction", href: "/industry/construction" },
-			{ name: "Agriculture", href: "/industry/agriculture" },
-			{ name: "Defense", href: "/industry/defense" }
+			{ label: "Healthcare", href: "/industries/healthcare" },
+			{ label: "Finance", href: "/industries/finance" },
+			{ label: "Technology", href: "/industries/technology" },
+			{ label: "Education", href: "/industries/education" }
 		]
 	},
-	company: {
-		name: "Company",
+	{
+		label: "Company",
+		href: "/company",
 		children: [
-			{ name: "About Us", href: "/about" },
-			{ name: "Careers", href: "/careers" },
-			{ name: "Press", href: "/press" },
-			{
-				name: "Contact Us",
-				target: "_blank",
-				href: "https://calendly.com/maximilian-rolf-sensmore/30min"
-			}
+			{ label: "About", href: "/company/about" },
+			{ label: "Contact", href: "/company/contact" }
 		]
 	}
-};
+];

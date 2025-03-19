@@ -16,51 +16,71 @@
 	import AnimateText from "../animation/AnimateText.svelte";
 
 	// Props
-	const { title, subtitle, useCases }: { title: string; subtitle: string; useCases: UseCase[] } =
-		$props();
+	const {
+		title,
+		subtitle,
+		useCases = []
+	}: { title: string; subtitle: string; useCases: UseCase[] } = $props();
+
+	let current = $state(0);
+
+	import { onMount } from "svelte";
+	import SectionHeader from "./SectionHeader.svelte";
+
+	// Preload images lazily
+	onMount(() => {
+		if (useCases.length) {
+			useCases.forEach((useCase, index) => {
+				if (index !== current && useCase.image) {
+					const img = new Image();
+					img.loading = "lazy";
+					img.src = useCase.image;
+				}
+			});
+		}
+	});
 </script>
 
-<section class="">
-	<div class="section-px container mx-auto grid">
-		<div class="section-py text-title2 container-xs grid text-balance">
-			<h2>
-				<AnimateText text={title} />
-			</h2>
-			<p class="text-emphasis-low">
-				<AnimateText text={subtitle} />
-			</p>
-		</div>
+<section
+	class="[--gap:--spacing(4)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-xl)]"
+>
+	<div class="section-px section-py container mx-auto grid">
+		<SectionHeader {title} {subtitle} />
 
-		<div class="p grid grid-cols-2 gap-16 bg-gray-50">
+		<div class="grid gap-(--gap) rounded-(--radius) lg:grid-cols-[1fr_2fr]">
 			<!-- Left column: Use cases list -->
-			<div class="rounded-2xl bg-gray-50">
-				{#if useCases[0]?.image}
-					<div>
-						<img src={useCases[0].image} alt="Featured use case" loading="lazy" />
-					</div>
-				{/if}
-			</div>
-
-			<div class="grid gap-16">
-				{#each useCases as useCase}
-					<article>
-						<h3 class="text-headline">{useCase.title}</h3>
-
-						{#each useCase.uniqueSellingPoints as usp, i}
-							<li>{usp}</li>
-						{/each}
-
-						<p class="text-body text-emphasis-medium">{useCase.description}</p>
-						{#if useCase.link}
-							<Button size="sm" href={useCase.link.href} variant="secondary" class="mt-4">
-								{useCase.link.label}
-							</Button>
-						{/if}
-					</article>
-				{/each}
+			<div
+				class="items-between row-start-2 grid content-between gap-8 rounded-(--radius) bg-gray-50 p-(--gap) lg:row-start-auto dark:bg-gray-900"
+			>
+				<div>
+					{#each useCases as useCase, index}
+						<div class="group">
+							<button
+								class="text-title3 hover:text-primary-600 row-start-1 mb-2 w-full text-left transition-colors"
+								class:text-primary-700={current === index}
+								onpointerenter={() => (current = index)}
+							>
+								{useCase.title}
+							</button>
+						</div>
+					{/each}
+				</div>
+				<article class="row-start-2">
+					<p class="text-body text-emphasis-medium">{useCases[current].description}</p>
+				</article>
 			</div>
 
 			<!-- Right column: Featured image -->
+			<div class="overflow-clip rounded-(--radius) bg-gray-50">
+				{#if useCases[current]?.image}
+					<img
+						src={useCases[current].image}
+						alt="Featured use case"
+						loading="lazy"
+						class="aspect-[3/2] size-full max-h-full object-cover"
+					/>
+				{/if}
+			</div>
 		</div>
 	</div>
 </section>

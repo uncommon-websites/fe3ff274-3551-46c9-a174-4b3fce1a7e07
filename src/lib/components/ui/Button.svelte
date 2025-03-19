@@ -17,15 +17,16 @@
 		variant = "primary",
 		size = "md",
 		children,
-		class: className = "",
+		class: classes = "",
 		...rest
 	}: Props = $props();
 
 	// Styles
 	const variants: Record<Variant, string> = {
-		primary: "bg-slate-900 text-white hover:bg-slate-800 focus:ring-slate-900/20",
+		primary:
+			"bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 focus:ring-gray-900/20 dark:focus:ring-gray-100/20",
 		secondary:
-			"bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 focus:ring-slate-900/20"
+			"bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-gray-900/20 dark:focus:ring-gray-100/20"
 	};
 
 	const sizes: Record<Size, string> = {
@@ -38,7 +39,7 @@
 		"inline-flex items-center justify-center font-medium transition-colors rounded-lg focus:outline-none focus:ring-4";
 </script>
 
-<button class="{baseStyles} {variants[variant]} {sizes[size]} {className}" {...rest}>
+<button {...rest} class={[baseStyles, variants[variant], sizes[size], classes]}>
 	{@render children?.()}
 </button>
 

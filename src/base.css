@@ -13,6 +13,7 @@
 
 @theme inline {
 	/* Emphasis */
+	--color-emphasis-dim: var(--color-gray-400);
 	--color-emphasis-low: var(--color-gray-500);
 	--color-emphasis-medium: var(--color-gray-700);
 	--color-emphasis-high: var(--color-gray-950);

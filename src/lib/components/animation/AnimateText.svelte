@@ -1,7 +1,7 @@
 <script lang="ts">
 	// Props
 	const {
-		text,
+		text = "",
 		oncomplete = () => {},
 		show = true
 	}: { text: string; show?: boolean; oncomplete?: () => void } = $props();
@@ -17,7 +17,7 @@
 </script>
 
 <span class:show>
-	{#each text.split(" ") as word, i}
+	{#each (text || "").split(" ") as word, i}
 		<span
 			class="animated-word inline-block origin-left"
 			style:--delay="{i * 100}ms"
