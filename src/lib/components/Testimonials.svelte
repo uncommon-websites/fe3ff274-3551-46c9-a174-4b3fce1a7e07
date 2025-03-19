@@ -1,35 +1,35 @@
 <script lang="ts">
 	// Types
 	type Testimonial = {
-		quote: string
-		cite: string
-		src: string
-	}
+		quote: string;
+		cite: string;
+		src: string;
+	};
 
 	// Utils
-	import { onMount } from 'svelte'
-	import { cubicInOut, cubicOut } from 'svelte/easing'
-	import { blur, fade } from 'svelte/transition'
+	import { onMount } from "svelte";
+	import { cubicInOut, cubicOut } from "svelte/easing";
+	import { blur, fade } from "svelte/transition";
 
 	// Props
 	const {
 		testimonials = []
 	}: {
-		testimonials: Testimonial[]
-	} = $props()
+		testimonials: Testimonial[];
+	} = $props();
 
 	// State
-	const INTERVAL = 3000
-	const DURATION = 2000
+	const INTERVAL = 3000;
+	const DURATION = 2000;
 
-	let current = $state(0)
-	let isCiteVisible = $state(false)
+	let current = $state(0);
+	let isCiteVisible = $state(false);
 
-	onMount(increment)
+	onMount(increment);
 
 	function increment() {
-		isCiteVisible = false
-		current = (current + 1) % testimonials.length
+		isCiteVisible = false;
+		current = (current + 1) % testimonials.length;
 	}
 </script>
 
@@ -58,8 +58,8 @@
 							in:fade|global={{ easing: cubicInOut, duration: 1000, delay: 500 }}
 						></div>
 						<p class="title-3 z-20 !font-medium text-pretty">
-							{#each testimonial.quote.split(' ') as word, i}
-								{@const words = testimonial.quote.split(' ')}
+							{#each testimonial.quote.split(" ") as word, i}
+								{@const words = testimonial.quote.split(" ")}
 								<span
 									in:blur|global={{
 										duration: 1500,
@@ -69,26 +69,26 @@
 									}}
 									onintroend={() => {
 										if (i === words.length - 1) {
-											isCiteVisible = true
+											isCiteVisible = true;
 										}
 									}}
 								>
 									{word}
-									{i < words.length - 1 ? ' ' : ''}
+									{i < words.length - 1 ? " " : ""}
 								</span>
 							{/each}
 						</p>
 						<div class="z-10 mt-1 grid h-[2ch]">
 							<cite
 								class={[
-									'grid-center block h-[2ch] text-white/60 not-italic transition duration-500 ease-out',
-									isCiteVisible ? ' opacity-100' : ' translate-y-2 opacity-0'
+									"grid-center block h-[2ch] text-white/60 not-italic transition duration-500 ease-out",
+									isCiteVisible ? " opacity-100" : " translate-y-2 opacity-0"
 								]}
 								ontransitionend={() => {
 									if (isCiteVisible) {
 										setTimeout(() => {
-											increment()
-										}, INTERVAL)
+											increment();
+										}, INTERVAL);
 									}
 								}}
 							>

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Button from '$lib/components/ui/Button.svelte'
+	import Button from "$lib/components/ui/Button.svelte";
 
 	// Constants
-	const { data } = $props()
+	const { data } = $props();
 </script>
 
 <div class="flex min-h-screen flex-col items-center justify-center p-4">

@@ -1,52 +1,56 @@
 <script lang="ts">
 	// Types
 	type NavItem = {
-		label: string
-		href: string
-		children?: NavItem[]
-	}
+		label: string;
+		href: string;
+		children?: NavItem[];
+	};
 
-	import { slide } from 'svelte/transition'
+	import { slide } from "svelte/transition";
 
 	// Components
-	import Button from '$lib/components/ui/Button.svelte'
-	import Logo from '../Logo.svelte'
-	import ChevronDown from '~icons/lucide/chevron-down'
-	import ChevronRight from '~icons/lucide/chevron-right'
-	import Menu from '~icons/lucide/menu'
-	import X from '~icons/lucide/x'
+	import Button from "$lib/components/ui/Button.svelte";
+	import Logo from "../Logo.svelte";
+	import ChevronDown from "~icons/lucide/chevron-down";
+	import ChevronRight from "~icons/lucide/chevron-right";
+	import Menu from "~icons/lucide/menu";
+	import X from "~icons/lucide/x";
+	import { scrollY } from "svelte/reactivity/window";
 
 	// State
-	let isMenuOpen: boolean = $state(false)
+	let isMenuOpen: boolean = $state(false);
 
 	// Constants
 	const navItems: NavItem[] = $state([
 		{
-			label: 'Services',
-			href: '/services',
+			label: "Services",
+			href: "/services",
 			children: [
-				{ label: 'Consulting', href: '/services/consulting' },
-				{ label: 'Development', href: '/services/development' },
-				{ label: 'Support', href: '/services/support' }
+				{ label: "Consulting", href: "/services/consulting" },
+				{ label: "Development", href: "/services/development" },
+				{ label: "Support", href: "/services/support" }
 			]
 		},
 		{
-			label: 'Industries',
-			href: '/industries',
+			label: "Industries",
+			href: "/industries",
 			children: [
-				{ label: 'Healthcare', href: '/industries/healthcare' },
-				{ label: 'Finance', href: '/industries/finance' },
-				{ label: 'Technology', href: '/industries/technology' },
-				{ label: 'Education', href: '/industries/education' }
+				{ label: "Healthcare", href: "/industries/healthcare" },
+				{ label: "Finance", href: "/industries/finance" },
+				{ label: "Technology", href: "/industries/technology" },
+				{ label: "Education", href: "/industries/education" }
 			]
 		},
-		{ label: 'About', href: '/about' },
-		{ label: 'Contact', href: '/contact' }
-	])
+		{ label: "About", href: "/about" },
+		{ label: "Contact", href: "/contact" }
+	]);
 </script>
 
-<nav class="w-full">
-	<div class="px container mx-auto flex items-center justify-between py-4">
+<nav
+	class="sticky top-0 left-0 z-50 w-full bg-white/80 backdrop-blur transition duration-150 ease-out"
+	class:translate-y-4={scrollY.current === 0}
+>
+	<div class="px container mx-auto flex items-center justify-between py-2.5">
 		<a href="/" class="flex items-center space-x-3">
 			<Logo class="size-6" />
 			<span class="font-medium">Brand</span>
@@ -56,7 +60,7 @@
 		<div class="hidden items-center space-x-8 md:flex">
 			{#each navItems as item}
 				<svelte:element
-					this={item.children ? 'div' : 'a'}
+					this={item.children ? "div" : "a"}
 					class="group text-emphasis-low hover:text-emphasis-medium select relative transition-colors duration-300 ease-out"
 					role="navigation"
 					href={item.href}
@@ -95,8 +99,8 @@
 
 		<!-- Mobile Navigation Toggle -->
 		<div class="md:hidden">
-			<button
-				class="p-2 text-white"
+			<Button
+				variant="secondary"
 				onclick={() => (isMenuOpen = !isMenuOpen)}
 				aria-label="Toggle mobile menu"
 			>
@@ -105,7 +109,7 @@
 				{:else}
 					<Menu class="h-6 w-6" />
 				{/if}
-			</button>
+			</Button>
 		</div>
 
 		<!-- Full Screen Mobile Menu -->

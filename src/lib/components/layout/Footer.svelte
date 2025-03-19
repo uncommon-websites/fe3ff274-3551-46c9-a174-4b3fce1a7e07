@@ -1,10 +1,10 @@
 <script lang="ts">
 	// Types
-	import { navigation } from '$lib/navigation'
+	import { navigation } from "$lib/navigation";
 
 	// Components
-	import Logo from '$lib/components/Logo.svelte'
-	import { METADATA } from '$lib/content'
+	import Logo from "$lib/components/Logo.svelte";
+	import { METADATA } from "$lib/content";
 </script>
 
 <footer class="relative bg-gray-50" aria-labelledby="footer-heading">

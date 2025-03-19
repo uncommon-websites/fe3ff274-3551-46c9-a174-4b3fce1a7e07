@@ -1,53 +1,53 @@
 <script lang="ts">
 	// import { Zap, Shield, Palette, BarChart, Clock, Cloud } from 'lucide-svelte'
 	//
-	import Zap from '~icons/lucide/zap'
-	import Shield from '~icons/lucide/shield'
-	import Palette from '~icons/lucide/palette'
-	import BarChart from '~icons/lucide/bar-chart'
-	import Clock from '~icons/lucide/clock'
-	import Cloud from '~icons/lucide/cloud'
+	import Zap from "~icons/lucide/zap";
+	import Shield from "~icons/lucide/shield";
+	import Palette from "~icons/lucide/palette";
+	import BarChart from "~icons/lucide/bar-chart";
+	import Clock from "~icons/lucide/clock";
+	import Cloud from "~icons/lucide/cloud";
 
 	// Types
 	interface Feature {
-		icon: typeof Zap
-		title: string
-		description: string
+		icon: typeof Zap;
+		title: string;
+		description: string;
 	}
 
 	// Constants
 	const features: Feature[] = [
 		{
 			icon: Zap,
-			title: 'Lightning Fast',
-			description: 'Experience unparalleled performance optimized for speed and efficiency.'
+			title: "Lightning Fast",
+			description: "Experience unparalleled performance optimized for speed and efficiency."
 		},
 		{
 			icon: Shield,
-			title: 'Secure by Design',
-			description: 'Built with security as a foundation, not an afterthought.'
+			title: "Secure by Design",
+			description: "Built with security as a foundation, not an afterthought."
 		},
 		{
 			icon: Palette,
-			title: 'Customizable',
-			description: 'Adapt the interface and workflows to match your exact requirements.'
+			title: "Customizable",
+			description: "Adapt the interface and workflows to match your exact requirements."
 		},
 		{
 			icon: BarChart,
-			title: 'Data-Driven',
-			description: 'Make informed decisions with comprehensive analytics and insights.'
+			title: "Data-Driven",
+			description: "Make informed decisions with comprehensive analytics and insights."
 		},
 		{
 			icon: Clock,
-			title: 'Time-Saving',
-			description: 'Automate repetitive tasks and focus on what truly matters to your business.'
+			title: "Time-Saving",
+			description: "Automate repetitive tasks and focus on what truly matters to your business."
 		},
 		{
 			icon: Cloud,
-			title: 'Cloud-Native',
-			description: 'Access your work from anywhere with seamless cloud integration.'
+			title: "Cloud-Native",
+			description: "Access your work from anywhere with seamless cloud integration."
 		}
-	]
+	];
 </script>
 
 <div class="bg-gray-50" data-enter-container>

@@ -4,27 +4,27 @@
 		text,
 		oncomplete = () => {},
 		show = true
-	}: { text: string; show?: boolean; oncomplete?: () => void } = $props()
+	}: { text: string; show?: boolean; oncomplete?: () => void } = $props();
 
 	// State
-	let words = $derived(text.split(' '))
+	let words = $derived(text.split(" "));
 
 	function handleWordIntroEnd(index: number) {
 		if (words.length === index + 1) {
-			oncomplete()
+			oncomplete();
 		}
 	}
 </script>
 
 <span class:show>
-	{#each text.split(' ') as word, i}
+	{#each text.split(" ") as word, i}
 		<span
 			class="animated-word inline-block origin-left"
 			style:--delay="{i * 100}ms"
 			onanimationend={() => handleWordIntroEnd(i)}
 		>
 			{word}
-		</span>{' '}
+		</span>{" "}
 	{/each}
 </span>
 

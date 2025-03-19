@@ -1,8 +1,8 @@
 // Types
-import type { LayoutServerLoad } from './$types'
+import type { LayoutServerLoad } from "./$types";
 
 // Content
-import { METADATA } from '$lib/content'
+import { METADATA } from "$lib/content";
 
 export const load: LayoutServerLoad = async () => {
 	return {
@@ -11,5 +11,5 @@ export const load: LayoutServerLoad = async () => {
 		meta: {
 			...METADATA
 		}
-	}
-}
+	};
+};

@@ -1,36 +1,36 @@
 <script lang="ts">
 	// Types
-	import Clock from '~icons/lucide/clock'
-	import Laptop from '~icons/lucide/laptop'
-	import Building from '~icons/lucide/building'
+	import Clock from "~icons/lucide/clock";
+	import Laptop from "~icons/lucide/laptop";
+	import Building from "~icons/lucide/building";
 
 	type StatItem = {
-		value: string
-		description: string
-		icon: typeof Clock
-	}
+		value: string;
+		description: string;
+		icon: typeof Clock;
+	};
 
 	// Props
 	const {
 		stats = [
 			{
-				value: '3 mins',
-				description: 'to set up your network',
+				value: "3 mins",
+				description: "to set up your network",
 				icon: Clock
 			},
 			{
-				value: '2.5m',
-				description: 'devices connected',
+				value: "2.5m",
+				description: "devices connected",
 				icon: Laptop
 			},
 			{
-				value: '10K+',
-				description: 'companies running Tailscale',
+				value: "10K+",
+				description: "companies running Tailscale",
 				icon: Building
 			}
 		],
-		class: classes = ''
-	}: { stats?: StatItem[]; class?: string } = $props()
+		class: classes = ""
+	}: { stats?: StatItem[]; class?: string } = $props();
 </script>
 
 <section class="w-full py-16 md:py-24 {classes}">

@@ -1,37 +1,37 @@
 <script lang="ts">
 	// Styles
-	import '../app.css'
+	import "../app.css";
 
 	// Components
-	import Logo from '$lib/components/Logo.svelte'
-	import Nav from '$lib/components/layout/Nav.svelte'
+	import Logo from "$lib/components/Logo.svelte";
+	import Nav from "$lib/components/layout/Nav.svelte";
 
 	// Utils
-	import { onMount } from 'svelte'
-	import { animate, inView, stagger } from 'motion'
-	import Footer from '$lib/components/layout/Footer.svelte'
+	import { onMount } from "svelte";
+	import { animate, inView, stagger } from "motion";
+	import Footer from "$lib/components/layout/Footer.svelte";
 
 	// Props
-	let { data, children } = $props()
+	let { data, children } = $props();
 
 	onMount(() => {
-		inView('[data-enter-container]', (e) => {
+		inView("[data-enter-container]", (e) => {
 			animate(
-				e.querySelectorAll('[data-enter]'),
+				e.querySelectorAll("[data-enter]"),
 				{
 					opacity: [0, 1],
-					y: ['2rem', 0]
+					y: ["2rem", 0]
 				},
 				{
 					duration: 0.4,
-					ease: 'circOut',
+					ease: "circOut",
 					delay: stagger(0.15, {
-						ease: 'easeInOut'
+						ease: "easeInOut"
 					})
 				}
-			)
-		})
-	})
+			);
+		});
+	});
 </script>
 
 <svelte:head>
