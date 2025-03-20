@@ -26,7 +26,7 @@
 		prefix,
 		suffix,
 		iconOnly = false,
-		rounded = false,
+		rounded = true,
 		...rest
 	}: Props = $props();
 
@@ -40,8 +40,8 @@
 
 	const sizes: Record<Size, string> = $derived({
 		sm: iconOnly ? "p-1.5 text-sm" : "px-3 py-1.5 text-sm",
-		md: iconOnly ? "p-2 text-base" : "px-4 py-2 text-base",
-		lg: iconOnly ? "p-3 text-lg" : "px-6 py-3 text-lg"
+		md: iconOnly ? "p-2 text-base" : "px-4.5 py-2 text-base",
+		lg: iconOnly ? "p-3 text-lg" : "px-6 py-2.5 text-lg"
 	});
 
 	const baseStyles =

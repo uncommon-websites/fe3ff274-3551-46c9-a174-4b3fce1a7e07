@@ -28,7 +28,7 @@
 					filter: ["blur(12px)", "blur(8px) brightness(250%)", "blur(0px)"]
 				},
 				{
-					at: "+2",
+					at: "0",
 					delay: stagger(0.015),
 					ease: "easeInOut"
 				}
@@ -47,7 +47,7 @@
 	bind:this={containerElement}
 >
 	<p class="text-emphasis-dim word">{title}</p>
-	<p class="text-title1 container-sm relative mx-auto">
+	<p class="text-title2 container-sm relative mx-auto">
 		{#each words as word}
 			<span>
 				<span class="word relative inline-block transition duration-150 ease-out">{word}</span>{" "}
@@ -55,5 +55,3 @@
 		{/each}
 	</p>
 </div>
-
-<!-- style:clip-path="polygon(0 0, 100% 0, 100% 100%, 0 100%)" -->

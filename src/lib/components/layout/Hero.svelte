@@ -1,4 +1,5 @@
 <script lang="ts">
+	// Components
 	import Button from "$lib/components/ui/Button.svelte";
 	import AnimateText from "../animation/AnimateText.svelte";
 
@@ -6,20 +7,37 @@
 		const target = e.currentTarget as HTMLImageElement;
 		target.src = "https://placehold.co/800x600/f8fafc/64748b?text=Dashboard+Preview";
 	}
+
+	// Types
+	type Props = {
+		title: string;
+		subtitle: string;
+		imageSrc: string;
+		callsToAction?: Array<{
+			href: string;
+			label: string;
+		}>; // A maximum of two calls to action, with the first one being primary and the second one being secondary
+	};
+
+	let { title, subtitle, imageSrc, callsToAction = [] }: Props = $props();
 </script>
 
 <header class="px container mx-auto grid gap-16 py-12 pt-24 text-balance" data-enter-container>
 	<h1 class="text-display" data-enter>
-		<span class="block"><AnimateText text="Your US Visa." /></span>
-		<span class="text-emphasis-dim block"><AnimateText text="Ten times faster and cheaper." /></span
-		>
+		<span class="block"><AnimateText text={title} /></span>
+		<span class="text-emphasis-dim block"><AnimateText text={subtitle} /></span>
 	</h1>
+	{#if callsToAction.length > 0}
+		<div class="flex gap-4" data-enter>
+			{#each callsToAction as cta, index}
+				<Button href={cta.href} size="lg" variant={index % 2 === 0 ? "primary" : "secondary"}
+					>{cta.label}</Button
+				>
+			{/each}
+		</div>
+	{/if}
 </header>
+
 <div class="col-span-full aspect-video" data-enter>
-	<img
-		src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
-		alt="Dashboard Preview"
-		class="size-full object-cover"
-		onerror={handleImageError}
-	/>
+	<img src={imageSrc} alt="Customer" class="size-full object-cover" onerror={handleImageError} />
 </div>

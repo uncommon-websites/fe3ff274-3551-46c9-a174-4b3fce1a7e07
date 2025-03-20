@@ -54,12 +54,10 @@
 >
 	<div class="section-px section-py container mx-auto grid">
 		<div class="mb-8 flex flex-col items-baseline justify-between lg:mb-0 lg:flex-row lg:pb-0">
-			<SectionHeader
-				title="What Our Clients Say"
-				subtitle="Real feedback from people who trust our solution"
-			/>
+			<!-- <SectionHeader title="Real feedback from people who trust our solution" /> -->
+			<!-- subtitle="" -->
 
-			<div class="flex items-center gap-4 self-end lg:self-auto">
+			<div class="mb-8 flex items-center gap-4 self-end lg:self-auto">
 				<Button
 					iconOnly
 					rounded
@@ -85,8 +83,10 @@
 		>
 			{#each testimonials as testimonial, index}
 				<article
+					onclick={() => select(index)}
+					aria-role="button"
 					bind:this={elements[index]}
-					class="lg:container-xs items-between grid max-w-full min-w-full snap-start grid-cols-1 gap-8 rounded-(--radius) bg-gray-50 p-(--gap) transition duration-500 ease-out md:min-w-[70%] md:grid-cols-[auto_1fr] dark:bg-gray-900"
+					class="lg:container-xs items-between grid aspect-video max-w-full min-w-full snap-start grid-cols-1 gap-8 rounded-(--radius) bg-gray-50 p-(--gap) transition duration-500 ease-out md:min-w-[65%] md:grid-cols-[2fr_3fr] dark:bg-gray-900"
 					class:duration-300={true}
 					style:transform="translateX(calc(-{current * 100}% - var(--card-gap) * {current}))"
 				>
@@ -96,7 +96,7 @@
 								src={testimonial.image}
 								alt="{testimonial.name} testimonial"
 								loading="lazy"
-								class="h-full max-h-80 rounded-(--inner-radius) object-cover"
+								class="aspect-[3/4] h-full w-full rounded-(--inner-radius) object-cover"
 							/>
 						{/if}
 					</div>

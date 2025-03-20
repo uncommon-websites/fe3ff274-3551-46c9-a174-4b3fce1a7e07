@@ -7,7 +7,7 @@ export type NavItem = {
 
 export const navigation: NavItem[] = [
 	{
-		label: "Industries",
+		label: "Use Cases",
 		children: [
 			{ label: "Healthcare", href: "/industries/healthcare" },
 			{ label: "Finance", href: "/industries/finance" },
@@ -15,6 +15,18 @@ export const navigation: NavItem[] = [
 			{ label: "Education", href: "/industries/education" }
 		]
 	},
-	{ label: "About", href: "/company/about" },
-	{ label: "Contact", href: "/company/contact" }
+	{ label: "Pricing", href: "/pricing" },
+	{
+		label: "More",
+		children: [
+			{
+				label: "About",
+				href: "/company/about"
+			},
+			{
+				label: "Blog",
+				href: "/company/blog"
+			}
+		]
+	}
 ];
