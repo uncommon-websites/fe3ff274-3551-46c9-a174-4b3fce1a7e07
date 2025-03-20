@@ -1,10 +1,17 @@
-import tailwindcss from '@tailwindcss/vite'
-import { sveltekit } from '@sveltejs/kit/vite'
-import { defineConfig } from 'vite'
+import tailwindcss from "@tailwindcss/vite";
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
+import Icons from "unplugin-icons/vite";
 
 export default defineConfig({
-	plugins: [sveltekit(), tailwindcss()],
+	plugins: [
+		tailwindcss(),
+		sveltekit(),
+		Icons({
+			compiler: "svelte"
+		})
+	],
 	server: {
-		allowedHosts: ['.unc.mn', 'localhost']
+		allowedHosts: [".unc.mn", "localhost", "a9074e09a10f.ngrok.app"]
 	}
-})
+});

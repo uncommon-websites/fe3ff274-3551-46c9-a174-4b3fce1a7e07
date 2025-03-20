@@ -1,0 +1,87 @@
+<script lang="ts">
+	// Types
+	type UseCase = {
+		title: string;
+		description: string;
+		image: string;
+		uniqeSellingPoints?: string[];
+		link?: {
+			href: string;
+			label: string;
+		};
+	};
+
+	// Components
+	import Button from "$lib/components/ui/Button.svelte";
+	import AnimateText from "../animation/AnimateText.svelte";
+
+	// Props
+	const {
+		title,
+		subtitle,
+		useCases = []
+	}: { title: string; subtitle: string; useCases: UseCase[] } = $props();
+
+	let current = $state(0);
+
+	import { onMount } from "svelte";
+	import SectionHeader from "./SectionHeader.svelte";
+
+	// Preload images lazily
+	onMount(() => {
+		if (useCases.length) {
+			useCases.forEach((useCase, index) => {
+				if (index !== current && useCase.image) {
+					const img = new Image();
+					img.loading = "lazy";
+					img.src = useCase.image;
+				}
+			});
+		}
+	});
+</script>
+
+<section
+	class="[--gap:--spacing(4)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-xl)]"
+>
+	<div class="section-px section-py container mx-auto grid">
+		<SectionHeader {title} {subtitle} />
+
+		<div class="grid gap-(--gap) rounded-(--radius) lg:grid-cols-[1fr_2fr]">
+			<!-- Left column: Use cases list -->
+			<div
+				class="items-between row-start-2 grid content-between gap-8 rounded-(--radius) bg-gray-50 p-(--gap) lg:row-start-auto dark:bg-gray-900"
+			>
+				<div>
+					{#each useCases as useCase, index}
+						<div class="group">
+							<button
+								class="text-title3 hover:text-primary-600 hover:dark:text-primary-300 row-start-1 mb-2 w-full text-left transition-colors"
+								class:text-primary-700={current === index}
+								class:dark:text-primary-400={current === index}
+								onpointerenter={() => (current = index)}
+							>
+								{useCase.title}
+							</button>
+						</div>
+					{/each}
+				</div>
+				<article class="row-start-2">
+					<p class="text-body text-emphasis-medium">{useCases[current].description}</p>
+				</article>
+			</div>
+
+			<!-- Right column: Featured image -->
+			<div class="overflow-clip rounded-(--radius) bg-gray-50">
+				{#if useCases[current]?.image}
+					<img
+						src={useCases[current].image}
+						alt="Featured use case"
+						loading="lazy"
+						class="aspect-[3/2] size-full max-h-full object-cover"
+					/>
+				{/if}
+			</div>
+		</div>
+	</div>
+</section>
