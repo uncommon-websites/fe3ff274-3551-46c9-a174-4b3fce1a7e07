@@ -6,7 +6,7 @@
 	let { title = "", subtitle = "" } = $props();
 </script>
 
-<div class="section-pb text-title2 container-xs grid text-balance">
+<div class="section-pb-sm text-title2 container-xs grid text-balance">
 	<h2>
 		<AnimateText text={title} />
 	</h2>

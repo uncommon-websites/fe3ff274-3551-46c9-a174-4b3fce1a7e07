@@ -26,19 +26,15 @@
 	<div class="section-px section-py container mx-auto grid">
 		<SectionHeader {title} {subtitle} />
 
-		<div class="grid grid-cols-3 gap-(--gap) rounded-(--radius)">
-			<!-- <div
-				class="items-between row-start-2 grid content-between gap-8 rounded-(--radius) bg-gray-50 p-(--gap) lg:row-start-auto"
-			>
-				<div> -->
+		<div class="grid gap-(--gap) rounded-(--radius) md:grid-cols-2 lg:grid-cols-3">
 			{#each features as feature}
 				<article
-					class="grid content-between gap-16 rounded-(--radius) bg-gray-50 p-5 px-6 text-pretty dark:bg-gray-900"
+					class="hover:bg-primary-50 hover:text-primary-900 grid content-between gap-16 rounded-(--radius) bg-gray-50 p-4 px-5 text-pretty transition duration-300 ease-out lg:p-5 lg:px-6 dark:bg-gray-900"
 				>
-					<h3 class="text-headline mb-2">
+					<h3 class="text-headline hover:text-primary-900 mb-2">
 						{feature.title}
 					</h3>
-					<p class="text-body text-emphasis-low">{feature.description}</p>
+					<p class="text-body opacity-60">{feature.description}</p>
 				</article>
 			{/each}
 		</div>

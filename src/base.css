@@ -19,12 +19,11 @@
 	--color-emphasis-high: var(--color-gray-950);
 }
 
-&:where([data-theme="dark"], [data-theme="dark"] *),
-[data-theme="dark"] {
-	@theme inline {
+:where([data-theme="dark"], [data-theme="dark"] *) {
+	:root {
 		--color-emphasis-dim: var(--color-gray-600);
 		--color-emphasis-low: var(--color-gray-500);
-		--color-emphasis-medium: var(--color-gray-200);
+		--color-emphasis-medium: var(--color-gray-300);
 		--color-emphasis-high: var(--color-gray-50);
 	}
 }
@@ -181,5 +180,9 @@
 	.no-scrollbar {
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+	}
+
+	img {
+		@apply rounded-xs;
 	}
 }

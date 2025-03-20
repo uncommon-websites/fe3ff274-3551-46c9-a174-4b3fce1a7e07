@@ -6,8 +6,9 @@
 	import Hero from "$lib/components/layout/Hero.svelte";
 	import UseCases from "$lib/components/layout/UseCases.svelte";
 	import Summary from "$lib/components/layout/Summary.svelte";
-	import FeaturesTwo from "$lib/components/layout/FeaturesTwo.svelte";
+	import Features from "$lib/components/layout/Features.svelte";
 	import Testimonials from "$lib/components/layout/Testimonials.svelte";
+	import CallToAction from "$lib/components/layout/CallToAction.svelte";
 
 	// Props
 	const { data }: PageProps = $props();
@@ -15,8 +16,8 @@
 
 <Hero />
 <Summary
-	title="Our guiding principles"
-	text="We believe in creating technology that empowers people to achieve more while respecting their privacy and security. Our platform is built on principles of transparency, accessibility, and continuous innovation to meet evolving needs. We're committed to sustainable development practices that benefit both our users and the environment."
+	title="Core Principles That Drive Us"
+	text="Amplifying human potential through secure, transparent technology that evolves precisely with your needs."
 />
 <UseCases
 	title="Unique Advantages"
@@ -57,39 +58,39 @@
 		}
 	]}
 />
-<FeaturesTwo
+<Features
 	title="Our Values"
 	subtitle="V7's culture and key to our success"
 	features={[
 		{
 			title: "Move the needle",
 			description:
-				"Do the kind of work that grows your function and builds a bigger ship as you row. Compound your impact by focusing on actions that make life easier next time."
+				"We focus on high-impact actions that compound results and make future work more efficient."
 		},
 		{
 			title: "Relentless improvements",
 			description:
-				"We search for problems and put energy into polishing them. We're obsessed with improvements and understand change happens in steps, not milestones."
+				"We actively seek out problems and continuously polish our solutions through incremental enhancements."
 		},
 		{
 			title: "Write the new playbook",
 			description:
-				"Know the gold standard of your function and reshape it for a new generation. Be the one writing the playbook others will copy."
+				"We redefine industry standards by creating innovative approaches others will follow."
 		},
 		{
 			title: "Customer obsession",
 			description:
-				"We listen intently to our customers and build solutions that address their real needs. Every decision starts with the customer experience."
+				"Every decision we make begins with understanding and addressing our customers' authentic needs."
 		},
 		{
 			title: "Embrace innovation",
 			description:
-				"We foster a culture that encourages experimentation and creative thinking. We're not afraid to challenge conventions to find better solutions."
+				"We challenge conventional thinking to discover breakthrough solutions through experimentation and creativity."
 		},
 		{
 			title: "Lead with integrity",
 			description:
-				"We maintain the highest standards of ethics in all our interactions. Trust is our foundation for building lasting relationships."
+				"We build lasting relationships through unwavering ethical standards and trustworthy interactions."
 		}
 	]}
 />
@@ -125,3 +126,4 @@
 		}
 	]}
 />
+<CallToAction />

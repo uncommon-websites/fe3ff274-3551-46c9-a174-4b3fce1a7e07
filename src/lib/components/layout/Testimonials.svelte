@@ -101,7 +101,7 @@
 						{/if}
 					</div>
 					<div class="flex flex-col justify-between gap-12">
-						<q class="text-title3 text-emphasis-medium max-w-prose">{testimonial.quote}</q>
+						<q class="text-title3 text-emphasis-high max-w-prose">{testimonial.quote}</q>
 						<cite class="text-caption flex items-center gap-3 not-italic">
 							{#if testimonial.image}
 								<img

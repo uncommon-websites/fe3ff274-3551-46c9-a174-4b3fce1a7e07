@@ -12,6 +12,6 @@ export default defineConfig({
 		})
 	],
 	server: {
-		allowedHosts: [".unc.mn", "localhost"]
+		allowedHosts: [".unc.mn", "localhost", "a9074e09a10f.ngrok.app"]
 	}
 });

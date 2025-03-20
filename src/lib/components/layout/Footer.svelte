@@ -10,27 +10,23 @@
 	const props: HTMLAttributes<HTMLElement> = $props();
 </script>
 
-<footer
-	class="relative bg-gray-50 text-gray-800 dark:bg-gray-900"
-	aria-labelledby="footer-heading"
-	{...props}
->
+<footer class="relative bg-gray-600 text-white" aria-labelledby="footer-heading" {...props}>
 	<h2 id="footer-heading" class="sr-only">Footer</h2>
 	<div class="container mx-auto px-4 pt-16 pb-12 lg:px-8">
 		<div class="grid grid-cols-1 gap-y-10 lg:grid-cols-5">
-			<Logo class="text-emphasis-medium size-7" />
+			<Logo class="size-7 text-gray-100" />
 			<!-- Navigation sections -->
 			<div class="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-4">
 				{#each navigation as section}
-					<div>
-						<h3 class="text-emphasis-high">{section.label}</h3>
+					<div class="text-caption">
+						<h3 class="text-callout">{section.label}</h3>
 						{#if section.children}
 							<ul class="mt-4 space-y-3">
 								{#each section.children as item}
 									<li>
 										<a
 											href={item.href}
-											class="text-emphasis-medium hover:text-emphasis-high"
+											class="opacity-80 transition duration-300 ease-out hover:opacity-100"
 											target={item?.target || undefined}
 										>
 											{item.label}
@@ -39,17 +35,13 @@
 								{/each}
 							</ul>
 						{:else}
-							<ul class="mt-4 space-y-3">
-								<li>
-									<a
-										href={section.href}
-										class="text-emphasis-dim hover:text-emphasis-high"
-										target={section?.target || undefined}
-									>
-										{section.label}
-									</a>
-								</li>
-							</ul>
+							<a
+								href={section.href}
+								class="opacity-80 transition duration-300 ease-out hover:opacity-100"
+								target={section?.target || undefined}
+							>
+								{section.label}
+							</a>
 						{/if}
 					</div>
 				{/each}
@@ -57,14 +49,17 @@
 		</div>
 
 		<!-- Footer bottom section -->
-		<div class="text-caption mt-16 border-t border-gray-100 pt-8 dark:border-gray-800">
+		<div class="text-caption mt-16 border-t border-gray-500 pt-8 dark:border-gray-800">
 			<div class="flex flex-col justify-between space-y-4 md:flex-row md:items-center md:space-y-0">
 				<div class="flex space-x-6">
-					<a href="/" class="text-emphasis-dim hover:text-emphasis-high">Terms</a>
-					<a href="/" class="text-emphasis-dim hover:text-emphasis-high">Privacy Policy</a>
+					<a href="/" class="opacity-80 transition duration-300 ease-out hover:opacity-100">Terms</a
+					>
+					<a href="/" class="opacity-80 transition duration-300 ease-out hover:opacity-100"
+						>Privacy Policy</a
+					>
 				</div>
-				<div class="flex items-center space-x-4">
-					<a href="/" class="text-emphasis-dim hover:text-emphasis-high" aria-label="LinkedIn">
+				<!-- <div class="flex items-center space-x-4">
+					<a href="/" class="opacity-80 hover:opacity-100 transition ease-out duration-300" aria-label="LinkedIn">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-5 w-5"
@@ -76,7 +71,7 @@
 							/>
 						</svg>
 					</a>
-					<a href="/" class="text-emphasis-dim hover:text-emphasis-high" aria-label="YouTube">
+					<a href="/" class="opacity-80 hover:opacity-100 transition ease-out duration-300" aria-label="YouTube">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-5 w-5"
@@ -88,7 +83,7 @@
 							/>
 						</svg>
 					</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
