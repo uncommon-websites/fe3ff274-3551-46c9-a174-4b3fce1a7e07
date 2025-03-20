@@ -26,7 +26,7 @@
 	<div class="section-px section-py container mx-auto grid">
 		<SectionHeader {title} {subtitle} />
 
-		<div class="grid grid-cols-2 gap-(--gap) rounded-(--radius)">
+		<div class="grid grid-cols-3 gap-(--gap) rounded-(--radius)">
 			<!-- <div
 				class="items-between row-start-2 grid content-between gap-8 rounded-(--radius) bg-gray-50 p-(--gap) lg:row-start-auto"
 			>

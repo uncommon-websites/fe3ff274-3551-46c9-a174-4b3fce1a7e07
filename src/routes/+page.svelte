@@ -73,11 +73,6 @@
 			title: "Write the new playbook",
 			description:
 				"Know the gold standard of your function, and reshape it for a new generation. Whether it's sales, engineering, or talent, what mattered 5 years ago is due to change. Be the one writing the playbook others will copy."
-		},
-		{
-			title: "Reliable in success and in failure",
-			description:
-				"It's about how well you can predict an outcome, communicate it with colleagues, and turn failure into value. At V7 we are few but mighty, and rely on each other for success. We care about communicating imminent challenges and forecasting our needs."
 		}
 	]}
 />

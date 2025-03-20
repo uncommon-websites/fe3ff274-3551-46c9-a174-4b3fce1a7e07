@@ -1,22 +1,37 @@
 <script lang="ts">
+	// Utils
+	import { inView } from "motion";
+	import { onMount } from "svelte";
+
 	// Props
-	const {
+	let {
 		text = "",
 		oncomplete = () => {},
-		show = true
+		show = $bindable(false)
 	}: { text: string; show?: boolean; oncomplete?: () => void } = $props();
 
 	// State
 	let words = $derived(text.split(" "));
+	let element: HTMLElement | null = null;
 
 	function handleWordIntroEnd(index: number) {
 		if (words.length === index + 1) {
 			oncomplete();
 		}
 	}
+
+	onMount(() => {
+		if (element) {
+			inView(element, (element, entry) => {
+				if (entry.isIntersecting) {
+					show = true;
+				}
+			});
+		}
+	});
 </script>
 
-<span class:show>
+<span class:show bind:this={element}>
 	{#each (text || "").split(" ") as word, i}
 		<span
 			class="animated-word inline-block origin-left"
