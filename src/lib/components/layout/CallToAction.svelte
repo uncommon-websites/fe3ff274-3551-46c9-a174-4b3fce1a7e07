@@ -41,12 +41,12 @@
 <div class="bg-gray-100">
 	<section class="section-px section-py container mx-auto">
 		<div
-			class="grid aspect-[2/1] grid-cols-[1fr_2fr] content-start items-center justify-between gap-(--gap) rounded-(--radius) bg-white p-(--gap) text-balance [--gap:--spacing(8)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-3xl)]"
+			class="grid aspect-[2/1] content-start items-center justify-between gap-(--gap) rounded-(--radius) bg-white p-(--gap) text-balance [--gap:--spacing(8)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-3xl)] lg:grid-cols-[1fr_2fr]"
 		>
 			<img
 				src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
 				alt="Visual comparison showing product benefits"
-				class=" h-full max-h-full w-full rounded-[calc(max(var(--inner-radius),.25rem))] object-cover"
+				class=" hidden h-full max-h-full w-full rounded-[calc(max(var(--inner-radius),.25rem))] object-cover lg:block"
 			/>
 			<div class="items-between grid h-full content-between gap-16">
 				<h2 class="text-title2 mb-3 flex flex-col">
