@@ -15,6 +15,7 @@
 
 <Hero />
 <Summary
+	title="Our guiding principles"
 	text="We believe in creating technology that empowers people to achieve more while respecting their privacy and security. Our platform is built on principles of transparency, accessibility, and continuous innovation to meet evolving needs. We're committed to sustainable development practices that benefit both our users and the environment."
 />
 <UseCases
@@ -63,17 +64,32 @@
 		{
 			title: "Move the needle",
 			description:
-				"Do the kind of work that grows your function, and build a bigger ship as you row. Compound your impact by focusing on actions that will make your, or a colleague's life easier next time. By doing this all together, our impact and work life drastically improves."
+				"Do the kind of work that grows your function and builds a bigger ship as you row. Compound your impact by focusing on actions that make life easier next time."
 		},
 		{
-			title: "Relentless improvements, tiny steps",
+			title: "Relentless improvements",
 			description:
-				"We search for the problem and put energy into polishing it. We're obsessed with improvements and know where to look for them. We understand change happens in steps, not milestones, and know when an undertaking is too big to make sense."
+				"We search for problems and put energy into polishing them. We're obsessed with improvements and understand change happens in steps, not milestones."
 		},
 		{
 			title: "Write the new playbook",
 			description:
-				"Know the gold standard of your function, and reshape it for a new generation. Whether it's sales, engineering, or talent, what mattered 5 years ago is due to change. Be the one writing the playbook others will copy."
+				"Know the gold standard of your function and reshape it for a new generation. Be the one writing the playbook others will copy."
+		},
+		{
+			title: "Customer obsession",
+			description:
+				"We listen intently to our customers and build solutions that address their real needs. Every decision starts with the customer experience."
+		},
+		{
+			title: "Embrace innovation",
+			description:
+				"We foster a culture that encourages experimentation and creative thinking. We're not afraid to challenge conventions to find better solutions."
+		},
+		{
+			title: "Lead with integrity",
+			description:
+				"We maintain the highest standards of ethics in all our interactions. Trust is our foundation for building lasting relationships."
 		}
 	]}
 />

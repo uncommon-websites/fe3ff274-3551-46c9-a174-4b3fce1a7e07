@@ -21,10 +21,15 @@
 
 &:where([data-theme="dark"], [data-theme="dark"] *),
 [data-theme="dark"] {
-	--color-emphasis-low: var(--color-gray-500);
-	--color-emphasis-medium: var(--color-gray-200);
-	--color-emphasis-high: var(--color-gray-50);
+	@theme inline {
+		--color-emphasis-dim: var(--color-gray-600);
+		--color-emphasis-low: var(--color-gray-500);
+		--color-emphasis-medium: var(--color-gray-200);
+		--color-emphasis-high: var(--color-gray-50);
+	}
 }
+
+@custom-variant touch (&:where(.touch-enabled, .touch-enabled *));
 
 @layer utilities {
 	/* Responsive spacing */
@@ -167,5 +172,14 @@
 		&[data-size="lg"] {
 			@apply rounded-lg px-5 py-2.5 text-base;
 		}
+	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 	}
 }

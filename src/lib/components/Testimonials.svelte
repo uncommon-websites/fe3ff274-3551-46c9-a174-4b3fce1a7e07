@@ -34,10 +34,10 @@
 </script>
 
 <!-- <div class="p mx-auto grid aspect-video h-full w-full place-items-center overflow-hidden"> -->
-<div class="px pb mx-auto grid h-full max-h-full w-full place-items-center overflow-hidden">
+<div class="px pb mx-auto grid h-full max-h-full w-full place-items-center overflow-visible relative">
 	{#each testimonials as testimonial, index}
 		{#if index === current}
-			<div class="grid-center testimonial grid size-full overflow-clip bg-cover bg-no-repeat">
+		<div class="grid-center testimonial grid size-full overflow-visible bg-cover bg-no-repeat absolute inset-0">
 				<img
 					src={testimonial.src}
 					alt=""
@@ -124,5 +124,9 @@
 		to {
 			transform: scale(1.1);
 		}
+	}
+</style>
+.testimonial {
+		transition: transform 500ms ease;
 	}
 </style>

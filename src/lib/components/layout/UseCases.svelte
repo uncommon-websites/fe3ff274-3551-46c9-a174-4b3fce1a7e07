@@ -56,8 +56,9 @@
 					{#each useCases as useCase, index}
 						<div class="group">
 							<button
-								class="text-title3 hover:text-primary-600 row-start-1 mb-2 w-full text-left transition-colors"
+								class="text-title3 hover:text-primary-600 hover:dark:text-primary-300 row-start-1 mb-2 w-full text-left transition-colors"
 								class:text-primary-700={current === index}
+								class:dark:text-primary-400={current === index}
 								onpointerenter={() => (current = index)}
 							>
 								{useCase.title}

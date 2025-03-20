@@ -5,11 +5,15 @@
 	// Components
 	import Logo from "$lib/components/Logo.svelte";
 	import Nav from "$lib/components/layout/Nav.svelte";
+	import Footer from "$lib/components/layout/Footer.svelte";
 
 	// Utils
 	import { onMount } from "svelte";
 	import { animate, inView, stagger } from "motion";
-	import Footer from "$lib/components/layout/Footer.svelte";
+
+	import { MediaQuery } from "svelte/reactivity";
+
+	const isTouchDevice = new MediaQuery("(pointer: coarse)");
 
 	// Props
 	let { data, children } = $props();
@@ -61,9 +65,10 @@
 	/>
 </svelte:head>
 
-<Nav />
+<div class:touch={isTouchDevice.current === true} class:no-touch={isTouchDevice.current !== true}>
+	<Nav />
 
-<!--
+	<!--
 <div class="">
 	<nav
 		class="px sticky top-0 left-0 container mx-auto flex grid-cols-2 content-between items-center justify-between self-start bg-white/80 py-4 backdrop-blur lg:grid dark:bg-gray-950/80"
@@ -83,7 +88,8 @@
 	</nav>
 
 	<div class="grid content-start items-start self-end"> -->
-{@render children()}
-<!-- </div>
+	{@render children()}
+	<!-- </div>
 </div> -->
-<Footer />
+	<Footer />
+</div>

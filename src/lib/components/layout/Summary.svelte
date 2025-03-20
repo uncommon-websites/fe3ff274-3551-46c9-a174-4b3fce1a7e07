@@ -3,11 +3,11 @@
 -->
 <script lang="ts">
 	// Utils
-	import { scroll, animate, stagger, spring } from "motion";
+	import { scroll, animate, stagger } from "motion";
 	import { onMount } from "svelte";
 
 	// Props
-	const { text }: { text: string } = $props();
+	const { title, text }: { title: string; text: string } = $props();
 
 	// State
 	let words = $derived(text.split(" "));
@@ -46,7 +46,7 @@
 	class="section-py section-px relative container mx-auto flex flex-col items-start gap-4 gap-8 text-pretty lg:grid lg:grid-cols-[1fr_2fr] xl:flex-row"
 	bind:this={containerElement}
 >
-	<p class="text-emphasis-dim word">Our guiding principles</p>
+	<p class="text-emphasis-dim word">{title}</p>
 	<p class="text-title1 container-sm relative mx-auto">
 		{#each words as word}
 			<span>
