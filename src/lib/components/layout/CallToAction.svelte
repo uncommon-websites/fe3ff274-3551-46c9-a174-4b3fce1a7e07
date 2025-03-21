@@ -41,7 +41,7 @@
 <div class="bg-gray-100">
 	<section class="section-px section-py container mx-auto">
 		<div
-			class="grid aspect-[2/1] content-start items-center justify-between gap-(--gap) rounded-(--radius) bg-white p-(--gap) text-balance [--gap:--spacing(8)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-3xl)] lg:grid-cols-[2fr_1fr]"
+			class="grid content-start items-center justify-between gap-(--gap) rounded-(--radius) bg-white p-(--gap) text-balance [--gap:--spacing(8)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-3xl)] lg:grid-cols-[2fr_1fr]"
 		>
 			<div class="items-between grid h-full content-between gap-16">
 				<h2 class="text-title2 mb-3 flex flex-col">
