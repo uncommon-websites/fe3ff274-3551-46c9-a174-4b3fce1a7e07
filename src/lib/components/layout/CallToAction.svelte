@@ -1,3 +1,37 @@
+<!--
+    @component
+    A call-to-action component that attracts attention and encourages user engagement.
+
+    Usage:
+    ```html
+    <CallToAction
+      title="Get started today"
+      subtitle="Join now"
+      description="Ready to experience the difference? Join our community of satisfied customers and see how our solution can transform your workflow."
+      image="/path/to/image.jpg"
+      callsToAction={[
+        {
+          href: "/get-started",
+          label: "Get Started",
+          variant: "primary"
+        },
+        {
+          href: "/contact",
+          label: "Talk to Sales",
+          variant: "secondary"
+        }
+      ]}
+    />
+    ```
+
+    Props:
+    - `title`: The main heading text (string)
+    - `subtitle`: Secondary heading text (string)
+    - `description`: Detailed information about the offer (string)
+    - `callsToAction`: Array of CTA objects with href, label, and optional variant properties (CTA[])
+    - `image`: portrait of the company's customer smiling at the camera.
+-->
+
 <script lang="ts">
 	// Types
 	import type { ComponentProps } from "svelte";
@@ -18,6 +52,7 @@
 		title = "Get started today",
 		subtitle = "Join now",
 		description = "Ready to experience the difference? Join our community of satisfied customers and see how our solution can transform your workflow. ",
+		image,
 		callsToAction = [
 			{
 				href: "/get-started",
@@ -34,6 +69,7 @@
 		title: string;
 		subtitle: string;
 		description: string;
+		image?: string;
 		callsToAction: CTA[];
 	} = $props();
 </script>
@@ -60,7 +96,8 @@
 				</div>
 			</div>
 			<img
-				src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+				src={image ??
+					"https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"}
 				alt="Visual comparison showing product benefits"
 				class="hidden aspect-[4/5] size-full max-h-full w-full rounded-[calc(max(var(--inner-radius),.25rem))] object-cover lg:block"
 			/>

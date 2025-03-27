@@ -17,7 +17,7 @@
 	{...props}
 >
 	<div class="container mx-auto px-4 pt-16 pb-12 lg:px-8">
-		<h2 class="text-title1 section-pb">{METADATA.companyName}</h2>
+		<!-- <h2 class="text-title1 section-pb">{METADATA.companyName}</h2> -->
 		<div class="grid grid-cols-1 gap-y-10 lg:grid-cols-5">
 			<Logo class="size-7 text-gray-100" />
 			<!-- Navigation sections -->

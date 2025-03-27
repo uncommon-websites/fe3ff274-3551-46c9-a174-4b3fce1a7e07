@@ -20,6 +20,30 @@
 	}: { title: string; subtitle: string; features: Feature[] } = $props();
 </script>
 
+<!--
+@component
+A feature grid section that displays a list of features with titles and descriptions.
+Never use title case, always sentence case.
+
+Make the feature descriptions one short sentence that clearly articulates the feature.
+
+Usage:
+```html
+<FeatureSection
+  title="Section Title"
+  subtitle="Section Subtitle"
+  features={[
+    {
+      title: "Feature Title",
+      description: "Feature description text",
+      link: { href: "/optional-link", label: "Learn more" } // optional
+    }
+    // more features...
+  ]}
+/>
+```
+-->
+
 <section
 	class="[--gap:--spacing(2)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-xl)]"
 >

@@ -86,7 +86,7 @@
 					onclick={() => select(index)}
 					aria-role="button"
 					bind:this={elements[index]}
-					class="lg:container-xs items-between grid aspect-video max-w-full min-w-full snap-start grid-cols-1 gap-8 rounded-(--radius) bg-gray-50 p-(--gap) transition duration-500 ease-out md:min-w-[65%] md:grid-cols-[2fr_3fr] dark:bg-gray-900"
+					class="lg:container-xs items-between grid aspect-video max-w-full min-w-full snap-start grid-cols-1 gap-8 rounded-(--radius) bg-gray-50 p-(--gap) transition duration-500 ease-out md:min-w-[65%] md:grid-cols-[2fr_3fr] dark:bg-gray-900 dark:text-white"
 					class:duration-300={true}
 					style:transform="translateX(calc(-{current * 100}% - var(--card-gap) * {current}))"
 				>

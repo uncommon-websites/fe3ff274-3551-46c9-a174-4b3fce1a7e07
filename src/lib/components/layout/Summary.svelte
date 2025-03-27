@@ -1,13 +1,33 @@
 <!--
-    Use this component to display a summary, or a couple of sentences about a company of their product.
+@component
+    Use this component to showcase the main #1 benefit of a product or service in a clear and concise manner.
+
+    Usage:
+    ```html
+    <Summary
+      title="A clear value proposition"
+      text="This component showcases your most important benefit with a smooth animation effect as users scroll"
+    />
+    ```
+
+    Props:
+    - `title`: A summary hint about the benefit (sentence case)
+    - `text`: Main benefit statement, concise and impactful
 -->
+
 <script lang="ts">
 	// Utils
 	import { scroll, animate, stagger } from "motion";
 	import { onMount } from "svelte";
 
 	// Props
-	const { title, text }: { title: string; text: string } = $props();
+	const {
+		title,
+		text
+	}: {
+		title: string;
+		text: string;
+	} = $props();
 
 	// State
 	let words = $derived(text.split(" "));
