@@ -1,161 +1,156 @@
 <script lang="ts">
-	// Types
-	type NavItem = {
-		label: string;
-		href: string;
-		children?: NavItem[];
-	};
-
-	import { slide } from "svelte/transition";
-
-	// Components
-	import Button from "$lib/components/ui/Button.svelte";
-	import Logo from "../Logo.svelte";
-	import ChevronDown from "~icons/lucide/chevron-down";
-	import ChevronRight from "~icons/lucide/chevron-right";
-	import Menu from "~icons/lucide/menu";
-	import X from "~icons/lucide/x";
-	import { scrollY } from "svelte/reactivity/window";
-	import { navigation } from "$lib/navigation";
-
-	// State
-	let isMenuOpen: boolean = $state(false);
+	import { beforeNavigate, onNavigate } from "$app/navigation";
 
 	// Constants
+	import { cta, navigation } from "$lib/navigation";
+	import Logo from "../Logo.svelte";
+
+	// Components
+	import Button from "../ui/Button.svelte";
+	import IconMenu from "~icons/lucide/menu";
+
+	let isMenuOpen: boolean = $state(false);
+
+	// Save original theme color on first render
+	let scrollBarWidth: number = $state(0);
+
+	$effect(() => {
+		scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+	});
+	let themeColor: string = $state("");
+	let originalThemeColor: string | null = $state(null);
+	$effect(() => {
+		const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+		originalThemeColor = metaThemeColor?.getAttribute("content");
+	});
+
+	$effect(() => {
+		// Get computed background style for nav element when menu is open
+		if (isMenuOpen) {
+			scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+			// Get scrollbar width
+			document.body.style.overflow = "hidden";
+			document.body.style.paddingRight = `${scrollBarWidth}px`;
+
+			// Get computed background style for nav element
+			const navElement = document.querySelector("#nav");
+			themeColor = navElement
+				? window.getComputedStyle(navElement).backgroundColor
+				: "rgb(249, 250, 251)"; // fallback to bg-gray-50
+		} else {
+			document.body.style.overflow = "";
+			document.body.style.paddingRight = "";
+			themeColor = originalThemeColor || "";
+		}
+	});
+
+	beforeNavigate(() => {
+		if (isMenuOpen) {
+			isMenuOpen = false;
+		}
+	});
+
+	const DURATION = 500;
 </script>
 
-<nav
-	class="sticky top-0 left-0 z-40 w-full bg-white/80 backdrop-blur transition duration-150 ease-out dark:bg-gray-950/80"
+<svelte:window
+	onkeydown={(e) => {
+		if (e.key === "Escape" && isMenuOpen) {
+			isMenuOpen = false;
+		}
+	}}
+/>
+
+<svelte:head>
+	{#if themeColor}
+		<meta name="theme-color" content={themeColor} />
+	{/if}
+</svelte:head>
+
+<div
+	class="sticky top-0 left-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-lg"
+	style:--tw-duration="{DURATION}ms"
 >
-	<!-- class:translate-y-4={!scrollY.current || scrollY.current === 0} -->
-	<div class="px container mx-auto flex items-center justify-between py-2.5">
-		<a href="/" class="flex items-center space-x-3">
-			<Logo class="size-6" />
-			<span class="font-medium dark:text-white">Brand</span>
+	<div
+		id="nav"
+		class={[
+			"items-between group/nav-list fixed inset-0 z-50 m-0 grid h-[100dvh] content-between overflow-y-auto bg-white  pt-32 ring transition-all duration-500 ease-in-out ",
+
+			// State
+			"pointer-events-none [clip-path:inset(0_0_100%_0)] data-[show]:pointer-events-auto data-[show]:[clip-path:inset(0)]"
+		]}
+		data-show={isMenuOpen || null}
+	>
+		<!-- style:margin-right="{scrollBarWidth}px" -->
+		<ul class="nav-list px container mx-auto grid grid-cols-2 gap-12">
+			{#each navigation as item, index}
+				{@render linkOrGroup(item, index)}
+			{/each}
+		</ul>
+
+		<div class="p container mx-auto w-full">
+			<Button size="lg" variant="primary" class="z-0 w-full md:w-auto" href={cta.href}
+				>{cta.label}</Button
+			>
+		</div>
+	</div>
+
+	<div
+		class="px sticky top-0 left-0 z-50 container mx-auto grid grid-cols-[auto_auto] content-center items-center justify-between border-gray-100 py-2"
+	>
+		<!-- Mobile Nav -->
+
+		<a href="/">
+			<Logo class="z-50 size-7" />
 		</a>
 
-		<!-- Desktop Navigation -->
-		<div class="hidden items-center space-x-8 md:flex">
-			{#each navigation as item}
-				<svelte:element
-					this={item.children ? "div" : "a"}
-					class="group text-emphasis-dim hover:text-emphasis-medium select relative transition-colors duration-300 ease-out dark:text-gray-300 dark:hover:text-white"
-					role="navigation"
-					href={item.href}
-				>
-					{#if item.children}
-						<div class="flex items-center gap-1.5">
-							<span>{item.label}</span>
-							<ChevronDown class="size-4" />
-						</div>
-						<div
-							class="invisible absolute z-10 mt-1.5 w-56 rounded-(--radius) bg-white p-(--gap) text-gray-800 opacity-0 shadow-lg transition-all [--gap:--spacing(1)] [--radius:var(--radius-xl)]
+		<div class="flex items-center gap-2">
+			<Button size="md" variant="secondary" href={cta.href}>{cta.label}</Button>
 
-							group-hover:visible
-							group-hover:opacity-100
-
-										dark:bg-gray-800 dark:text-gray-200"
-						>
-							{#each item.children as child}
-								<div
-									class="cursor-pointer rounded-(--inner-radius) px-4 py-2.5 transition-colors [--inner-radius:calc(var(--radius)-var(--gap))] hover:bg-gray-100/50 active:bg-gray-100 dark:hover:bg-gray-700/50 dark:active:bg-gray-700"
-								>
-									<a href={child.href} class="block w-full">
-										{child.label}
-									</a>
-								</div>
-							{/each}
-						</div>
-					{:else}
-						<span>{item.label}</span>
-					{/if}
-				</svelte:element>
-			{/each}
-
-			<Button variant="secondary">Get Started</Button>
-		</div>
-
-		<!-- Mobile Navigation Toggle -->
-		<div class="md:hidden">
 			<Button
-				variant="secondary"
-				onclick={() => (isMenuOpen = !isMenuOpen)}
-				aria-label="Toggle mobile menu"
+				aria-label="Toggle nav"
+				size="lg"
+				variant="ghost"
+				hideLabel
+				suffix={IconMenu}
+				iconOnly
+				class="z-50 max-h-full"
+				onclick={() => (isMenuOpen = !isMenuOpen)}>Menu</Button
 			>
-				{#if isMenuOpen}
-					<X class="h-6 w-6" />
-				{:else}
-					<Menu class="h-6 w-6" />
-				{/if}
-			</Button>
 		</div>
-
-		<!-- Full Screen Mobile Menu -->
-		<!-- {#if isMenuOpen} -->
-		<div
-			class="absolute inset-0 right-0 -bottom-full left-0 z-30 flex h-[100dvh] max-h-[100dvh] flex-col overflow-y-auto bg-white transition duration-300 ease-out md:hidden dark:bg-gray-900"
-			style:transform={isMenuOpen ? "translateX(0)" : "translateY(-100%)"}
-		>
-			<div class="px container mx-auto flex items-center justify-between py-4">
-				<div class="flex items-center space-x-3">
-					<Logo class="size-6" />
-					<span class="font-medium text-gray-800 dark:text-white">Brand</span>
-				</div>
-				<button
-					class="p-2 text-gray-800 dark:text-gray-200"
-					onclick={() => (isMenuOpen = false)}
-					aria-label="Close menu"
-				>
-					<X class="h-6 w-6" />
-				</button>
-			</div>
-
-			<div class="px container mx-auto max-h-full flex-1 overflow-y-auto py-8">
-				<nav class="flex flex-col space-y-4">
-					{#each navigation as item}
-						{#if item.children}
-							<div class="relative">
-								<details class="group">
-									<summary
-										class="flex cursor-pointer items-center justify-between rounded-lg bg-gray-100 px-4 py-3 text-lg font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-200"
-									>
-										<span>{item.label}</span>
-										<ChevronDown class="size-5 transition-transform group-open:rotate-180" />
-									</summary>
-									<div
-										class="mt-2 ml-4 space-y-1 border-l border-gray-200 pl-2 dark:border-gray-700"
-									>
-										{#each item.children as child}
-											<a
-												href={child.href}
-												class="block w-full rounded-lg px-4 py-2.5 text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-												onclick={() => (isMenuOpen = false)}
-											>
-												{child.label}
-											</a>
-										{/each}
-									</div>
-								</details>
-							</div>
-						{:else}
-							<a
-								href={item.href}
-								class="block w-full rounded-lg bg-gray-100 px-4 py-3 text-lg font-medium text-gray-800 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-								onclick={() => (isMenuOpen = false)}
-							>
-								{item.label}
-							</a>
-						{/if}
-					{/each}
-				</nav>
-			</div>
-
-			<div class="px container mx-auto py-6">
-				<Button variant="primary" class="w-full" onclick={() => (isMenuOpen = false)}>
-					Get Started
-				</Button>
-			</div>
-		</div>
-		<!-- {/if} -->
 	</div>
-</nav>
+</div>
+
+{#snippet linkOrGroup(item: (typeof navigation)[number], index: number)}
+	<!-- [clip-path:inset(-100%_0_0_0)] group-[data-show]/nav-list:[clip-path:inset(0)] group-[data-show='true']/nav-list:[clip-path:polygon(0_0_0_0)] -->
+	<svelte:element
+		this={item?.children ? "div" : "a"}
+		class={[
+			"group flex flex-col gap-4 transition-all duration-300 ease-out [--offset:100%] group-[[data-show]]/nav-list:![--offset:0%]"
+		]}
+		data-show={isMenuOpen}
+		aria-label={item.label}
+		href={item?.href}
+	>
+		{#if item.children}
+			<span class="text-body text-emphasis-dim">{item.label}</span>
+			<ul class="grid gap-2.5">
+				{#each item.children as child, index}
+					{@render linkOrGroup(child, index)}
+				{/each}
+			</ul>
+		{:else}
+			<span
+				style:transition-delay="{index * 150}ms"
+				class="text-title2 font-medium transition-all duration-500 ease-out [clip-path:inset(0)]"
+			>
+				<!-- [clip-path:inset(0_0_var(--offset)_0)] -->
+				<span
+					style:transition-delay="{index * 50}ms"
+					class="inline-block translate-y-[var(--offset)] transition duration-300 ease-out"
+					>{item.label}</span
+				>
+			</span>
+		{/if}
+	</svelte:element>
+{/snippet}

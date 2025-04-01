@@ -5,6 +5,11 @@ export type NavItem = {
 	children?: NavItem[];
 };
 
+export const cta = {
+	label: "Book demo",
+	href: "/"
+};
+
 export const navigation: NavItem[] = [
 	{
 		label: "Use Cases",
@@ -15,7 +20,10 @@ export const navigation: NavItem[] = [
 			{ label: "Education", href: "/industries/education" }
 		]
 	},
-	{ label: "Pricing", href: "/pricing" },
+	{
+		label: "Product",
+		children: [{ label: "Pricing", href: "/pricing" }]
+	},
 	{
 		label: "More",
 		children: [

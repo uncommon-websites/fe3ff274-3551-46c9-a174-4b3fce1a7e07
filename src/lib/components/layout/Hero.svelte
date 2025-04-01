@@ -1,3 +1,33 @@
+<!--
+    @component
+    Bold hero banner with eye-catching text and strong call-to-action. NEVER use title case.
+
+    Usage:
+    ```html
+    <Hero
+      title="Bold Claim"
+      subtitle="Quick Value"
+      imageSrc="/hero.jpg"
+      callsToAction={[
+        {
+          href: "/start",
+          label: "Go"
+        },
+        {
+          href: "/learn",
+          label: "More"
+        }
+      ]}
+    />
+    ```
+
+    Props:
+    - `title`: Main headline (string)
+    - `subtitle`: Supporting text (string)
+    - `imageSrc`: Hero image URL (string)
+    - `callsToAction`: CTA buttons array (max two: primary, secondary)
+-->
+
 <script lang="ts">
 	// Components
 	import Button from "$lib/components/ui/Button.svelte";
@@ -5,7 +35,7 @@
 
 	function handleImageError(e: Event) {
 		const target = e.currentTarget as HTMLImageElement;
-		target.src = "https://placehold.co/800x600/f8fafc/64748b?text=Dashboard+Preview";
+		target.src = "https://placehold.co/800x600/f8fafc/64748b?text=Hero+image";
 	}
 
 	// Types

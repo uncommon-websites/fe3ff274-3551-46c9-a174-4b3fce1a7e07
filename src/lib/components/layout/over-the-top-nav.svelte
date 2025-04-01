@@ -39,39 +39,38 @@
 			</a>
 		</div>
 
-		<!-- <nav class="flex h-12 gap-8">
-				<div class="grid grid-flow-col gap-12">
-					{#each navigation as navItem}
-						<ul class="text-emphasis-low" data-item>
-							<li>
-								<a data-item-label={navItem.label} href={navItem.href} class="flex items-center">
-									{navItem.label}
-									{#if navItem.children?.length}
-										<ChevronDown class="ml-1 size-4" />
-									{/if}
-								</a>
-
+		<nav class="flex h-12 gap-8">
+			<div class="grid grid-flow-col gap-12">
+				{#each navigation as navItem}
+					<ul class="text-emphasis-low" data-item>
+						<li>
+							<a data-item-label={navItem.label} href={navItem.href} class="flex items-center">
+								{navItem.label}
 								{#if navItem.children?.length}
-									<ul
-										class="absolute top-full left-0 mt-2 min-w-48 rounded-md bg-white p-4 opacity-0 shadow-lg transition-opacity group-has-[[data-item]:hover]:opacity-100 dark:bg-gray-900"
-									>
-										{#each navItem.children as child}
-											<li class="py-2">
-												<a href={child.href} class="hover:text-primary flex items-center">
-													{child.label}
-													<ChevronRight class="ml-auto size-4" />
-												</a>
-											</li>
-										{/each}
-									</ul>
+									<ChevronDown class="ml-1 size-4" />
 								{/if}
-							</li>
-						</ul>
-					{/each}
-				</div>
-				<Button onclick={() => (isMenuOpen = !isMenuOpen)} variant="secondary">Contact Sales</Button
-				>
-			</nav> -->
+							</a>
+
+							{#if navItem.children?.length}
+								<ul
+									class="absolute top-full left-0 mt-2 min-w-48 rounded-md bg-white p-4 opacity-0 shadow-lg transition-opacity group-has-[[data-item]:hover]:opacity-100 dark:bg-gray-900"
+								>
+									{#each navItem.children as child}
+										<li class="py-2">
+											<a href={child.href} class="hover:text-primary flex items-center">
+												{child.label}
+												<ChevronRight class="ml-auto size-4" />
+											</a>
+										</li>
+									{/each}
+								</ul>
+							{/if}
+						</li>
+					</ul>
+				{/each}
+			</div>
+			<Button onclick={() => (isMenuOpen = !isMenuOpen)} variant="secondary">Contact Sales</Button>
+		</nav>
 	</div>
 </div>
 

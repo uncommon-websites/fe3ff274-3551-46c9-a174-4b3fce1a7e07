@@ -6,7 +6,6 @@
 	// Components
 	import Logo from "$lib/components/Logo.svelte";
 	import { METADATA } from "$lib/content";
-	import Signature from "./Signature.svelte";
 
 	// Props
 	const props: HTMLAttributes<HTMLElement> = $props();
@@ -17,25 +16,18 @@
 	aria-labelledby="footer-heading"
 	{...props}
 >
-	<div
-		class=" section-px section-pt-sm relative z-10 container mx-auto grid h-full content-between items-start gap-4 gap-x-32 lg:grid-cols-2"
-	>
+	<div class="items-between relative z-10 grid h-full grid-cols-2 content-between gap-32">
 		<!-- Navigation sections with editorial styling -->
-		<div class="text-headline flex items-center gap-4">
-			<Logo class="size-8" />
-			<div class=" font-medium">{METADATA.companyName}</div>
-		</div>
-
-		<ul class="grid grid-flow-col gap-8">
+		<div
+			class="section-px section-py-sm container mx-auto grid grid-cols-2 content-start items-start gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-4"
+		>
 			{#each navigation.sort((a, b) => (b?.children?.length || 0) - (a?.children?.length || 0)) as section}
-				<div
-					class="inline-block text-gray-400 transition-all duration-300 ease-out dark:text-gray-700"
-				>
+				<div class="inline-block text-gray-400 transition-all duration-300 ease-out">
 					<h3 class="text-caption text-xs" class:hidden={!section?.children}>
 						{section.label}
 					</h3>
 					{#if section.children}
-						<ul class="mt-4 flex flex-col gap-1.5">
+						<ul class="mt-6 flex flex-col gap-1.5">
 							{#each section.children as item}
 								<li>
 									<a href={item.href} class="text-xl" target={item?.target || undefined}>
@@ -51,25 +43,30 @@
 					{/if}
 				</div>
 			{/each}
-		</ul>
+		</div>
 
-		<!-- Footer bottom section -->
-		<div
-			class="col-span-full border-t border-gray-100 py-6 text-gray-500 dark:border-gray-800 dark:text-gray-600"
-		>
-			<div class="grid grid-cols-2 items-start justify-between gap-4 gap-x-32 text-sm">
-				<div>
-					&copy; {METADATA.companyName}
-					{new Date().getFullYear()}
+		<div class="grid">
+			<div
+				class="section-px text-display col-span-full container mx-auto mb-8 grid grid-cols-1 content-center items-center md:grid-cols-2"
+			>
+				<div>{METADATA.companyName}</div>
+				<div class="flex justify-end">
+					<Logo class="size-16" />
 				</div>
-				<div class="flex items-baseline justify-end gap-3 lg:justify-start">
-					<a class="!text-current" href="/terms">Terms</a>
-					<a class="!text-current" href="/privacy">Privacy</a>
+			</div>
+
+			<!-- Footer bottom section -->
+			<div class="border-t border-white/10 py-6 dark:border-white/20">
+				<div class="section-px container mx-auto flex flex-col items-start justify-between">
+					<div
+						class="text-callout flex gap-6 text-gray-500 transition-all duration-300 ease-out *:transition *:hover:text-gray-300"
+					>
+						<a href="/terms">Terms</a>
+						<a href="/privacy" class="hover:text-white">Privacy</a>
+					</div>
 					<div class="flex items-center space-x-8">
 						<!-- Social icons go here -->
 					</div>
-
-					<div class="ml-auto justify-self-end"><Signature /></div>
 				</div>
 			</div>
 		</div>
@@ -80,6 +77,6 @@
 	@reference '../../../app.css';
 
 	a {
-		@apply inline-block text-gray-700 underline decoration-transparent transition-all duration-300 ease-out hover:text-gray-500 dark:text-gray-300 dark:hover:text-white;
+		@apply inline-block text-gray-700 transition-all duration-300 ease-out hover:text-white;
 	}
 </style>

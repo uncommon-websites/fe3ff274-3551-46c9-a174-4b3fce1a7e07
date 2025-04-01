@@ -65,31 +65,16 @@
 	/>
 </svelte:head>
 
-<div class:touch={isTouchDevice.current === true} class:no-touch={isTouchDevice.current !== true}>
-	<Nav />
+<div
+	class="isolate bg-inherit"
+	class:touch={isTouchDevice.current === true}
+	class:no-touch={isTouchDevice.current !== true}
+>
+	<div class="bg-white dark:bg-gray-950">
+		<Nav />
 
-	<!--
-<div class="">
-	<nav
-		class="px sticky top-0 left-0 container mx-auto flex grid-cols-2 content-between items-center justify-between self-start bg-white/80 py-4 backdrop-blur lg:grid dark:bg-gray-950/80"
-	>
-		<div class="flex justify-start text-xl">
-			<a href="/" class="flex items-center gap-3 text-lg font-medium"
-				><Logo class="size-6" /> {data.meta.companyName}</a
-			>
-		</div>
-		<div class="flex justify-end">
-			<a
-				href={data.layout['nav.cta'].url}
-				class="bg-primary-700 dark:bg-primary-600 rounded-xl px-3.5 py-2 font-medium text-white"
-				>{data.layout['nav.cta'].label}</a
-			>
-		</div>
-	</nav>
+		{@render children()}
+	</div>
 
-	<div class="grid content-start items-start self-end"> -->
-	{@render children()}
-	<!-- </div>
-</div> -->
 	<Footer />
 </div>

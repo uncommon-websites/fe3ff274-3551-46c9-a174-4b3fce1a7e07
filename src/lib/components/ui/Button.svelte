@@ -4,7 +4,7 @@
 	import type { ButtonRootProps } from "bits-ui";
 	import { Button } from "bits-ui";
 
-	type Variant = "primary" | "secondary";
+	type Variant = "primary" | "secondary" | "ghost";
 	type Size = "sm" | "md" | "lg";
 
 	type Props = ButtonRootProps & {
@@ -12,6 +12,7 @@
 		size?: Size;
 		children: Snippet;
 		iconOnly?: boolean;
+		hideLabel?: boolean;
 		rounded?: boolean;
 		prefix?: Snippet;
 		suffix?: Snippet;
@@ -26,6 +27,7 @@
 		prefix,
 		suffix,
 		iconOnly = false,
+		hideLabel = false,
 		rounded = true,
 		...rest
 	}: Props = $props();
@@ -33,9 +35,10 @@
 	// Styles
 	const variants: Record<Variant, string> = {
 		primary:
-			"bg-primary-800 dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 focus:ring-gray-900/20 dark:focus:ring-gray-100/20",
+			"bg-primary-800 dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200",
 		secondary:
-			"bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-gray-900/20 dark:focus:ring-gray-100/20"
+			"bg-white border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700",
+		ghost: "bg-transparent text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
 	};
 
 	const sizes: Record<Size, string> = $derived({
@@ -45,7 +48,7 @@
 	});
 
 	const baseStyles =
-		"inline-flex items-center justify-center font-medium transition-colors rounded-lg focus:outline-none focus:ring-4 gap-3 [touch-action:manipulation]";
+		"inline-flex items-center justify-center font-medium transition-colors rounded-lg focus:outline-none focus:ring-0 active:brightness-[.9] active:scale-[.98] ring-0 focus-visible:ring-gray-900/20 dark:focus-visible:ring-gray-100/20 gap-3 [touch-action:manipulation]";
 
 	let Prefix = $derived(prefix);
 	let Suffix = $derived(suffix);
@@ -66,7 +69,9 @@
 	{#if prefix}
 		<Prefix />
 	{/if}
-	{@render children?.()}
+	<span class:sr-only={hideLabel || iconOnly}>
+		{@render children?.()}
+	</span>
 	{#if suffix}
 		<Suffix />
 	{/if}
