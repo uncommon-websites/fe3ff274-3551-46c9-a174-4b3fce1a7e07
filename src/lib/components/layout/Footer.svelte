@@ -13,20 +13,20 @@
 </script>
 
 <footer
-	class="sticky inset-x-0 bottom-0 -z-10 grid min-h-[50dvh] overflow-hidden bg-white dark:bg-gray-950 dark:text-white"
+	class=" inset-x-0 bottom-0 -z-10 grid overflow-hidden bg-white dark:bg-gray-950 dark:text-white"
 	aria-labelledby="footer-heading"
 	{...props}
 >
 	<div
-		class=" section-px section-pt-sm relative z-10 container mx-auto grid h-full content-between items-start gap-4 gap-x-32 lg:grid-cols-2"
+		class="section-px relative z-10 container mx-auto grid h-full content-between items-start gap-16 gap-x-32 pt-10 lg:grid-cols-2 lg:gap-32"
 	>
 		<!-- Navigation sections with editorial styling -->
 		<div class="text-headline flex items-center gap-4">
-			<Logo class="size-8" />
-			<div class=" font-medium">{METADATA.companyName}</div>
+			<Logo class="size-7" />
+			<div class="text-headline">{METADATA.companyName}</div>
 		</div>
 
-		<ul class="grid grid-flow-col gap-8">
+		<ul class="grid grid-cols-2 gap-8 lg:grid-cols-3">
 			{#each navigation.sort((a, b) => (b?.children?.length || 0) - (a?.children?.length || 0)) as section}
 				<div
 					class="inline-block text-gray-400 transition-all duration-300 ease-out dark:text-gray-700"
@@ -55,7 +55,7 @@
 
 		<!-- Footer bottom section -->
 		<div
-			class="col-span-full border-t border-gray-100 py-6 text-gray-500 dark:border-gray-800 dark:text-gray-600"
+			class="col-span-full border-t border-gray-100 py-6 text-gray-400 dark:border-gray-800 dark:text-gray-600"
 		>
 			<div class="grid grid-cols-2 items-start justify-between gap-4 gap-x-32 text-sm">
 				<div>
@@ -63,13 +63,10 @@
 					{new Date().getFullYear()}
 				</div>
 				<div class="flex items-baseline justify-end gap-3 lg:justify-start">
-					<a class="!text-current" href="/terms">Terms</a>
-					<a class="!text-current" href="/privacy">Privacy</a>
-					<div class="flex items-center space-x-8">
-						<!-- Social icons go here -->
-					</div>
+					<a class="!text-inherit" href="/terms">Terms</a>
+					<a class="!text-inherit" href="/privacy">Privacy</a>
 
-					<div class="ml-auto justify-self-end"><Signature /></div>
+					<div class="ml-auto hidden justify-self-end lg:block"><Signature /></div>
 				</div>
 			</div>
 		</div>
