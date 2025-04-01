@@ -5,25 +5,35 @@ Do not modify this component as it is finely crafted.
 -->
 
 <script lang="ts">
-	import { beforeNavigate } from "$app/navigation";
-
-	// Constants
-	import { cta, navigation } from "$lib/navigation";
-
 	// Components
 	import Button from "../ui/Button.svelte";
 	import IconMenu from "~icons/lucide/menu";
 	import IconArrowDown from "~icons/lucide/arrow-down";
 	import Logo from "../Logo.svelte";
+
+	// Constants
 	import { METADATA } from "$lib/content";
+	import { cta, navigation } from "$lib/navigation";
+
+	// Utils
+	import { untrack } from "svelte";
+	import { beforeNavigate } from "$app/navigation";
+	import { computePosition, autoUpdate, size, shift } from "@floating-ui/dom";
+	import { blur, fade, slide } from "svelte/transition";
+	import { cubicOut } from "svelte/easing";
+
+	// State
+	const DURATION = 500;
 
 	let isMenuOpen: boolean = $state(false);
-
-	// Save original theme color on first render
 	let scrollBarWidth: number = $state(0);
 	let themeColor: string = $state("");
 	let originalThemeColor: string | null = $state(null);
 	let isDesktopNavOpen = $state(false);
+	let activeDesktopNavItem: number = $state(null)!;
+	let itemRects: DOMRectReadOnly[] = $state([]);
+	let itemElements: HTMLElement[] = $state([]);
+	let tooltip: HTMLElement | null = $state(null);
 
 	$effect(() => {
 		scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -64,12 +74,45 @@ Do not modify this component as it is finely crafted.
 		}
 	});
 
-	const DURATION = 500;
+	$effect(() => {
+		if (activeDesktopNavItem === null) return;
 
-	let activeDesktopNavItem: number = $state(0)!;
+		// untrack(() => {
+		const reference = itemElements[activeDesktopNavItem];
+		const referenceRect = itemRects[activeDesktopNavItem];
+		if (!reference || !tooltip || !referenceRect) return;
 
-	let itemRects: DOMRectReadOnly[] = $state([]);
-	let itemElements: HTMLElement[] = $state([]);
+		const cleanup = autoUpdate(reference, tooltip, () => {
+			computePosition(reference, tooltip, {
+				middleware: [
+					shift(),
+					size({
+						apply({ availableWidth, elements, x, y }) {
+							// Apply position
+							Object.assign(elements.floating.style, {
+								// left: `${x}px`,
+								// top: `${y}px`,
+								transform: `translate3d(${x}px, ${y + 8}px, 0)`,
+								// Set appropriate width and max height to prevent overflow
+								// width: `${Math.max(0, referenceRect.width ?? 0)}px`,
+								// width: `${availableHeight}px`,
+								// width: `${referenceRect.width}px`,
+								height: `${referenceRect.height}px`,
+								// height: `${Math.max(0, referenceRect.height ?? 0)}px`,
+								// maxHeight: `${Math.max(100, availableHeight)}px`,
+								maxWidth: `${Math.max(200, availableWidth)}px`,
+								overflow: "auto"
+							});
+						}
+					})
+				]
+			});
+		});
+
+		return () => {
+			cleanup();
+		};
+	});
 </script>
 
 <svelte:window
@@ -94,10 +137,10 @@ Do not modify this component as it is finely crafted.
 	<div
 		id="nav"
 		class={[
-			"items-between group/nav-list fixed inset-0 -z-10 m-0 grid h-[100dvh] content-between overflow-y-auto bg-white pt-32 transition-all duration-500 ease-in-out lg:hidden ",
+			"items-between group/nav-list fixed inset-0 -z-10 m-0 grid h-[100dvh] content-between overflow-y-auto bg-white pt-32 transition duration-500 ease-out lg:hidden ",
 
 			// State
-			"pointer-events-none -translate-y-full data-[show]:pointer-events-auto data-[show]:translate-y-0"
+			"pointer-events-none  data-[show]:pointer-events-auto "
 			// "pointer-events-none [clip-path:inset(0_0_100%_0)] data-[show]:pointer-events-auto data-[show]:[clip-path:inset(0)]"
 		]}
 		data-show={isMenuOpen || null}
@@ -128,7 +171,7 @@ Do not modify this component as it is finely crafted.
 
 		<!-- Desktop nav -->
 		<div
-			class="grid grid-flow-col items-center gap-2 bg-white [--gap:--spacing(1)]
+			class="grid grid-flow-col items-center gap-2 [--gap:--spacing(1)]
 		[--inner-radius:calc(var(--radius)-var(--gap))]
 		[--radius:var(--radius-xl)]"
 		>
@@ -136,43 +179,26 @@ Do not modify this component as it is finely crafted.
 				<!-- Transforming element -->
 
 				<div
-					class="*: fixed top-0 left-0 rounded-(--radius) border border-gray-100 bg-white p-(--gap) text-gray-500 shadow-lg transition-all"
-					class:opacity-0={!isDesktopNavOpen}
-					onmouseleave={() => (isDesktopNavOpen = false)}
-					style:transform="translate({itemElements[activeDesktopNavItem]?.getBoundingClientRect()
-						.left ?? 0}px, {itemElements[activeDesktopNavItem]?.getBoundingClientRect().top ??
-						0}px)"
-					style:width="{itemRects[activeDesktopNavItem]?.width}px"
-					style:height="{itemElements[activeDesktopNavItem]?.offsetHeight}px"
+					class="fixed top-0 left-0 grid h-0 items-start overflow-hidden rounded-(--radius) border border-gray-100 bg-white text-gray-500 shadow-lg transition-all duration-300 ease-in-out"
+					bind:this={tooltip}
+					style:height={itemRects[activeDesktopNavItem]?.height || 20}
+					style:width={itemRects[activeDesktopNavItem]?.height || 20}
 				>
-					{#if activeDesktopNavItem}
-						<!-- {@render dropdownContent(navigation[activeDesktopNavItem])} -->
+					{#if activeDesktopNavItem !== null}
+						{#key activeDesktopNavItem}
+							{@render dropdownContent(navigation[activeDesktopNavItem], activeDesktopNavItem)}
+						{/key}
 					{/if}
 				</div>
-
-				<!-- style:left="{itemElements[activeDesktopNavItem]?.offsetLeft ?? 0}px"
-					style:top="{itemElements[activeDesktopNavItem]?.offsetTop ?? 0}px" -->
-				<!-- {#each navigation[activeDesktopNavItem] as item, index}
-						<ul class="rounded-(--radius) border border-gray-100 bg-white p-(--gap) shadow-lg">
-							{#each item.children as child}
-								<li>
-									<a
-										href={child.href}
-										class="block rounded-(--inner-radius) px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										{child.label}
-									</a>
-								</li>
-							{/each}
-						</ul>
-					{/each} -->
 
 				<!-- main buttons -->
 				{#each navigation as item, index}
 					<svelte:element
 						this={item.children ? "div" : "a"}
 						href={item.children ? undefined : item.href}
+						bind:this={itemElements[index]}
 						class="group group/item relative flex cursor-default items-center gap-1 text-sm"
+						data-item
 						onmouseover={() => {
 							activeDesktopNavItem = index;
 							isDesktopNavOpen = true;
@@ -185,21 +211,11 @@ Do not modify this component as it is finely crafted.
 						<!-- You might want an indicator here if item.children exists -->
 						{#if item.children}
 							<IconArrowDown
-								class="size-4 text-gray-400 opacity-0 transition group-hover/item:opacity-100"
+								class="size-4 text-gray-400 opacity-0 transition group-hover/item:opacity-100 {activeDesktopNavItem ===
+									index && isDesktopNavOpen
+									? 'opacity-100'
+									: ''}"
 							/>
-
-							<!-- Dropdown Menu Container -->
-							<div
-								class="
-								pointer-events-none pointer-events-none absolute top-full
-								left-0
-								z-10 pt-2 opacity-0
-								transition-opacity duration-150 ease-in-out group-hover/item:pointer-events-auto group-hover/item:opacity-100
-							"
-							>
-								<!-- Dropdown Content -->
-								{@render dropdownContent(item, index)}
-							</div>
 						{/if}
 					</svelte:element>
 				{/each}
@@ -221,30 +237,32 @@ Do not modify this component as it is finely crafted.
 </div>
 
 {#snippet dropdownContent(item: { children: any[]; image?: string }, index: number)}
-	<div class="grid gap-3" bind:contentRect={itemRects[index]} bind:this={itemElements[index]}>
-		<!--  grid-cols-[auto_1fr]  -->
-		<div class="grid grid-cols-[auto_auto] gap-(--gap) rounded-(--radius) p-(--gap)">
-			<div
-				class="row-span-full h-full min-w-[10em] rounded-(--inner-radius) bg-gray-200"
-				style:background-image={item?.image
-					? `url(${item.image})`
-					: `url(https://source.unsplash.com/random/100x100?sig=${index})`}
-				alt=""
-			/>
-			<ul class="grid gap-(--gap)">
+	<div
+		bind:contentRect={itemRects[index]}
+		class="grid-center"
+		in:blur={{ easing: cubicOut, duration: 200, amount: 2, delay: 200 }}
+		out:blur={{ easing: cubicOut, duration: 200, amount: 2 }}
+	>
+		<div
+			class="grid gap-(--gap) rounded-(--radius) p-(--gap)"
+			class:grid-cols-[auto_1fr]={"image" in item}
+		>
+			{#if item.image}
+				<img
+					class="row-span-full aspect-[4/5] h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover"
+					src={item.image}
+					alt=""
+				/>
+			{/if}
+
+			<ul class="grid max-w-[16em] gap-(--gap)">
 				{#each item.children as child}
-					<li class="col-start-2 min-w-[20em]">
+					<li class=" min-w-[10em]">
 						<a
 							href={child.href}
-							class="group/link-item block grid gap-3 rounded-(--inner-radius) p-3 pb-4 text-sm text-gray-700 hover:bg-gray-100"
+							class="group/link-item grid gap-1 rounded-(--inner-radius) p-3 text-sm text-gray-700 hover:bg-gray-100"
 						>
-							<!-- {#if child.icon}
-														<child.icon
-															class="group-hover/link-item:text-primary-700 size-4 text-gray-400"
-														/>
-													{/if} -->
-
-							<span>
+							<span class="text-body font-medium">
 								{child.label}
 							</span>
 
