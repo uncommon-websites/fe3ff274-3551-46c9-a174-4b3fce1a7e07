@@ -64,16 +64,16 @@
 					variant="secondary"
 					onclick={() => select((current - 1 + testimonials.length) % testimonials.length)}
 					aria-label="Previous testimonial"
-					prefix={IconArrowLeft}
-				></Button>
+					prefix={IconArrowLeft}>Previous</Button
+				>
 				<Button
 					iconOnly
 					rounded
 					variant="secondary"
 					onclick={() => select((current + 1) % testimonials.length)}
 					aria-label="Next testimonial"
-					suffix={IconArrowRight}
-				></Button>
+					suffix={IconArrowRight}>Next</Button
+				>
 			</div>
 		</div>
 
@@ -84,7 +84,9 @@
 			{#each testimonials as testimonial, index}
 				<article
 					onclick={() => select(index)}
-					aria-role="button"
+					role="button"
+					tabindex="0"
+					onkeydown={(e) => e.key === "Enter" && select(index)}
 					bind:this={elements[index]}
 					class="lg:container-xs items-between grid aspect-video max-w-full min-w-full snap-start grid-cols-1 gap-8 rounded-(--radius) bg-gray-50 p-(--gap) transition duration-500 ease-out md:min-w-[65%] md:grid-cols-[2fr_3fr] dark:bg-gray-900 dark:text-white"
 					class:duration-300={true}
@@ -101,7 +103,9 @@
 						{/if}
 					</div>
 					<div class="flex flex-col justify-between gap-12">
-						<q class="text-title3 text-emphasis-high max-w-prose">{testimonial.quote}</q>
+						<q class="text-title3 text-emphasis-high max-w-prose dark:text-white"
+							>{testimonial.quote}</q
+						>
 						<cite class="text-caption flex items-center gap-3 not-italic">
 							{#if testimonial.image}
 								<img
@@ -112,8 +116,8 @@
 								/>
 							{/if}
 							<div>
-								<p class="text-callout">{testimonial.name}</p>
-								<p class="text-emphasis-low">
+								<p class="text-callout dark:text-gray-200">{testimonial.name}</p>
+								<p class="text-emphasis-low dark:text-gray-400">
 									{testimonial.position}, {testimonial.company}
 								</p>
 							</div>
@@ -125,11 +129,12 @@
 
 		<!-- Pagination Indicators -->
 		<div class="mt-4 flex justify-center gap-2">
-			{#each testimonials as _, index}
+			{#each testimonials as testimonial, index}
 				<button
-					class="focus:ring-primary-500 bg-emphasis-dim size-1.5 rounded-full transition-all duration-300 ease-in-out focus:ring-2 focus:outline-none"
+					class="focus:ring-primary-500 bg-emphasis-dim size-1.5 rounded-full transition-all duration-300 ease-in-out focus:ring-2 focus:outline-none dark:bg-gray-700"
 					class:opacity-50={current !== index}
 					class:w-8={current === index}
+					class:dark:bg-gray-400={current === index}
 					onclick={() => select(index)}
 					aria-label="Go to testimonial {index + 1}"
 				></button>

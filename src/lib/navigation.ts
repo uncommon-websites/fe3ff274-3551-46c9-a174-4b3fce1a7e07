@@ -45,28 +45,8 @@ export const cta = {
 	label: "Book demo",
 	href: "/"
 };
-export const navigation: NavItem[] = [
-	{
-		label: "Product",
-		children: [
-			{
-				label: "Overview",
-				href: "/product/overview",
-				description: "View our product features and capabilities"
-			},
-			{
-				label: "Solutions",
-				href: "/product/solutions",
-				description: "Solutions for your business challenges"
-			},
 
-			{
-				label: "Pricing",
-				href: "/pricing",
-				description: "Pricing plans to fit your budget"
-			}
-		]
-	},
+export const navigation: NavItem[] = [
 	{
 		label: "Use Cases",
 		image:
@@ -95,44 +75,55 @@ export const navigation: NavItem[] = [
 		]
 	},
 	{
-		label: "Resources",
-
-		children: [
-			{
-				label: "Blog",
-				href: "/blog",
-				description: "Insights and updates from our team"
-			}
-		]
+		label: "Pricing",
+		href: "/pricing"
 	},
 	{
 		label: "Company",
-
 		children: [
 			{
-				label: "Careers",
-				href: "/company/careers",
-				description: "Join our team and grow with us"
+				label: "Product"
 			},
 			{
-				label: "About us",
-				href: "/company/about",
-				description: "Our mission and the team behind our success"
+				label: "Resources",
+				children: [
+					{
+						label: "Blog",
+						href: "/blog",
+						description: "Insights and updates from our team"
+					}
+				]
 			},
 			{
-				label: "News",
-				href: "/company/news",
-				description: "Company announcements and updates"
-			},
-			// { label: "Legal", href: "/legal" },
-			// { label: "Security", href: "/security" },
-			// { label: "Events", href: "/company/events" },
-			{
-				label: "Contact",
-				href: "/contact",
-				description: "Reach our support and sales teams"
+				label: "Company",
+				children: [
+					{
+						label: "Careers",
+						href: "/company/careers",
+						description: "Join our team and grow with us"
+					},
+					{
+						label: "About us",
+						href: "/company/about",
+						description: "Our mission and the team behind our success"
+					},
+					{
+						label: "News",
+						href: "/company/news",
+						description: "Company announcements and updates"
+					},
+					// { label: "Legal", href: "/legal" },
+					// { label: "Security", href: "/security" },
+					// { label: "Events", href: "/company/events" },
+					{
+						label: "Contact",
+						href: "/contact",
+						description: "Reach our support and sales teams"
+					}
+					// Social media might be handled differently, not typically a nav item
+				]
 			}
-			// Social media might be handled differently, not typically a nav item
 		]
 	}
 ];
+// .sort((a, b) => (b.children?.length || 0) - (a.children?.length || 0));

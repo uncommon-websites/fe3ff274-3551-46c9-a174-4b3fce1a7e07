@@ -31,6 +31,7 @@
 <script lang="ts">
 	// Components
 	import Button from "$lib/components/ui/Button.svelte";
+	import { cta } from "$lib/navigation";
 	import AnimateText from "../animation/AnimateText.svelte";
 
 	function handleImageError(e: Event) {
@@ -42,14 +43,14 @@
 	type Props = {
 		title: string;
 		subtitle: string;
-		imageSrc: string;
+		imageSrc?: string;
 		callsToAction?: Array<{
 			href: string;
 			label: string;
 		}>; // A maximum of two calls to action, with the first one being primary and the second one being secondary
 	};
 
-	let { title, subtitle, imageSrc, callsToAction = [] }: Props = $props();
+	let { title, subtitle, imageSrc, callsToAction = [cta] }: Props = $props();
 </script>
 
 <header class="px container mx-auto grid gap-16 py-12 pt-24 text-balance" data-enter-container>
@@ -68,6 +69,8 @@
 	{/if}
 </header>
 
-<div class="col-span-full aspect-video" data-enter>
-	<img src={imageSrc} alt="Customer" class="size-full object-cover" onerror={handleImageError} />
-</div>
+{#if imageSrc}
+	<div class="col-span-full aspect-video" data-enter>
+		<img src={imageSrc} alt="Customer" class="size-full object-cover" onerror={handleImageError} />
+	</div>
+{/if}

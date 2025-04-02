@@ -9,6 +9,7 @@
 	import Features from "$lib/components/layout/Features.svelte";
 	import Testimonials from "$lib/components/layout/Testimonials.svelte";
 	import CallToAction from "$lib/components/layout/CallToAction.svelte";
+	import LogoScroller from "$lib/components/layout/LogoScroller.svelte";
 
 	// Props
 	const { data }: PageProps = $props();

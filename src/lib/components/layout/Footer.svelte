@@ -22,11 +22,13 @@
 	>
 		<!-- Navigation sections with editorial styling -->
 		<div class="text-headline flex items-center gap-4">
-			<Logo class="size-7" />
-			<div class="text-headline">{METADATA.companyName}</div>
+			<!-- <Logo class="size-7" /> -->
+			<div class="text-headline">
+				{METADATA.companyName}<sup class="ml-0.5 align-super text-[.25em] text-gray-800">TM</sup>
+			</div>
 		</div>
 
-		<ul class="grid grid-cols-2 gap-8 lg:grid-cols-3">
+		<ul class="grid grid-cols-2 gap-8 gap-y-16 lg:grid-cols-3">
 			{#each navigation.sort((a, b) => (b?.children?.length || 0) - (a?.children?.length || 0)) as section}
 				<div
 					class="inline-block text-gray-400 transition-all duration-300 ease-out dark:text-gray-700"
@@ -38,7 +40,7 @@
 						<ul class="mt-4 flex flex-col gap-1.5">
 							{#each section.children as item}
 								<li>
-									<a href={item.href} class="text-xl" target={item?.target || undefined}>
+									<a href={item.href} class="" target={item?.target || undefined}>
 										{item.label}
 									</a>
 								</li>
@@ -63,8 +65,8 @@
 					{new Date().getFullYear()}
 				</div>
 				<div class="flex items-baseline justify-end gap-3 lg:justify-start">
-					<a class="!text-inherit" href="/terms">Terms</a>
-					<a class="!text-inherit" href="/privacy">Privacy</a>
+					<!-- <a class="!text-inherit" href="/terms">Terms</a>
+					<a class="!text-inherit" href="/privacy">Privacy</a> -->
 
 					<div class="ml-auto hidden justify-self-end lg:block"><Signature /></div>
 				</div>

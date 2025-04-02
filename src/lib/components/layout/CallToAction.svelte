@@ -39,6 +39,7 @@
 	// Components
 	import Button from "../ui/Button.svelte";
 	import AnimateText from "../animation/AnimateText.svelte";
+	import { cta } from "$lib/navigation";
 
 	// Types
 	type CTA = {
@@ -53,31 +54,20 @@
 		subtitle = "Join now",
 		description = "Ready to experience the difference? Join our community of satisfied customers and see how our solution can transform your workflow. ",
 		image,
-		callsToAction = [
-			{
-				href: "/get-started",
-				label: "Get Started",
-				variant: "primary"
-			},
-			{
-				href: "/get-started",
-				label: "Talk to Sales",
-				variant: "secondary"
-			}
-		]
+		callsToAction = [cta]
 	}: {
-		title: string;
-		subtitle: string;
-		description: string;
+		title?: string;
+		subtitle?: string;
+		description?: string;
 		image?: string;
-		callsToAction: CTA[];
+		callsToAction?: CTA[];
 	} = $props();
 </script>
 
-<div class="bg-gray-100 dark:bg-gray-900">
+<div class="">
 	<section class="section-px section-py container mx-auto">
 		<div
-			class="grid content-start items-center justify-between gap-(--gap) rounded-(--radius) bg-white p-(--gap) text-balance [--gap:--spacing(8)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-3xl)] lg:grid-cols-[2fr_1fr] dark:bg-gray-800"
+			class="grid content-start items-center justify-between gap-(--gap) rounded-(--radius) bg-gray-50 p-(--gap) text-balance [--gap:--spacing(8)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-3xl)] lg:grid-cols-[2fr_1fr] dark:bg-gray-800"
 		>
 			<div class="items-between grid h-full content-between gap-16">
 				<h2 class="text-title2 mb-3 flex flex-col">

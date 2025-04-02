@@ -5,10 +5,13 @@ Do not modify this component as it is finely crafted.
 -->
 
 <script lang="ts">
+	// Types
+	import type { NavItem } from "$lib/navigation";
+
 	// Components
 	import Button from "../ui/Button.svelte";
 	import IconMenu from "~icons/lucide/menu";
-	import IconArrowDown from "~icons/lucide/arrow-down";
+	import IconChevronDown from "~icons/lucide/chevron-down";
 	import Logo from "../Logo.svelte";
 
 	// Constants
@@ -19,8 +22,8 @@ Do not modify this component as it is finely crafted.
 	import { untrack } from "svelte";
 	import { beforeNavigate } from "$app/navigation";
 	import { computePosition, autoUpdate, size, shift } from "@floating-ui/dom";
-	import { blur, fade, slide } from "svelte/transition";
-	import { cubicOut } from "svelte/easing";
+	import { animate } from "motion";
+	import { scrollY } from "svelte/reactivity/window";
 
 	// State
 	const DURATION = 500;
@@ -43,24 +46,48 @@ Do not modify this component as it is finely crafted.
 		const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 		originalThemeColor = metaThemeColor?.getAttribute("content");
 	});
-
 	$effect(() => {
-		// Get computed background style for nav element when menu is open
-		if (isMenuOpen) {
-			scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-			// Get scrollbar width
-			document.body.style.overflow = "hidden";
-			document.body.style.paddingRight = `${scrollBarWidth}px`;
+		try {
+			// Handle body scroll locking when menu is open
+			if (isMenuOpen) {
+				// Get accurate scrollbar width - recalculate to handle viewport changes
+				scrollBarWidth = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
 
-			// Get computed background style for nav element
-			const navElement = document.querySelector("#nav");
-			themeColor = navElement
-				? window.getComputedStyle(navElement).backgroundColor
-				: "rgb(249, 250, 251)"; // fallback to bg-gray-50
-		} else {
-			document.body.style.overflow = "";
-			document.body.style.paddingRight = "";
-			themeColor = originalThemeColor || "";
+				// Lock body scroll with padding to prevent layout shift
+				if (document.body) {
+					document.body.style.overflow = "hidden";
+					document.body.style.paddingRight = `${scrollBarWidth}px`;
+				}
+
+				// Get computed background style for theme-color meta tag
+				const navElement = document.getElementById("nav") || document.querySelector("#nav");
+
+				if (navElement) {
+					// Use computed style for accurate color
+					const computedStyle = window.getComputedStyle(navElement);
+					themeColor = computedStyle.backgroundColor || computedStyle.background;
+				} else {
+					// Fallback with theme-aware default
+					themeColor = document.documentElement.classList.contains("dark")
+						? "rgb(17, 24, 39)" // dark mode fallback (gray-900)
+						: "rgb(249, 250, 251)"; // light mode fallback (gray-50)
+				}
+			} else {
+				// Restore normal scrolling
+				if (document.body) {
+					document.body.style.overflow = "";
+					document.body.style.paddingRight = "";
+				}
+
+				// Restore original theme color
+				themeColor = originalThemeColor || "";
+			}
+		} catch (_) {
+			// Ensure body scroll is restored in case of error
+			if (document.body) {
+				document.body.style.overflow = "";
+				document.body.style.paddingRight = "";
+			}
 		}
 	});
 
@@ -82,36 +109,39 @@ Do not modify this component as it is finely crafted.
 		const referenceRect = itemRects[activeDesktopNavItem];
 		if (!reference || !tooltip || !referenceRect) return;
 
-		const cleanup = autoUpdate(reference, tooltip, () => {
-			computePosition(reference, tooltip, {
-				middleware: [
-					shift(),
-					size({
-						apply({ availableWidth, elements, x, y }) {
-							// Apply position
-							Object.assign(elements.floating.style, {
-								// left: `${x}px`,
-								// top: `${y}px`,
-								transform: `translate3d(${x}px, ${y + 8}px, 0)`,
-								// Set appropriate width and max height to prevent overflow
-								// width: `${Math.max(0, referenceRect.width ?? 0)}px`,
-								// width: `${availableHeight}px`,
-								// width: `${referenceRect.width}px`,
-								height: `${referenceRect.height}px`,
-								// height: `${Math.max(0, referenceRect.height ?? 0)}px`,
-								// maxHeight: `${Math.max(100, availableHeight)}px`,
-								maxWidth: `${Math.max(200, availableWidth)}px`,
-								overflow: "auto"
-							});
-						}
-					})
-				]
-			});
-		});
+		untrack(() => {
+			const cleanup = autoUpdate(reference, tooltip, () => {
+				computePosition(reference, tooltip, {
+					middleware: [
+						shift(),
+						size({
+							apply({ availableWidth, elements, x, y }) {
+								// Apply position
 
-		return () => {
-			cleanup();
-		};
+								animate(
+									elements.floating,
+									{
+										x,
+										y: y + 10, // extra spacing that looks better visually
+										height: referenceRect.height,
+										maxHeight: `${referenceRect.height}px`,
+										maxWidth: `${Math.max(200, availableWidth)}px`
+									},
+									{
+										duration: 0.1,
+										easing: "ease-out"
+									}
+								);
+							}
+						})
+					]
+				});
+			});
+
+			return () => {
+				cleanup();
+			};
+		});
 	});
 </script>
 
@@ -130,23 +160,23 @@ Do not modify this component as it is finely crafted.
 </svelte:head>
 
 <div
-	class="sticky top-0 left-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-lg"
+	class="sticky top-0 left-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-lg transition dark:border-gray-800 dark:bg-gray-950/95 dark:text-white"
 	style:--tw-duration="{DURATION}ms"
+	class:!border-transparent={scrollY.current === 0}
 >
 	<!-- Mobile Nav -->
 	<div
 		id="nav"
 		class={[
-			"items-between group/nav-list fixed inset-0 -z-10 m-0 grid h-[100dvh] content-between overflow-y-auto bg-white pt-32 transition duration-500 ease-out lg:hidden ",
+			"items-between group/nav-list fixed inset-0 -z-10 m-0 grid h-[100dvh] content-between overflow-y-auto bg-white pt-32 transition duration-500 ease-out lg:hidden dark:bg-gray-900",
 
 			// State
-			"pointer-events-none  data-[show]:pointer-events-auto "
-			// "pointer-events-none [clip-path:inset(0_0_100%_0)] data-[show]:pointer-events-auto data-[show]:[clip-path:inset(0)]"
+			"pointer-events-none  translate-y-[-100%] data-[show]:pointer-events-auto data-[show]:translate-y-0"
 		]}
 		data-show={isMenuOpen || null}
 	>
 		<!-- style:margin-right="{scrollBarWidth}px" -->
-		<ul class="nav-list px container mx-auto grid grid-cols-2 gap-12">
+		<ul class="nav-list section-px container mx-auto grid grid-cols-2 gap-12">
 			{#each navigation as item, index}
 				{@render linkOrGroup(item, index)}
 			{/each}
@@ -160,10 +190,9 @@ Do not modify this component as it is finely crafted.
 	</div>
 
 	<div
-		class="px gap- sticky top-0 left-0 z-50 container mx-auto grid grid-cols-[auto_auto] content-center items-center justify-between border-gray-100 py-2"
+		class="section-px gap- sticky top-0 left-0 z-50 container mx-auto grid grid-cols-[auto_auto] content-center items-center justify-between border-gray-100 py-2 dark:border-gray-800"
 	>
 		<!-- Mobile Nav -->
-
 		<a href="/" class="flex items-center gap-3.5">
 			<Logo class="z-50 size-7" />
 			<span class="hidden font-medium lg:inline">{METADATA.companyName}</span>
@@ -174,44 +203,51 @@ Do not modify this component as it is finely crafted.
 			class="grid grid-flow-col items-center gap-2 [--gap:--spacing(1)]
 		[--inner-radius:calc(var(--radius)-var(--gap))]
 		[--radius:var(--radius-xl)]"
+			onmouseleave={() => (isDesktopNavOpen = false)}
+			role="navigation"
 		>
-			<div class="group mr-4 hidden grid-flow-col gap-4 lg:grid">
+			<div class="group mr-4 hidden grid-flow-col gap-5 lg:grid">
 				<!-- Transforming element -->
 
 				<div
-					class="fixed top-0 left-0 grid h-0 items-start overflow-hidden rounded-(--radius) border border-gray-100 bg-white text-gray-500 shadow-lg transition-all duration-300 ease-in-out"
+					class={[
+						"fixed top-0 left-0 grid h-0 origin-top items-start overflow-hidden rounded-(--radius) border border-gray-100 bg-white text-gray-500 shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300",
+						isDesktopNavOpen ? "" : "pointer-events-none scale-90 opacity-0 transition select-none"
+					]}
 					bind:this={tooltip}
 					style:height={itemRects[activeDesktopNavItem]?.height || 20}
 					style:width={itemRects[activeDesktopNavItem]?.height || 20}
 				>
 					{#if activeDesktopNavItem !== null}
-						{#key activeDesktopNavItem}
-							{@render dropdownContent(navigation[activeDesktopNavItem], activeDesktopNavItem)}
-						{/key}
+						{@render dropdownContent(navigation[activeDesktopNavItem], activeDesktopNavItem)}
 					{/if}
 				</div>
 
 				<!-- main buttons -->
-				{#each navigation as item, index}
+				{#each navigation as item, index (item.label)}
 					<svelte:element
-						this={item.children ? "div" : "a"}
+						this={item.children ? "button" : "a"}
 						href={item.children ? undefined : item.href}
 						bind:this={itemElements[index]}
-						class="group group/item relative flex cursor-default items-center gap-1 text-sm"
+						class="group group/item relative flex cursor-default items-center gap-1 text-sm text-gray-500 dark:text-gray-300"
 						data-item
-						onmouseover={() => {
-							activeDesktopNavItem = index;
-							isDesktopNavOpen = true;
-						}}
-						onmouseleave={() => {
-							isDesktopNavOpen = false;
+						{...item.children && {
+							onmouseover: () => {
+								activeDesktopNavItem = index;
+								isDesktopNavOpen = true;
+							},
+
+							onfocus: () => {
+								activeDesktopNavItem = index;
+								isDesktopNavOpen = true;
+							}
 						}}
 					>
-						<span class="text-gray-500">{item.label}</span>
+						<span>{item.label}</span>
 						<!-- You might want an indicator here if item.children exists -->
 						{#if item.children}
-							<IconArrowDown
-								class="size-4 text-gray-400 opacity-0 transition group-hover/item:opacity-100 {activeDesktopNavItem ===
+							<IconChevronDown
+								class="size-4 text-gray-400  transition group-hover/item:opacity-100 dark:text-gray-500 {activeDesktopNavItem ===
 									index && isDesktopNavOpen
 									? 'opacity-100'
 									: ''}"
@@ -236,37 +272,34 @@ Do not modify this component as it is finely crafted.
 	</div>
 </div>
 
-{#snippet dropdownContent(item: { children: any[]; image?: string }, index: number)}
-	<div
-		bind:contentRect={itemRects[index]}
-		class="grid-center"
-		in:blur={{ easing: cubicOut, duration: 200, amount: 2, delay: 200 }}
-		out:blur={{ easing: cubicOut, duration: 200, amount: 2 }}
-	>
+{#snippet dropdownContent(item: NavItem, index: number)}
+	<div bind:contentRect={itemRects[index]} class="grid-center">
 		<div
 			class="grid gap-(--gap) rounded-(--radius) p-(--gap)"
 			class:grid-cols-[auto_1fr]={"image" in item}
 		>
 			{#if item.image}
 				<img
-					class="row-span-full aspect-[4/5] h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover"
+					class="row-span-full aspect-[4/5] h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover dark:bg-gray-700"
 					src={item.image}
 					alt=""
 				/>
 			{/if}
 
-			<ul class="grid max-w-[16em] gap-(--gap)">
+			<ul class="grid max-w-[20em] gap-(--gap)">
 				{#each item.children as child}
-					<li class=" min-w-[10em]">
+					<li class="min-w-[10em]">
 						<a
 							href={child.href}
-							class="group/link-item grid gap-1 rounded-(--inner-radius) p-3 text-sm text-gray-700 hover:bg-gray-100"
+							class="group/link-item grid gap-1 rounded-(--inner-radius) p-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+							role="menuitem"
 						>
 							<span class="text-body font-medium">
 								{child.label}
 							</span>
-
-							<span class=" text-gray-400">{child.description}</span>
+							{#if child.description}
+								<span class="text-gray-400 dark:text-gray-500">{child.description}</span>
+							{/if}
 						</a>
 					</li>
 				{/each}
@@ -275,8 +308,7 @@ Do not modify this component as it is finely crafted.
 	</div>
 {/snippet}
 
-{#snippet linkOrGroup(item: (typeof navigation)[number], index: number)}
-	<!-- [clip-path:inset(-100%_0_0_0)] group-[data-show]/nav-list:[clip-path:inset(0)] group-[data-show='true']/nav-list:[clip-path:polygon(0_0_0_0)] -->
+{#snippet linkOrGroup(item: NavItem, index: number)}
 	<svelte:element
 		this={item?.children ? "div" : "a"}
 		class={[
@@ -287,7 +319,7 @@ Do not modify this component as it is finely crafted.
 		href={item?.href}
 	>
 		{#if item.children}
-			<span class="text-body text-emphasis-dim">{item.label}</span>
+			<span class="text-body text-emphasis-dim dark:text-gray-400">{item.label}</span>
 			<ul class="grid gap-2.5">
 				{#each item.children as child, index}
 					{@render linkOrGroup(child, index)}
@@ -296,9 +328,8 @@ Do not modify this component as it is finely crafted.
 		{:else}
 			<span
 				style:transition-delay="{index * 150}ms"
-				class="text-title2 font-medium transition-all duration-500 ease-out [clip-path:inset(0)]"
+				class="text-title2 font-medium transition-all duration-500 ease-out [clip-path:inset(0)] dark:text-white"
 			>
-				<!-- [clip-path:inset(0_0_var(--offset)_0)] -->
 				<span
 					style:transition-delay="{index * 50}ms"
 					class="inline-block translate-y-[calc(200%*var(--offset))] opacity-[calc(1-var(--offset))] transition duration-300 ease-out"
