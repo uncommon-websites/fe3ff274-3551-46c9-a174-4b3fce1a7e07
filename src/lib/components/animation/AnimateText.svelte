@@ -15,7 +15,7 @@
 	let element: HTMLElement | null = null;
 
 	function handleWordIntroEnd(index: number) {
-		if (words.length === index + 1) {
+		if (index + 1 === words.length) {
 			oncomplete();
 		}
 	}

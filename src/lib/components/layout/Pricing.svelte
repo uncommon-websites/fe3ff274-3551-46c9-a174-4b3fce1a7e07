@@ -260,8 +260,6 @@
 		{/each}
 	</div>
 	<div class="mt-32">
-		<h3 class="text-headline mb-6 text-center font-medium">{caption}</h3>
-
 		<!-- Responsive table wrapper with horizontal scroll on mobile -->
 		<div class="-mx-4 hidden overflow-x-auto px-4 sm:mx-0 sm:block sm:px-0">
 			<table
@@ -276,7 +274,7 @@
 						</th>
 						{#each tierNames as tierName}
 							<th
-								class="min-w-[100px] border-r border-b border-gray-200 p-4 text-start font-medium first:border-l last:border-r-0 dark:border-gray-700"
+								class="text-headline min-w-[100px] border-b border-gray-200 p-4 text-start font-normal dark:border-gray-700"
 							>
 								{tierName}
 							</th>
@@ -287,13 +285,13 @@
 					{#each features as feature}
 						<tr>
 							<td
-								class="sticky left-0 min-w-[120px] border-r border-b border-gray-200 py-4 dark:border-gray-700 dark:bg-gray-900"
+								class="sticky left-0 min-w-[120px] border-b border-gray-200 py-4 dark:border-gray-700 dark:bg-gray-900"
 							>
 								{feature.name}
 							</td>
 							{#each tierNames as tierName}
 								<td
-									class="min-w-[100px] border-r border-b border-gray-200 p-4 text-start last:border-r-0 dark:border-gray-700 dark:text-gray-300"
+									class="min-w-[100px] border-b border-gray-200 p-4 text-start text-gray-600 dark:border-gray-700 dark:text-gray-300"
 								>
 									{#if typeof feature.tiers[tierName] === "boolean"}
 										{#if feature.tiers[tierName]}
@@ -316,13 +314,19 @@
 
 		<!-- Mobile feature comparison (alternative view for very small screens) -->
 		<div class="mt-8 block divide-y-1 sm:hidden">
-			{#each features as feature}
-				<div class="mb-6 border-gray-200 dark:border-gray-700">
-					<h4 class="text-headline mb-5 font-medium">{feature.name}</h4>
-					<div class="grid grid-cols-3 gap-3 py-4">
-						{#each tierNames as tierName}
-							<div class="text-start">
-								<div class="text-caption mb-4 font-medium">{tierName}</div>
+			<div class="mb-8">
+				<!-- Display tier names once at the top -->
+				<div class="sticky top-12 left-0 grid grid-cols-3 gap-3 bg-white py-8">
+					{#each tierNames as tierName}
+						<div class="text-headline">{tierName}</div>
+					{/each}
+				</div>
+
+				{#each features as feature}
+					<div class="mb-6 border-b border-gray-200 pb-6 dark:border-gray-700">
+						<h4 class="text-headline mb-8">{feature.name}</h4>
+						<div class="grid grid-cols-3 gap-3">
+							{#each tierNames as tierName}
 								<div class="flex justify-start">
 									{#if typeof feature.tiers[tierName] === "boolean"}
 										{#if feature.tiers[tierName]}
@@ -331,14 +335,14 @@
 											<IconX class="size-5 text-gray-400" />
 										{/if}
 									{:else}
-										<span class="text-caption">{feature.tiers[tierName]}</span>
+										<span class="text-body">{feature.tiers[tierName]}</span>
 									{/if}
 								</div>
-							</div>
-						{/each}
+							{/each}
+						</div>
 					</div>
-				</div>
-			{/each}
+				{/each}
+			</div>
 		</div>
 	</div>
 	<LogoScroller />

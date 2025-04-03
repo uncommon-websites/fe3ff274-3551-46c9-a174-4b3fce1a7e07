@@ -43,7 +43,7 @@
 	--color-secondary-950: oklch(20% 0.11 30);
 
 	/* Typography */
-	--font-family: "Figtree";
+	--font-family: "Inter Variable";
 	--font-body: var(--font-family), var(--font-fallback);
 	--font-display: var(--font-body);
 }

@@ -3,7 +3,7 @@
 	target="_blank"
 	class="group flex gap-3 text-gray-200 transition duration-300 hover:text-gray-500 dark:text-gray-800 dark:hover:text-gray-400"
 >
-	<p class="text-transparent group-hover:text-current">Built with Uncommon</p>
+	<p class="text-transparent group-hover:text-current">In partnership with Uncommon</p>
 
 	<svg class="size-5" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<g filter="url(#filter0_i_1525_127)">

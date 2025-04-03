@@ -102,24 +102,26 @@ export const navigation: NavItem[] = [
 			{
 				label: "Product",
 				showInNav: true,
-				showInFooter: false
+				showInFooter: false,
+				description: "Explore our innovative product features and solutions"
 			},
 			{
 				label: "Pricing",
 				href: "/pricing",
 				showInNav: false,
-				showInFooter: true
+				showInFooter: true,
+				description: "Transparent pricing options for businesses of all sizes"
 			},
 			{
 				label: "Careers",
-				href: "/company/careers",
+				href: "/careers",
 				description: "Join our team and grow with us",
 				showInNav: true,
 				showInFooter: true
 			},
 			{
 				label: "About us",
-				href: "/company/about",
+				href: "/about",
 				description: "Our mission and the team behind our success",
 				showInNav: true,
 				showInFooter: true
@@ -128,7 +130,7 @@ export const navigation: NavItem[] = [
 	},
 	{
 		label: "More",
-		showInNav: true,
+		showInNav: false,
 		showInFooter: true,
 		children: [
 			{

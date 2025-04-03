@@ -13,7 +13,6 @@
 
 	// Components
 	import Button from "$lib/components/ui/Button.svelte";
-	import AnimateText from "../animation/AnimateText.svelte";
 
 	// Props
 	const {
@@ -26,6 +25,8 @@
 
 	import { onMount } from "svelte";
 	import SectionHeader from "./SectionHeader.svelte";
+	import { fade } from "svelte/transition";
+	import { cubicInOut, cubicOut } from "svelte/easing";
 
 	// Preload images lazily
 	onMount(() => {
@@ -79,15 +80,16 @@
 			</div>
 
 			<!-- Right column: Featured image -->
-			<div class="overflow-clip rounded-(--radius) bg-gray-50">
-				{#if useCases[current]?.image}
+			<div class="grid overflow-clip rounded-(--radius) bg-gray-50">
+				{#key useCases[current]?.image}
 					<img
+						transition:fade={{ easing: cubicInOut, duration: 200 }}
 						src={useCases[current].image}
 						alt="Featured use case"
 						loading="lazy"
-						class="aspect-[3/2] size-full max-h-full object-cover"
+						class="grid-center aspect-[3/2] size-full max-h-full object-cover"
 					/>
-				{/if}
+				{/key}
 			</div>
 		</div>
 	</div>

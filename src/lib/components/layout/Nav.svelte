@@ -38,8 +38,20 @@ Do not modify this component as it is finely crafted.
 	let itemElements: HTMLElement[] = $state([]);
 	let tooltip: HTMLElement | null = $state(null);
 
-	// Filter navigation items for display
-	const navItems = navigation.filter((item) => item.showInNav);
+	// Deep filtering of navigation items to show only items that should appear in the nav
+	// and recursively filter their children as well
+	const navItems = $derived(
+		navigation
+			.filter((item) => item.showInNav)
+			.map((item) => {
+				if (!item.children) return item;
+
+				return {
+					...item,
+					children: item.children.filter((child) => child.showInNav !== false)
+				};
+			})
+	);
 
 	$effect(() => {
 		scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -49,7 +61,6 @@ Do not modify this component as it is finely crafted.
 		const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 		originalThemeColor = metaThemeColor?.getAttribute("content");
 	});
-
 	$effect(() => {
 		try {
 			// Handle body scroll locking when menu is open
@@ -223,7 +234,7 @@ Do not modify this component as it is finely crafted.
 					style:width={itemRects[activeDesktopNavItem]?.height || 20}
 				>
 					{#if activeDesktopNavItem !== null}
-						{@render dropdownContent(navItems[activeDesktopNavItem], activeDesktopNavItem)}
+						{@render dropdownContent(navigation[activeDesktopNavItem], activeDesktopNavItem)}
 					{/if}
 				</div>
 
@@ -233,7 +244,8 @@ Do not modify this component as it is finely crafted.
 						this={item.children ? "button" : "a"}
 						href={item.children ? undefined : item.href}
 						bind:this={itemElements[index]}
-						class="group group/item relative flex cursor-default items-center gap-1 text-sm text-gray-500 dark:text-gray-300"
+						class:cursor-default={item.children}
+						class="group group/item relative flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
 						data-item
 						{...item.children && {
 							onmouseover: () => {
@@ -291,7 +303,7 @@ Do not modify this component as it is finely crafted.
 			{/if}
 
 			<ul class="grid max-w-[20em] gap-(--gap)">
-				{#each (item.children || []).filter((child) => child.showInNav !== false) as child}
+				{#each item.children as child}
 					<li class="min-w-[10em]">
 						<a
 							href={child.href}
@@ -325,8 +337,8 @@ Do not modify this component as it is finely crafted.
 		{#if item.children}
 			<span class="text-body text-emphasis-dim dark:text-gray-400">{item.label}</span>
 			<ul class="grid gap-2.5">
-				{#each (item.children || []).filter((child) => child.showInNav !== false) as child, childIndex}
-					{@render linkOrGroup(child, childIndex)}
+				{#each item.children as child, index}
+					{@render linkOrGroup(child, index)}
 				{/each}
 			</ul>
 		{:else}
