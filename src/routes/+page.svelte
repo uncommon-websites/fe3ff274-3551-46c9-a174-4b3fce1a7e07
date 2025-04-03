@@ -17,14 +17,14 @@
 </script>
 
 <Hero
-	title="Transform Your Digital Experience"
-	subtitle="Powerful solutions designed for modern businesses"
+	title="Transform your digital experience"
+	subtitle="Powerful solutions designed for modern businesses."
 	imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
 />
 <LogoScroller />
 
 <Summary
-	title="Amplify Your Business Potential"
+	title="What we do"
 	text="Our technology delivers measurable results through secure, adaptable solutions that directly increase productivity and drive growth."
 />
 

@@ -29,7 +29,9 @@
 		</div>
 
 		<ul class="grid grid-cols-2 gap-8 gap-y-16 lg:grid-cols-3">
-			{#each navigation.sort((a, b) => (b?.children?.length || 0) - (a?.children?.length || 0)) as section}
+			{#each navigation
+				.filter((item) => item.showInFooter !== false)
+				.sort((a, b) => (b?.children?.length || 0) - (a?.children?.length || 0)) as section}
 				<div
 					class="inline-block text-gray-400 transition-all duration-300 ease-out dark:text-gray-700"
 				>
@@ -38,7 +40,7 @@
 					</h3>
 					{#if section.children}
 						<ul class="mt-4 flex flex-col gap-1.5">
-							{#each section.children as item}
+							{#each section.children.filter((child) => child.showInFooter !== false) as item}
 								<li>
 									<a href={item.href} class="" target={item?.target || undefined}>
 										{item.label}
@@ -65,9 +67,6 @@
 					{new Date().getFullYear()}
 				</div>
 				<div class="flex items-baseline justify-end gap-3 lg:justify-start">
-					<!-- <a class="!text-inherit" href="/terms">Terms</a>
-					<a class="!text-inherit" href="/privacy">Privacy</a> -->
-
 					<div class="ml-auto hidden justify-self-end lg:block"><Signature /></div>
 				</div>
 			</div>

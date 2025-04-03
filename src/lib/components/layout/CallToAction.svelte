@@ -70,11 +70,11 @@
 			class="grid content-start items-center justify-between gap-(--gap) rounded-(--radius) bg-gray-50 p-(--gap) text-balance [--gap:--spacing(8)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-3xl)] lg:grid-cols-[2fr_1fr] dark:bg-gray-800"
 		>
 			<div class="items-between grid h-full content-between gap-16">
-				<h2 class="text-title2 mb-3 flex flex-col">
+				<h2 class="text-title1 mb-3 flex flex-col">
 					<span><AnimateText text={title} /></span>
 					<span class="text-emphasis-low"><AnimateText text={subtitle} /></span>
 				</h2>
-				<div class="flex flex-col items-start justify-start gap-4">
+				<div class="flex flex-col items-start justify-start gap-7">
 					<p class="text-headline text-emphasis-low">
 						{description}
 					</p>

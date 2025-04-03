@@ -17,9 +17,11 @@ This component is a teaser for the about page.
 </script>
 
 <section
-	class="section-px section-py [--gap:--spacing(4)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-xl)]"
+	class="[--gap:--spacing(4)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-xl)]"
 >
-	<div class="container mx-auto grid gap-(--gap) rounded-(--radius) lg:grid-cols-2">
+	<div
+		class="section-px section-py container mx-auto grid gap-(--gap) rounded-(--radius) lg:grid-cols-2"
+	>
 		<div class="overflow-clip rounded-(--radius) bg-gray-50">
 			<img
 				src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=3732&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

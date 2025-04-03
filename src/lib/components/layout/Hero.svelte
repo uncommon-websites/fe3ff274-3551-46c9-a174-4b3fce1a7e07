@@ -30,9 +30,11 @@
 
 <script lang="ts">
 	// Components
-	import Button from "$lib/components/ui/Button.svelte";
-	import { cta } from "$lib/navigation";
 	import AnimateText from "../animation/AnimateText.svelte";
+	import Button from "$lib/components/ui/Button.svelte";
+
+	// Constants
+	import { cta } from "$lib/navigation";
 
 	function handleImageError(e: Event) {
 		const target = e.currentTarget as HTMLImageElement;
@@ -53,8 +55,11 @@
 	let { title, subtitle, imageSrc, callsToAction = [cta] }: Props = $props();
 </script>
 
-<header class="px container mx-auto grid gap-16 py-12 pt-24 text-balance" data-enter-container>
-	<h1 class="text-display" data-enter>
+<header
+	class="section-px container mx-auto grid grid-cols-[1fr_auto] items-end gap-16 py-12 pt-24 text-balance"
+	data-enter-container
+>
+	<h1 class="text-display w-full" data-enter>
 		<span class="block"><AnimateText text={title} /></span>
 		<span class="text-emphasis-dim block"><AnimateText text={subtitle} /></span>
 	</h1>

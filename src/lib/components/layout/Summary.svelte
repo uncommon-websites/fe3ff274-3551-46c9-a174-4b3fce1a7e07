@@ -63,11 +63,11 @@
 </script>
 
 <div
-	class="section-py section-px relative container mx-auto flex flex-col items-start gap-4 gap-8 text-pretty lg:grid lg:grid-cols-[1fr_2fr] xl:flex-row"
+	class="section-py section-px items-startgap-8 relative container mx-auto flex flex-col text-pretty lg:grid lg:grid-cols-[1fr_2fr] xl:flex-row"
 	bind:this={containerElement}
 >
 	<p class="text-emphasis-dim word">{title}</p>
-	<p class="text-title2 container-sm relative mx-auto">
+	<p class="text-title1 container-sm relative mx-auto">
 		{#each words as word}
 			<span>
 				<span class="word relative inline-block transition duration-150 ease-out">{word}</span>{" "}

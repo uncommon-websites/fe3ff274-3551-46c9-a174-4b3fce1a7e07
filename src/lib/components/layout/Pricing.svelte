@@ -13,10 +13,18 @@
 		highlight?: boolean;
 	};
 
+	type PricingFeature = {
+		name: string;
+		tiers: {
+			[key: string]: boolean | string;
+		};
+	};
+
 	// Components
 	import Button from "$lib/components/ui/Button.svelte";
 	import SectionHeader from "./SectionHeader.svelte";
 	import IconCheck from "~icons/lucide/check";
+	import IconX from "~icons/lucide/x";
 	import NumberFlow from "@number-flow/svelte";
 	import LogoScroller from "./LogoScroller.svelte";
 
@@ -24,6 +32,82 @@
 	const {
 		title = "Simple, transparent pricing",
 		subtitle = "Choose the plan that works best for your needs",
+		tierNames = ["Starter", "Pro", "Enterprise"],
+		caption = "Compare all features",
+		features = [
+			{
+				name: "Projects",
+				tiers: {
+					Starter: "5",
+					Pro: "Unlimited",
+					Enterprise: "Unlimited"
+				}
+			},
+			{
+				name: "Team members",
+				tiers: {
+					Starter: "1",
+					Pro: "10",
+					Enterprise: "Unlimited"
+				}
+			},
+			{
+				name: "Storage",
+				tiers: {
+					Starter: "1GB",
+					Pro: "10GB",
+					Enterprise: "Unlimited"
+				}
+			},
+			{
+				name: "API access",
+				tiers: {
+					Starter: false,
+					Pro: true,
+					Enterprise: true
+				}
+			},
+			{
+				name: "Custom domains",
+				tiers: {
+					Starter: false,
+					Pro: true,
+					Enterprise: true
+				}
+			},
+			{
+				name: "Analytics",
+				tiers: {
+					Starter: "Basic",
+					Pro: "Advanced",
+					Enterprise: "Advanced"
+				}
+			},
+			{
+				name: "Support response time",
+				tiers: {
+					Starter: "24 hours",
+					Pro: "4 hours",
+					Enterprise: "1 hour"
+				}
+			},
+			{
+				name: "Dedicated account manager",
+				tiers: {
+					Starter: false,
+					Pro: false,
+					Enterprise: true
+				}
+			},
+			{
+				name: "SLA",
+				tiers: {
+					Starter: false,
+					Pro: false,
+					Enterprise: "99.9%"
+				}
+			}
+		],
 		tiers = [
 			{
 				name: "Starter",
@@ -84,6 +168,9 @@
 		title?: string;
 		subtitle?: string;
 		tiers?: PricingTier[];
+		features?: PricingFeature[];
+		tierNames?: string[];
+		caption?: string;
 	} = $props();
 
 	// State
@@ -111,7 +198,7 @@
 					class={annual ? "bg-white shadow-sm dark:bg-gray-700" : ""}
 					onclick={() => (annual = true)}
 				>
-					Annual <span class="text-primary-600 dark:text-primary-400 text-xs">Save 20%</span>
+					Annual <span class="text-primary-600 dark:text-primary-400 text-footnote">Save 20%</span>
 				</Button>
 			</div>
 		</div>
@@ -133,7 +220,7 @@
 							<span class="text-title2 dark:text-white">Custom</span>
 						{:else}
 							<NumberFlow
-								class="text-title2 dark:text-white [&::part\(suffix\)]:text-xs"
+								class="text-title2 [&::part\(suffix\)]:text-caption dark:text-white"
 								format={{
 									style: "currency",
 									currency: "USD",
@@ -154,7 +241,7 @@
 						{#each tier.features as feature}
 							<li class="flex items-center gap-2">
 								<IconCheck class="text-primary-600 dark:text-primary-400 size-5 flex-shrink-0" />
-								<span class="text-emphasis-medium dark:text-gray-300">{feature}</span>
+								<span class="text-body text-emphasis-medium dark:text-gray-300">{feature}</span>
 							</li>
 						{/each}
 					</ul>
@@ -171,6 +258,88 @@
 				</div>
 			</div>
 		{/each}
+	</div>
+	<div class="mt-32">
+		<h3 class="text-headline mb-6 text-center font-medium">{caption}</h3>
+
+		<!-- Responsive table wrapper with horizontal scroll on mobile -->
+		<div class="-mx-4 hidden overflow-x-auto px-4 sm:mx-0 sm:block sm:px-0">
+			<table
+				class="w-full min-w-full border-separate border-spacing-0 border-gray-200 text-left dark:border-gray-700"
+			>
+				<thead>
+					<tr>
+						<th
+							class="sticky left-0 min-w-[120px] border-b border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900"
+						>
+							<span class="sr-only">Feature</span>
+						</th>
+						{#each tierNames as tierName}
+							<th
+								class="min-w-[100px] border-r border-b border-gray-200 p-4 text-start font-medium first:border-l last:border-r-0 dark:border-gray-700"
+							>
+								{tierName}
+							</th>
+						{/each}
+					</tr>
+				</thead>
+				<tbody>
+					{#each features as feature}
+						<tr>
+							<td
+								class="sticky left-0 min-w-[120px] border-r border-b border-gray-200 py-4 dark:border-gray-700 dark:bg-gray-900"
+							>
+								{feature.name}
+							</td>
+							{#each tierNames as tierName}
+								<td
+									class="min-w-[100px] border-r border-b border-gray-200 p-4 text-start last:border-r-0 dark:border-gray-700 dark:text-gray-300"
+								>
+									{#if typeof feature.tiers[tierName] === "boolean"}
+										{#if feature.tiers[tierName]}
+											<IconCheck
+												class="text-primary-600 dark:text-primary-400 mx-auto size-5 sm:mx-0"
+											/>
+										{:else}
+											<IconX class="mx-auto size-5 text-gray-400 sm:mx-0" />
+										{/if}
+									{:else}
+										{feature.tiers[tierName]}
+									{/if}
+								</td>
+							{/each}
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Mobile feature comparison (alternative view for very small screens) -->
+		<div class="mt-8 block divide-y-1 sm:hidden">
+			{#each features as feature}
+				<div class="mb-6 border-gray-200 dark:border-gray-700">
+					<h4 class="text-headline mb-5 font-medium">{feature.name}</h4>
+					<div class="grid grid-cols-3 gap-3 py-4">
+						{#each tierNames as tierName}
+							<div class="text-start">
+								<div class="text-caption mb-4 font-medium">{tierName}</div>
+								<div class="flex justify-start">
+									{#if typeof feature.tiers[tierName] === "boolean"}
+										{#if feature.tiers[tierName]}
+											<IconCheck class="text-primary-600 dark:text-primary-400 size-5" />
+										{:else}
+											<IconX class="size-5 text-gray-400" />
+										{/if}
+									{:else}
+										<span class="text-caption">{feature.tiers[tierName]}</span>
+									{/if}
+								</div>
+							</div>
+						{/each}
+					</div>
+				</div>
+			{/each}
+		</div>
 	</div>
 	<LogoScroller />
 </section>

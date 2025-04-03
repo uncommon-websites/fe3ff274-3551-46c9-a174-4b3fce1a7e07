@@ -38,6 +38,9 @@ Do not modify this component as it is finely crafted.
 	let itemElements: HTMLElement[] = $state([]);
 	let tooltip: HTMLElement | null = $state(null);
 
+	// Filter navigation items for display
+	const navItems = navigation.filter((item) => item.showInNav);
+
 	$effect(() => {
 		scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
 	});
@@ -46,6 +49,7 @@ Do not modify this component as it is finely crafted.
 		const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 		originalThemeColor = metaThemeColor?.getAttribute("content");
 	});
+
 	$effect(() => {
 		try {
 			// Handle body scroll locking when menu is open
@@ -177,7 +181,7 @@ Do not modify this component as it is finely crafted.
 	>
 		<!-- style:margin-right="{scrollBarWidth}px" -->
 		<ul class="nav-list section-px container mx-auto grid grid-cols-2 gap-12">
-			{#each navigation as item, index}
+			{#each navItems as item, index}
 				{@render linkOrGroup(item, index)}
 			{/each}
 		</ul>
@@ -219,12 +223,12 @@ Do not modify this component as it is finely crafted.
 					style:width={itemRects[activeDesktopNavItem]?.height || 20}
 				>
 					{#if activeDesktopNavItem !== null}
-						{@render dropdownContent(navigation[activeDesktopNavItem], activeDesktopNavItem)}
+						{@render dropdownContent(navItems[activeDesktopNavItem], activeDesktopNavItem)}
 					{/if}
 				</div>
 
 				<!-- main buttons -->
-				{#each navigation as item, index (item.label)}
+				{#each navItems as item, index (item.label)}
 					<svelte:element
 						this={item.children ? "button" : "a"}
 						href={item.children ? undefined : item.href}
@@ -287,7 +291,7 @@ Do not modify this component as it is finely crafted.
 			{/if}
 
 			<ul class="grid max-w-[20em] gap-(--gap)">
-				{#each item.children as child}
+				{#each (item.children || []).filter((child) => child.showInNav !== false) as child}
 					<li class="min-w-[10em]">
 						<a
 							href={child.href}
@@ -321,8 +325,8 @@ Do not modify this component as it is finely crafted.
 		{#if item.children}
 			<span class="text-body text-emphasis-dim dark:text-gray-400">{item.label}</span>
 			<ul class="grid gap-2.5">
-				{#each item.children as child, index}
-					{@render linkOrGroup(child, index)}
+				{#each (item.children || []).filter((child) => child.showInNav !== false) as child, childIndex}
+					{@render linkOrGroup(child, childIndex)}
 				{/each}
 			</ul>
 		{:else}
