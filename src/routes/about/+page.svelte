@@ -31,7 +31,7 @@
 
 <!-- Hero Section -->
 <section class=" bg-gray-50 dark:bg-gray-900">
-	<div class="section-py section-px container mx-auto grid gap-16 md:grid-cols-2 md:items-center">
+	<div class="section-py section-px container mx-auto grid gap-16 md:grid-cols-2 md:items-baseline">
 		<!-- <div class="items-between grid gap-6 lg:grid-cols-2"> -->
 		<h1 class="text-display text-emphasis-high">
 			<AnimateText text="We're building the future of digital experiences" />

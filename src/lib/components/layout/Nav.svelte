@@ -298,7 +298,7 @@ Do not modify this component as it is finely crafted.
 	<div bind:contentRect={itemRects[index]} class="grid-center">
 		<div
 			class="grid items-start gap-(--gap) rounded-(--radius) p-(--gap)"
-			class:grid-cols-[auto_1fr]={"image" in item ||
+			class:grid-cols-[1fr_1fr]={"image" in item ||
 				item.children?.some((child) => "image" in child)}
 		>
 			{#if item.image || item.children?.some((child) => "image" in child)}
@@ -308,7 +308,7 @@ Do not modify this component as it is finely crafted.
 						: item.image}
 
 				<img
-					class="row-span-full aspect-[4/5] h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover transition-opacity duration-300 dark:bg-gray-700"
+					class="row-span-full aspect-square h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover transition-opacity duration-300 dark:bg-gray-700"
 					src={currentImage}
 					alt=""
 				/>
