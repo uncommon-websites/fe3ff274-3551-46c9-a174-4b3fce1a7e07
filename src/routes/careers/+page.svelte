@@ -14,6 +14,7 @@
 	import IconUsers from "~icons/lucide/users";
 	import IconHeart from "~icons/lucide/heart";
 	import IconArrowRight from "~icons/lucide/arrow-right";
+	import Card from "$lib/components/ui/Card.svelte";
 
 	// Constants
 	const SECTION_BASE_CLASSES = "section-py section-px container mx-auto";
@@ -134,15 +135,16 @@
 <section class={SECTION_BASE_CLASSES}>
 	<SectionHeader title="Why join us?" subtitle="Build your career while making an impact" />
 
-	<div class="mt-16 grid gap-8 md:grid-cols-3">
+	<div class="mt-16 grid gap-4 md:grid-cols-3">
 		{#each benefits as benefit}
-			<div class="flex flex-col gap-4 rounded-lg border border-gray-200 p-6 dark:border-gray-800">
+			<Card {...benefit} />
+			<!-- <div class="flex flex-col gap-4 rounded-lg border border-gray-200 p-6 dark:border-gray-800">
 				<div class="{ICON_CONTAINER_CLASSES} h-12 w-12">
 					<svelte:component this={benefit.icon} class="h-6 w-6" />
 				</div>
 				<h3 class="text-title3">{benefit.title}</h3>
 				<p class="text-body text-emphasis-low">{benefit.description}</p>
-			</div>
+			</div> -->
 		{/each}
 	</div>
 </section>
@@ -150,9 +152,9 @@
 <!-- Culture Section -->
 <section class={GRADIENT_BG_CLASSES}>
 	<div class="section-py section-px container mx-auto grid gap-12 md:grid-cols-2 md:items-center">
-		<div>
+		<div class="max-w-prose">
 			<h2 class="text-title1 mb-6">Our culture</h2>
-			<p class="text-body mb-6">
+			<p class="text-body mb-6 text-gray-600">
 				We cultivate an environment where creativity thrives, ideas are valued, and everyone has a
 				voice. Our collaborative approach allows team members to grow personally and professionally.
 			</p>
