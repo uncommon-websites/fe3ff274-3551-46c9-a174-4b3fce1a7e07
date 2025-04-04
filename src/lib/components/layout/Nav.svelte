@@ -34,6 +34,7 @@ Do not modify this component as it is finely crafted.
 	let originalThemeColor: string | null = $state(null);
 	let isDesktopNavOpen = $state(false);
 	let activeDesktopNavItem: number = $state(null)!;
+	let activeChildItem: number | null = $state(null); // Track hovered child item
 	let itemRects: DOMRectReadOnly[] = $state([]);
 	let itemElements: HTMLElement[] = $state([]);
 	let tooltip: HTMLElement | null = $state(null);
@@ -218,7 +219,10 @@ Do not modify this component as it is finely crafted.
 			class="grid grid-flow-col items-center gap-2 [--gap:--spacing(1)]
 		[--inner-radius:calc(var(--radius)-var(--gap))]
 		[--radius:var(--radius-xl)]"
-			onmouseleave={() => (isDesktopNavOpen = false)}
+			onmouseleave={() => {
+				isDesktopNavOpen = false;
+				activeChildItem = null;
+			}}
 			role="navigation"
 		>
 			<div class="group mr-4 hidden grid-flow-col gap-5 lg:grid">
@@ -250,11 +254,13 @@ Do not modify this component as it is finely crafted.
 						{...item.children && {
 							onmouseover: () => {
 								activeDesktopNavItem = index;
+								activeChildItem = null;
 								isDesktopNavOpen = true;
 							},
 
 							onfocus: () => {
 								activeDesktopNavItem = index;
+								activeChildItem = null;
 								isDesktopNavOpen = true;
 							}
 						}}
@@ -291,24 +297,38 @@ Do not modify this component as it is finely crafted.
 {#snippet dropdownContent(item: NavItem, index: number)}
 	<div bind:contentRect={itemRects[index]} class="grid-center">
 		<div
-			class="grid gap-(--gap) rounded-(--radius) p-(--gap)"
-			class:grid-cols-[auto_1fr]={"image" in item}
+			class="grid items-start gap-(--gap) rounded-(--radius) p-(--gap)"
+			class:grid-cols-[auto_1fr]={"image" in item ||
+				item.children?.some((child) => "image" in child)}
 		>
-			{#if item.image}
+			{#if item.image || item.children?.some((child) => "image" in child)}
+				{@const currentImage =
+					activeChildItem !== null && item.children?.[activeChildItem]?.image
+						? item.children[activeChildItem].image
+						: item.image}
+
 				<img
-					class="row-span-full aspect-[4/5] h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover dark:bg-gray-700"
-					src={item.image}
+					class="row-span-full aspect-[4/5] h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover transition-opacity duration-300 dark:bg-gray-700"
+					src={currentImage}
 					alt=""
 				/>
 			{/if}
 
 			<ul class="grid max-w-[20em] gap-(--gap)">
-				{#each item.children as child}
-					<li class="min-w-[10em]">
+				{#each item.children || [] as child, childIndex}
+					<li class="">
 						<a
 							href={child.href}
-							class="group/link-item grid gap-1 rounded-(--inner-radius) p-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+							class="group/link-item grid min-w-[10em] gap-1 rounded-(--inner-radius) p-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
 							role="menuitem"
+							onmouseenter={() => {
+								if (child.image) {
+									activeChildItem = childIndex;
+								}
+							}}
+							onmouseleave={() => {
+								activeChildItem = null;
+							}}
 						>
 							<span class="text-body font-medium">
 								{child.label}

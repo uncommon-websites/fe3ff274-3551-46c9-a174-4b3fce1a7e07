@@ -39,6 +39,7 @@ export type NavItem = {
 	showInFooter?: boolean;
 
 	children?: (Omit<NavItem, "children" | "image"> & {
+		image?: string;
 		description?: string;
 		showInNav?: boolean;
 		showInFooter?: boolean;
@@ -61,6 +62,8 @@ export const navigation: NavItem[] = [
 			{
 				label: "Healthcare",
 				href: "/industries/healthcare",
+				image:
+					"https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1920&auto=format&fit=crop",
 				description: "Innovative solutions for patient care",
 				showInNav: true,
 				showInFooter: true
@@ -68,6 +71,8 @@ export const navigation: NavItem[] = [
 			{
 				label: "Finance",
 				href: "/industries/finance",
+				image:
+					"https://images.unsplash.com/photo-1638913662180-afc4334cf422?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 				description: "Streamlining operations and compliance",
 				showInNav: true,
 				showInFooter: true
@@ -75,6 +80,8 @@ export const navigation: NavItem[] = [
 			{
 				label: "Technology",
 				href: "/industries/technology",
+				image:
+					"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 				description: "Cutting-edge tools for tech companies",
 				showInNav: true,
 				showInFooter: true
@@ -82,6 +89,8 @@ export const navigation: NavItem[] = [
 			{
 				label: "Education",
 				href: "/industries/education",
+				image:
+					"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 				description: "Enhancing learning experiences",
 				showInNav: true,
 				showInFooter: true
