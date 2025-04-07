@@ -1,6 +1,5 @@
 <script lang="ts">
 	// Types
-	import type { ComponentType } from "svelte";
 
 	// Components
 	import SectionHeader from "$lib/components/layout/SectionHeader.svelte";
@@ -14,6 +13,7 @@
 	import IconBriefcase from "~icons/lucide/briefcase";
 	import IconUsers from "~icons/lucide/users";
 	import IconHeart from "~icons/lucide/heart";
+	import Culture from "$lib/components/layout/Culture.svelte";
 
 	// Constants
 	const SECTION_BASE_CLASSES = "section-py section-px container mx-auto";
@@ -196,28 +196,7 @@
 </section>
 
 <!-- Culture Section -->
-<section class={GRADIENT_BG_CLASSES}>
-	<div class="section-py section-px container mx-auto grid gap-12 md:grid-cols-2 md:items-center">
-		<div class="max-w-prose">
-			<h2 class="text-title1 mb-6">Our culture</h2>
-			<p class="text-body mb-6 text-gray-600">
-				We cultivate an environment where creativity thrives, ideas are valued, and everyone has a
-				voice. Our collaborative approach allows team members to grow personally and professionally.
-			</p>
-			<p class="text-body">
-				We celebrate diversity, prioritize work-life balance, and believe that the best innovations
-				come from happy, engaged teams working towards a shared vision.
-			</p>
-		</div>
-		<div class="h-full w-full overflow-hidden rounded-2xl">
-			<img
-				src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
-				alt="Our team collaborating"
-				class="h-full w-full object-cover"
-			/>
-		</div>
-	</div>
-</section>
+<Culture />
 
 <!-- Employee Testimonials Section -->
 <section class={SECTION_BASE_CLASSES}>

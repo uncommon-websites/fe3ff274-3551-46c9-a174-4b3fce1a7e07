@@ -1,4 +1,4 @@
-<div class="bg-gray-50">
+<div class="bg-gray-50 dark:bg-gray-900">
 	<article class="section-py section-px container mx-auto max-w-full lg:max-w-prose">
 		<header class="mb-20 grid gap-20">
 			<h2 class="text-title1">Our mission</h2>

@@ -1,5 +1,5 @@
 /* Do not modify this file, as it is generated. */
-/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
 	--font-fallback:

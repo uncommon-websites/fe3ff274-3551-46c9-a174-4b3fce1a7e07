@@ -11,7 +11,7 @@
 	import StakeholderGrid from "./StakeholderGrid.svelte";
 	import Story from "./Story.svelte";
 	import SecondaryHero from "$lib/components/layout/SecondaryHero.svelte";
-	import AboutHero from "./AboutHero.svelte";
+	import Culture from "$lib/components/layout/Culture.svelte";
 
 	// Constants
 
@@ -31,10 +31,13 @@
 	];
 </script>
 
-<AboutHero />
+<SecondaryHero />
 
 <!-- Story Section -->
 <Story />
+
+<!-- Our Culture Section -->
+<Culture {values} />
 
 <!-- StakeholderGrid Section -->
 <StakeholderGrid

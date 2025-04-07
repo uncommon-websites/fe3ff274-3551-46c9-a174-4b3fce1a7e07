@@ -6,16 +6,6 @@
 	import Marquee from "./sub/Marquee.svelte";
 	import MarqueeItem from "./sub/MarqueeItem.svelte";
 
-	// Logos — these are all we have
-	import LacosteLogo from "$lib/components/logos/LacosteLogo.svelte";
-	import PolestarLogo from "$lib/components/logos/PolestarLogo.svelte";
-	import ByredoLogo from "$lib/components/logos/ByredoLogo.svelte";
-	import VerizonLogo from "$lib/components/logos/VerizonLogo.svelte";
-	import SaltStrawLogo from "$lib/components/logos/SaltStrawLogo.svelte";
-	import DrMartensLogo from "$lib/components/logos/DrMartensLogo.svelte";
-	import ExpressLogo from "$lib/components/logos/ExpressLogo.svelte";
-	import CrateBarrelLogo from "$lib/components/logos/CrateBarrelLogo.svelte";
-
 	// Props
 	const {
 		paused,

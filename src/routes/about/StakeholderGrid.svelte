@@ -46,7 +46,7 @@
 	});
 </script>
 
-<section class="bg-white">
+<section class="bg-white dark:bg-gray-950">
 	<div
 		class="section-py section-px container mx-auto grid [--gap:--spacing(4)] [--radius:var(--radius-2xl)]"
 	>
@@ -73,7 +73,7 @@
 				<div
 					bind:this={cards[index]}
 					class={[
-						"card bg-gray-50 opacity-0",
+						"card bg-gray-50 opacity-0 dark:bg-gray-900",
 						"relative isolate grid aspect-[4/5] content-end items-end gap-10 overflow-hidden rounded-(--radius)  bg-cover p-(--gap) [--inner-radius:calc(var(--radius)-var(--gap))] ",
 						type === "join" ? "bg-primary-400" : ""
 					]}
