@@ -57,15 +57,6 @@
 			// is at the left edge of the viewport
 			maxScrollDistance = Math.max(0, totalWidth - visibleWidth);
 
-			// Log for debugging
-			console.log("Scroll calculations:", {
-				totalWidth,
-				visibleWidth,
-				lastCardWidth,
-				gapValue,
-				maxScrollDistance
-			});
-
 			// Check if calculation seems to be working
 			if (maxScrollDistance <= 0) {
 				console.warn("maxScrollDistance calculation may be incorrect - no scrolling will occur");

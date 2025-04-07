@@ -12,13 +12,13 @@
 		title: string;
 		subtitle: string;
 		oncomplete?: () => void;
-		size: "sm" | "lg";
+		size?: "sm" | "lg";
 	} = $props();
 </script>
 
 <div
 	class={[
-		'"section-pb-sm container-sm text-balance" grid',
+		"section-pb-sm container-sm grid text-balance",
 		size === "lg" ? "text-display" : "text-title2"
 	]}
 >

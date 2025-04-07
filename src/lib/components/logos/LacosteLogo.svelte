@@ -1,7 +1,7 @@
 <script lang="ts">
 	// Types
-	type Props = { class?: string }
-	const { class: classes = '' }: Props = $props()
+	type Props = { class?: string };
+	const { class: classes = "" }: Props = $props();
 </script>
 
 <svg class={classes} viewBox="0 0 130 69" fill="none" xmlns="http://www.w3.org/2000/svg">

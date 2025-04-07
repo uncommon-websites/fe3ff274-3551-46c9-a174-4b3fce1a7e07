@@ -22,22 +22,17 @@
 		label = "Scaling companies like yours",
 		layout = "vertical",
 		mode = "light",
-		logos = [
-			LacosteLogo,
-			PolestarLogo,
-			ByredoLogo,
-			VerizonLogo,
-			SaltStrawLogo,
-			DrMartensLogo,
-			ExpressLogo,
-			CrateBarrelLogo
+		logoUrls = [
+			"https://cdn.brandfetch.io/facebook.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
+			"https://cdn.brandfetch.io/amazon.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
+			"https://cdn.brandfetch.io/grids.bio/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7"
 		]
 	}: {
 		paused?: boolean;
 		label?: string;
 		layout?: "horizontal" | "vertical";
 		mode?: "light" | "dark";
-		logos?: Component[];
+		logoUrls?: string[];
 	} = $props();
 </script>
 
@@ -61,9 +56,13 @@
 			class="mask-image h-full items-center text-gray-400 [--gap:theme(spacing.6)] sm:[--gap:theme(spacing.12)]"
 			speed={paused ? 0 : 0.1}
 		>
-			{#each logos as Logo}
+			{#each logoUrls as logo}
 				<MarqueeItem>
-					<Logo class="h-6 max-h-6 sm:h-8 sm:max-h-8" />
+					<img
+						src={logo}
+						class="max-h-9 object-contain opacity-70 saturate-0
+					"
+					/>
 				</MarqueeItem>
 			{/each}
 		</Marquee>

@@ -5,16 +5,15 @@
 	// Components
 	import SectionHeader from "$lib/components/layout/SectionHeader.svelte";
 	import CallToAction from "$lib/components/layout/CallToAction.svelte";
-	import AnimateText from "$lib/components/animation/AnimateText.svelte";
-	import Button from "$lib/components/ui/Button.svelte";
 	import Testimonials from "$lib/components/layout/Testimonials.svelte";
+	import SecondaryHero from "$lib/components/layout/SecondaryHero.svelte";
+	import Card from "$lib/components/ui/Card.svelte";
+	import JobList, { type JobOpening } from "./JobList.svelte";
 
 	// Icons
 	import IconBriefcase from "~icons/lucide/briefcase";
 	import IconUsers from "~icons/lucide/users";
 	import IconHeart from "~icons/lucide/heart";
-	import IconArrowRight from "~icons/lucide/arrow-right";
-	import Card from "$lib/components/ui/Card.svelte";
 
 	// Constants
 	const SECTION_BASE_CLASSES = "section-py section-px container mx-auto";
@@ -41,30 +40,83 @@
 		}
 	];
 
-	const openings = [
+	const openings: JobOpening[] = [
+		// Engineering
 		{
 			title: "Senior Frontend Developer",
 			department: "Engineering",
 			location: "Remote",
-			type: "Full-time"
+			type: "Full-time",
+			url: "#"
 		},
+		{
+			title: "Backend Engineer",
+			department: "Engineering",
+			location: "Remote",
+			type: "Full-time",
+			url: "#"
+		},
+		{
+			title: "Design Engineer",
+			department: "Engineering",
+			location: "Remote",
+			type: "Full-time",
+			url: "#"
+		},
+
+		// Design
 		{
 			title: "UX/UI Designer",
 			department: "Design",
 			location: "Remote",
-			type: "Full-time"
+			type: "Full-time",
+			url: "#"
 		},
+		{
+			title: "Product Designer",
+			department: "Design",
+			location: "Remote",
+			type: "Full-time",
+			url: "#"
+		},
+
+		// Product
 		{
 			title: "Product Manager",
 			department: "Product",
 			location: "Remote",
-			type: "Full-time"
+			type: "Full-time",
+			url: "#"
 		},
+		{
+			title: "Product Analyst",
+			department: "Product",
+			location: "Remote",
+			type: "Full-time",
+			url: "#"
+		},
+
+		// Marketing
 		{
 			title: "Marketing Specialist",
 			department: "Marketing",
 			location: "Remote",
-			type: "Full-time"
+			type: "Full-time",
+			url: "#"
+		},
+		{
+			title: "Content Strategist",
+			department: "Marketing",
+			location: "Remote",
+			type: "Full-time",
+			url: "#"
+		},
+		{
+			title: "Social Media Manager",
+			department: "Marketing",
+			location: "Remote",
+			type: "Full-time",
+			url: "#"
 		}
 	];
 
@@ -119,17 +171,11 @@
 </script>
 
 <!-- Hero Section -->
-<section class="bg-gray-50 dark:bg-gray-900">
-	<div class="section-py section-px container mx-auto grid gap-16 md:grid-cols-2 md:items-center">
-		<h1 class="text-display text-emphasis-high">
-			<AnimateText text="Join our team of innovators" />
-		</h1>
-		<p class="text-headline text-emphasis-low max-w-xl">
-			We're looking for passionate people to help us build the future of digital experiences.
-			Discover your next opportunity with us.
-		</p>
-	</div>
-</section>
+
+<SecondaryHero
+	title="Join our team of innovators"
+	subtitle="We're looking for passionate people to help us build the future of digital experiences. Discover your next opportunity with us."
+/>
 
 <!-- Why Join Us Section -->
 <section class={SECTION_BASE_CLASSES}>
@@ -183,34 +229,10 @@
 <Testimonials testimonials={employeeTestimonials} />
 <!-- Current Openings Section -->
 <section class={GRADIENT_BG_CLASSES}>
-	<div
-		class="section-px section-py container mx-auto grid grid-cols-2 place-content-start items-start"
-	>
+	<div class="section-px section-py container mx-auto grid w-full items-start lg:grid-cols-2">
 		<SectionHeader title="Current openings" subtitle="Find your perfect role" />
 
-		<div class="mt-16 grid gap-6">
-			{#each openings as opening}
-				<div
-					class="grid grid-cols-2 place-content-between justify-between rounded-xl bg-white p-6 transition-all hover:shadow-sm md:grid-cols-[1fr_auto] md:items-center md:gap-4 dark:bg-gray-800"
-				>
-					<div>
-						<h3 class="text-headline">{opening.title}</h3>
-						<p class="text-callout text-emphasis-low mt-2">
-							{opening.department} · {opening.location} · {opening.type}
-						</p>
-					</div>
-
-					<Button
-						href="/careers/{opening.title.toLowerCase().replace(/\s+/g, '-')}"
-						variant="secondary"
-						class="ml-auto"
-						suffix={IconArrowRight}
-					>
-						View position
-					</Button>
-				</div>
-			{/each}
-		</div>
+		<JobList {openings} />
 	</div>
 </section>
 

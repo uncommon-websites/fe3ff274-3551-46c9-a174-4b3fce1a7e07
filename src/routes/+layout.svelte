@@ -12,6 +12,7 @@
 	import { animate, inView, stagger } from "motion";
 
 	import { MediaQuery } from "svelte/reactivity";
+	import { browser } from "$app/environment";
 
 	const isTouchDevice = new MediaQuery("(pointer: coarse)");
 
@@ -19,11 +20,15 @@
 	let { data, children } = $props();
 
 	onMount(() => {
+		if (!browser) return;
 		const enterContainers = document.querySelectorAll("[data-enter-container]");
-		const children = enterContainers[0].querySelectorAll("[data-enter]");
 
-		children.forEach((child) => {
-			child.style.opacity = "0";
+		enterContainers?.forEach((container) => {
+			const elements = container.querySelectorAll("[data-enter]");
+
+			elements.forEach((element) => {
+				(element as HTMLElement).style.opacity = "0";
+			});
 		});
 
 		inView("[data-enter-container]", (e) => {

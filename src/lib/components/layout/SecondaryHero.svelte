@@ -1,16 +1,16 @@
-<script>
-	// Components
-	import AnimateText from "../animation/AnimateText.svelte";
-
-	let { title = "" } = $props();
+<script lang="ts">
+	import SectionHeader from "$lib/components/layout/SectionHeader.svelte";
 </script>
 
-<!-- Hero Section -->
-<section class="bg-gray-50">
-	<div class="section-py section-px container mx-auto grid min-h-[50vh] gap-16">
-		<!-- <div class="items-between grid gap-6 lg:grid-cols-2"> -->
-		<h1 class="text-display text-emphasis-high">
-			<AnimateText text={title} />
-		</h1>
+<header class="border-b border-gray-100 dark:border-gray-900">
+	<div class="text-title3 section-px section-py container mx-auto grid gap-16">
+		<SectionHeader title="Bright minds" subtitle="busy cloning bright minds" size="lg" />
+		<div class="aspect-video overflow-clip rounded-xl bg-gray-100">
+			<img
+				class="h-full w-full"
+				src="https://source.unsplash.com/random/?people"
+				alt="Diverse group of people collaborating"
+			/>
+		</div>
 	</div>
-</section>
+</header>

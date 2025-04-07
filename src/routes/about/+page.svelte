@@ -8,7 +8,7 @@
 	// Icons
 	import IconPlus from "~icons/lucide/plus";
 	import Card from "$lib/components/ui/Card.svelte";
-	import Team from "./Team.svelte";
+	import StakeholderGrid from "./StakeholderGrid.svelte";
 	import Story from "./Story.svelte";
 	import SecondaryHero from "$lib/components/layout/SecondaryHero.svelte";
 	import AboutHero from "./AboutHero.svelte";
@@ -36,32 +36,55 @@
 <!-- Story Section -->
 <Story />
 
-<!-- Team Section -->
-<Team />
-<Team
-	title="Backed by the best."
-	subtitle="Point Nine, TSIC and others"
-	teamMembers={[
+<!-- StakeholderGrid Section -->
+<StakeholderGrid
+	stakeholderType="team"
+	title="Our team."
+	subtitle="Your partners in innovation."
+	stakeholders={[
 		{
-			name: "Sarah Johnson",
-			position: "Lead Investor",
-			bio: "Seasoned venture capitalist with a focus on tech startups and a portfolio of successful exits.",
+			name: "Alex Morgan",
+			position: "Founder & CEO",
+			bio: "Started the company with a vision to transform the industry through innovative solutions.",
 			image:
-				"https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+				"https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
 		},
 		{
-			name: "Michael Zhang",
-			position: "Angel Investor",
-			bio: "Early-stage investor with expertise in scaling B2B SaaS companies from inception to market leadership.",
+			name: "Jamie Chen",
+			position: "Chief Design Officer",
+			bio: "Award-winning designer with a passion for creating intuitive and beautiful experiences.",
 			image:
-				"https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80"
+				"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80"
 		},
 		{
-			name: "Elena Rodriguez",
-			position: "Strategic Partner",
-			bio: "Former CFO with a keen eye for sustainable business models and long-term growth potential.",
+			name: "Taylor Wright",
+			position: "Head of Engineering",
+			bio: "Technology enthusiast focused on building scalable systems that make a difference.",
 			image:
 				"https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+		}
+	]}
+/>
+
+<StakeholderGrid
+	stakeholderType="investor"
+	title="Backed by the best."
+	subtitle="Point Nine, TSIC and others"
+	stakeholders={[
+		{
+			name: "Point Nine Capital",
+			bio: "Early-stage VC firm focusing on B2B SaaS and marketplace startups with a portfolio of successful global exits.",
+			image: "/assets/logos/point-nine-capital-logo.svg"
+		},
+		{
+			name: "TSIC Ventures",
+			bio: "Technology-focused investment group specializing in scaling innovative B2B solutions from early stages to market leadership.",
+			image: "/assets/logos/tsic-ventures-logo.svg"
+		},
+		{
+			name: "Sequoia Capital",
+			bio: "Prestigious VC firm with decades of experience backing transformative companies across sectors and stages.",
+			image: "/assets/logos/sequoia-capital-logo.svg"
 		}
 	]}
 />
