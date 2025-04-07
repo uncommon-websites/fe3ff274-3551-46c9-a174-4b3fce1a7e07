@@ -19,6 +19,13 @@
 	let { data, children } = $props();
 
 	onMount(() => {
+		const enterContainers = document.querySelectorAll("[data-enter-container]");
+		const children = enterContainers[0].querySelectorAll("[data-enter]");
+
+		children.forEach((child) => {
+			child.style.opacity = "0";
+		});
+
 		inView("[data-enter-container]", (e) => {
 			animate(
 				e.querySelectorAll("[data-enter]"),
@@ -78,9 +85,3 @@
 
 	<Footer />
 </div>
-
-<style>
-	:global([data-enter-container] [data-enter]) {
-		opacity: 0; /* To ensure no FOUC */
-	}
-</style>
