@@ -15,7 +15,8 @@
 		logoUrls = [
 			"https://cdn.brandfetch.io/facebook.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
 			"https://cdn.brandfetch.io/amazon.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
-			"https://cdn.brandfetch.io/grids.bio/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7"
+			"https://cdn.brandfetch.io/google.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
+			"https://cdn.brandfetch.io/apple.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7"
 		]
 	}: {
 		paused?: boolean;
