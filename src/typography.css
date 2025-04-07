@@ -1,23 +1,25 @@
+/* Do not modify this file, as it is generated. */
 @layer utilities {
 	/* Typography Scale */
 	.text-display {
-		@apply text-4xl leading-[1.1] tracking-tight lg:text-5xl;
+		@apply text-4xl leading-[1.1] lg:text-5xl;
+		letter-spacing: -0.0015em;
 	}
 
 	.text-title1 {
-		@apply text-3xl leading-[1.15] tracking-tight lg:text-4xl;
+		@apply text-3xl leading-[1.15] lg:text-4xl;
 	}
 
 	.text-title2 {
-		@apply text-2xl leading-[1.2] tracking-tight lg:text-3xl;
+		@apply text-2xl leading-[1.2] lg:text-3xl;
 	}
 
 	.text-title3 {
-		@apply text-xl leading-[1.25] tracking-tight lg:text-2xl;
+		@apply text-xl leading-[1.25] lg:text-2xl;
 	}
 
 	.text-headline {
-		@apply text-lg leading-[1.3] tracking-tight lg:text-xl;
+		@apply text-lg leading-[1.3] lg:text-xl;
 	}
 
 	.text-body {

@@ -1,7 +1,7 @@
 <!--
 @component Nav
 
-Do not modify this component as it is finely crafted.
+Do not modify this file, as it is generated.
 -->
 
 <script lang="ts">

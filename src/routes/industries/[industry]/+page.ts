@@ -11,7 +11,8 @@ const industries = {
 		hero: {
 			title: "Healthcare Innovation Platform",
 			subtitle: "Empowering providers to deliver better patient care",
-			imageSrc: "/images/industries/healthcare-hero.jpg",
+			imageSrc:
+				"https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1920&auto=format&fit=crop",
 			callsToAction: [
 				{ href: "/demo", label: "Get Started" },
 				{ href: "#features", label: "Learn More" }
@@ -101,7 +102,8 @@ const industries = {
 		hero: {
 			title: "Financial Intelligence Platform",
 			subtitle: "Empowering financial decisions with data-driven insights",
-			imageSrc: "/images/industries/finance-hero.jpg",
+			imageSrc:
+				"https://images.unsplash.com/photo-1638913662180-afc4334cf422?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			callsToAction: [
 				{ href: "/demo", label: "Get Started" },
 				{ href: "#features", label: "Learn More" }
@@ -194,7 +196,8 @@ const industries = {
 		hero: {
 			title: "Technology Innovation Hub",
 			subtitle: "Accelerate your digital transformation journey",
-			imageSrc: "/images/industries/technology-hero.jpg",
+			imageSrc:
+				"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			callsToAction: [
 				{ href: "/demo", label: "Get Started" },
 				{ href: "#features", label: "Explore Features" }
@@ -285,7 +288,8 @@ const industries = {
 		hero: {
 			title: "Education Transformation Platform",
 			subtitle: "Empowering educators and students in the digital age",
-			imageSrc: "/images/industries/education-hero.jpg",
+			imageSrc:
+				"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			callsToAction: [
 				{ href: "/demo", label: "Get Started" },
 				{ href: "#features", label: "Learn More" }

@@ -14,6 +14,8 @@
 
 	// Props
 	const {
+		title = "Our team.",
+		subtitle = "Your partners in innovation.",
 		teamMembers = [
 			{
 				name: "Alex Morgan",
@@ -39,6 +41,8 @@
 		]
 	}: {
 		teamMembers?: TeamMember[];
+		title?: string;
+		subtitle?: string;
 	} = $props();
 
 	let cards: HTMLElement[] = $state([]);
@@ -66,7 +70,7 @@
 	<div
 		class="section-py section-px container mx-auto [--gap:--spacing(4)] [--radius:var(--radius-2xl)]"
 	>
-		<SectionHeader title="Our team." subtitle="Your partners in innovation." />
+		<SectionHeader {title} {subtitle} />
 
 		<div
 			class="grid gap-(--gap)"

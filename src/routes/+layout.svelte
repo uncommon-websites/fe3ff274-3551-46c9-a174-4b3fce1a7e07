@@ -78,3 +78,9 @@
 
 	<Footer />
 </div>
+
+<style>
+	:global([data-enter-container] [data-enter]) {
+		opacity: 0; /* To ensure no FOUC */
+	}
+</style>

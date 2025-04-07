@@ -109,29 +109,20 @@ export const navigation: NavItem[] = [
 		showInFooter: true,
 		children: [
 			{
-				label: "Product",
-				showInNav: true,
-				showInFooter: false,
-				description: "Explore our innovative product features and solutions"
-			},
-			{
 				label: "Pricing",
 				href: "/pricing",
 				showInNav: false,
-				showInFooter: true,
-				description: "Transparent pricing options for businesses of all sizes"
+				showInFooter: true
 			},
 			{
 				label: "Careers",
 				href: "/careers",
-				description: "Join our team and grow with us",
 				showInNav: true,
 				showInFooter: true
 			},
 			{
 				label: "About us",
 				href: "/about",
-				description: "Our mission and the team behind our success",
 				showInNav: true,
 				showInFooter: true
 			}
