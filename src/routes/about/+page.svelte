@@ -11,6 +11,7 @@
 	import Team from "./Team.svelte";
 	import Story from "./Story.svelte";
 	import SecondaryHero from "$lib/components/layout/SecondaryHero.svelte";
+	import AboutHero from "./AboutHero.svelte";
 
 	// Constants
 
@@ -30,7 +31,7 @@
 	];
 </script>
 
-<SecondaryHero title="About Us" />
+<AboutHero />
 
 <!-- Story Section -->
 <Story />

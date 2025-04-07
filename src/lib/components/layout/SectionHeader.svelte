@@ -3,10 +3,25 @@
 	import AnimateText from "$lib/components/animation/AnimateText.svelte";
 
 	// Props
-	let { title = "", subtitle = "", oncomplete = () => {} } = $props();
+	let {
+		title = "",
+		subtitle = "",
+		oncomplete = () => {},
+		size = "sm"
+	}: {
+		title: string;
+		subtitle: string;
+		oncomplete?: () => void;
+		size: "sm" | "lg";
+	} = $props();
 </script>
 
-<div class="section-pb-sm text-title2 container-sm grid text-balance">
+<div
+	class={[
+		'"section-pb-sm container-sm text-balance" grid',
+		size === "lg" ? "text-display" : "text-title2"
+	]}
+>
 	<h2>
 		<AnimateText text={title} {oncomplete} />
 	</h2>
