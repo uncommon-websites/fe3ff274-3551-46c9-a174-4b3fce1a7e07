@@ -56,7 +56,7 @@
 </script>
 
 <header
-	class="section-px container mx-auto grid grid-cols-[1fr_auto] items-end gap-16 py-12 pt-24 text-balance"
+	class="section-px container mx-auto grid items-end gap-16 py-12 pt-24 text-balance xl:grid-cols-[1fr_auto]"
 	data-enter-container
 >
 	<h1 class="text-display w-full" data-enter>
