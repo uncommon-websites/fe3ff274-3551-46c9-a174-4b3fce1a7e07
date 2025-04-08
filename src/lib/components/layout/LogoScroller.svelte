@@ -1,10 +1,6 @@
 <script lang="ts">
-	// Types
-	import type { Component } from "svelte";
-
 	// Components
 	import Marquee from "./sub/Marquee.svelte";
-	import MarqueeItem from "./sub/MarqueeItem.svelte";
 
 	// Props
 	const {
@@ -48,13 +44,11 @@
 			speed={paused ? 0 : 0.1}
 		>
 			{#each logoUrls as logo}
-				<MarqueeItem>
-					<img
-						src={logo}
-						class="max-h-9 object-contain opacity-70 saturate-0
+				<img
+					src={logo}
+					class="mx-8 h-5 w-fit object-contain opacity-70 saturate-0
 					"
-					/>
-				</MarqueeItem>
+				/>
 			{/each}
 		</Marquee>
 	</div>

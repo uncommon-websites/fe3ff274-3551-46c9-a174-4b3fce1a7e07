@@ -29,15 +29,15 @@ A minimalist teaser for the about page.
 
 <section bind:this={sectionRef} class="bg-white dark:bg-gray-950">
 	<div class="section-px section-py container mx-auto">
-		<div class="relative mx-auto grid max-w-2xl place-items-center gap-16 text-center">
+		<div class="relative mx-auto grid max-w-2xl place-items-center gap-16">
 			<ScrollText
 				class="text-title1 text-center"
 				text={`"We're building the future of digital experiences, crafting innovative solutions that transform how people interact with technology in their everyday lives"`}
 			/>
 
 			<!-- Team Member & CTA Section -->
-			<div class="grid place-items-center gap-8 dark:border-gray-800">
-				<div class="flex items-center gap-4">
+			<div class="grid items-center gap-8 dark:border-gray-800">
+				<div class="flex items-center justify-start gap-4">
 					<img
 						src={teamMember.image}
 						alt={teamMember.name}
