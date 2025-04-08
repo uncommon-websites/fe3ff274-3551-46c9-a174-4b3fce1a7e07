@@ -11,7 +11,7 @@
 	"tasks": {
 		"dev": {
 			"name": "dev",
-			"command": "pnpm dev",
+			"command": "pnpm dev --host 0.0.0.0",
 			"runAtStart": true,
 			"preview": {
 				"port": 5173
