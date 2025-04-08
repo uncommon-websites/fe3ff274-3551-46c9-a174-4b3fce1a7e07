@@ -63,6 +63,7 @@
 		<span class="block"><AnimateText text={title} /></span>
 		<span class="text-emphasis-dim block"><AnimateText text={subtitle} /></span>
 	</h1>
+
 	{#if callsToAction.length > 0}
 		<div class="flex gap-4" data-enter>
 			{#each callsToAction as cta, index}
