@@ -7,8 +7,8 @@
 	// Types
 	type TeamMember = {
 		name: string;
-		position: string;
-		bio: string;
+		position?: string;
+		bio?: string;
 		image: string;
 	};
 

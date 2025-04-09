@@ -13,6 +13,7 @@
 	import IconBriefcase from "~icons/lucide/briefcase";
 	import IconUsers from "~icons/lucide/users";
 	import IconHeart from "~icons/lucide/heart";
+	import IconGlobe from "~icons/lucide/globe";
 	import Culture from "$lib/components/layout/Culture.svelte";
 
 	// Constants
@@ -20,7 +21,7 @@
 	const GRADIENT_BG_CLASSES =
 		"bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800";
 	const ICON_CONTAINER_CLASSES =
-		"bg-primary-100 text-primary-600 dark:bg-primary-900 dark:text-primary-400 flex items-center justify-center rounded-full";
+		"bg-primary-50 text-primary-600 dark:bg-primary-950 dark:text-primary-400 flex items-center justify-center rounded-full";
 
 	const benefits = [
 		{
@@ -168,6 +169,24 @@
 			description: "Join our team and start your journey building the future with us."
 		}
 	];
+
+	const values = [
+		{
+			icon: IconHeart,
+			title: "Passion",
+			description: "We're driven by a shared passion for innovation and excellence."
+		},
+		{
+			icon: IconUsers,
+			title: "Collaboration",
+			description: "We believe in teamwork and collaboration to achieve great things."
+		},
+		{
+			icon: IconGlobe,
+			title: "Global Impact",
+			description: "We're committed to making a positive impact on the world."
+		}
+	];
 </script>
 
 <!-- Hero Section -->
@@ -184,19 +203,12 @@
 	<div class="mt-16 grid gap-4 md:grid-cols-3">
 		{#each benefits as benefit}
 			<Card {...benefit} />
-			<!-- <div class="flex flex-col gap-4 rounded-lg border border-gray-200 p-6 dark:border-gray-800">
-				<div class="{ICON_CONTAINER_CLASSES} h-12 w-12">
-					<svelte:component this={benefit.icon} class="h-6 w-6" />
-				</div>
-				<h3 class="text-title3">{benefit.title}</h3>
-				<p class="text-body text-emphasis-low">{benefit.description}</p>
-			</div> -->
 		{/each}
 	</div>
 </section>
 
 <!-- Culture Section -->
-<Culture />
+<Culture {values} />
 
 <!-- Employee Testimonials Section -->
 <section class={SECTION_BASE_CLASSES}>
@@ -205,15 +217,8 @@
 		subtitle="What our employees have to say about working here"
 	/>
 </section>
-<Testimonials testimonials={employeeTestimonials} />
-<!-- Current Openings Section -->
-<section class={GRADIENT_BG_CLASSES}>
-	<div class="section-px section-py container mx-auto grid w-full items-start lg:grid-cols-2">
-		<SectionHeader title="Current openings" subtitle="Find your perfect role" />
 
-		<JobList {openings} />
-	</div>
-</section>
+<Testimonials testimonials={employeeTestimonials} />
 
 <!-- Application Process -->
 <section class={SECTION_BASE_CLASSES}>
@@ -223,13 +228,21 @@
 		<div class="grid gap-12 md:grid-cols-3">
 			{#each processSteps as { step, title, description }, i}
 				<div class="flex flex-col">
-					<div class="{ICON_CONTAINER_CLASSES} mb-6 h-14 w-14">
-						<span class="text-title3 font-bold">{step}</span>
+					<div class="{ICON_CONTAINER_CLASSES} mb-6 size-11">
+						<span class="text-headline">{step}</span>
 					</div>
 					<h3 class="text-headline mb-3">{title}</h3>
 					<p class="text-body text-emphasis-low">{description}</p>
 				</div>
 			{/each}
 		</div>
+	</div>
+</section>
+<!-- Current Openings Section -->
+<section class={GRADIENT_BG_CLASSES}>
+	<div class="section-px section-py container mx-auto grid w-full items-start lg:grid-cols-2">
+		<SectionHeader title="Current openings" subtitle="Find your perfect role" />
+
+		<JobList {openings} />
 	</div>
 </section>

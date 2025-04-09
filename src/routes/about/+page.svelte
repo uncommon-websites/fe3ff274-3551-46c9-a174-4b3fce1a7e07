@@ -1,20 +1,14 @@
 <script lang="ts">
 	// Components
-	import SectionHeader from "$lib/components/layout/SectionHeader.svelte";
 	import CallToAction from "$lib/components/layout/CallToAction.svelte";
-	import AnimateText from "$lib/components/animation/AnimateText.svelte";
-	import Button from "$lib/components/ui/Button.svelte";
 
 	// Icons
-	import IconPlus from "~icons/lucide/plus";
-	import Card from "$lib/components/ui/Card.svelte";
 	import StakeholderGrid from "./StakeholderGrid.svelte";
 	import Story from "./Story.svelte";
 	import SecondaryHero from "$lib/components/layout/SecondaryHero.svelte";
 	import Culture from "$lib/components/layout/Culture.svelte";
 
 	// Constants
-
 	const values = [
 		{
 			title: "Innovation",
@@ -31,7 +25,11 @@
 	];
 </script>
 
-<SecondaryHero title="Solving world hunger" subtitle="one step at a time" />
+<SecondaryHero
+	title="Solving world hunger"
+	subtitle="one step at a time"
+	imageSrc="https://source.unsplash.com/random/?people"
+/>
 
 <!-- Story Section -->
 <Story
@@ -83,17 +81,14 @@
 	stakeholders={[
 		{
 			name: "Point Nine Capital",
-			bio: "Early-stage VC firm focusing on B2B SaaS and marketplace startups with a portfolio of successful global exits.",
 			image: "/assets/logos/point-nine-capital-logo.svg"
 		},
 		{
 			name: "TSIC Ventures",
-			bio: "Technology-focused investment group specializing in scaling innovative B2B solutions from early stages to market leadership.",
 			image: "/assets/logos/tsic-ventures-logo.svg"
 		},
 		{
 			name: "Sequoia Capital",
-			bio: "Prestigious VC firm with decades of experience backing transformative companies across sectors and stages.",
 			image: "/assets/logos/sequoia-capital-logo.svg"
 		}
 	]}

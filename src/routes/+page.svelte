@@ -59,34 +59,6 @@
 		}
 	]}
 />
-<Features
-	title="Features"
-	subtitle="Some features"
-	features={[
-		{
-			title: "Streamlined Workflows",
-			description:
-				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings."
-		}
-	]}
-/>
-
-<Features
-	title="Features"
-	subtitle="Some features"
-	features={[
-		{
-			title: "Streamlined Workflows",
-			description:
-				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings."
-		},
-		{
-			title: "Data Analysis",
-			description:
-				"Extract meaningful insights from your data with powerful analytical tools backed by proprietary AI algorithms that are 3x more accurate than competitors."
-		}
-	]}
-/>
 
 <Features
 	title="Features"
