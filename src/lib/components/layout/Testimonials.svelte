@@ -18,7 +18,6 @@
 	let carouselRef: HTMLElement;
 	let maxScrollDistance = $state(0);
 
-	// Utils
 	import { onMount } from "svelte";
 
 	onMount(() => {
@@ -39,39 +38,45 @@
 			const cards = Array.from(carouselRef.querySelectorAll("article"));
 			if (!cards.length) return;
 
+			// Get the total width of all content including gaps
+			const carouselWidth = carouselRef.scrollWidth;
+			// Get the viewport width
+			const viewportWidth = window.innerWidth;
+			// Get the width of the last card
 			const lastCard = cards[cards.length - 1];
 			const lastCardWidth = lastCard.offsetWidth;
-
-			// Calculate the amount needed to scroll so the last card is fully visible
-			// We need the last card's right edge to align with (or be before) the viewport right edge
-			const totalWidth = carouselRef.scrollWidth;
-			const visibleWidth = window.innerWidth;
 
 			// Get computed styles to account for gaps and padding
 			const style = getComputedStyle(carouselRef);
 			const gapStr = style.gap || style.columnGap || "0px";
 			const gapValue = parseInt(gapStr, 10) || 0;
 
-			// This is where math matters:
-			// We need to scroll far enough that the end of the carousel minus one card width
-			// is at the left edge of the viewport
-			maxScrollDistance = Math.max(0, totalWidth - visibleWidth);
+			// To ensure the last card is fully visible at the end of the scroll,
+			// we need to make sure the last card's right edge aligns with the viewport's right edge
+			// This means the maximum distance we need to translate is:
+			// (total carousel width - viewport width)
+			// If this value is negative or zero, no scrolling is needed
+			maxScrollDistance = Math.max(0, carouselWidth - viewportWidth);
 
-			// Check if calculation seems to be working
+			// Ensure we can see the last card fully
+			// This extra adjustment ensures the last card is properly positioned at the end of the scroll
+			if (maxScrollDistance > 0) {
+				// Add a larger buffer for more breathing room at the right edge
+				// This accounts for any padding or margin that might affect positioning
+				const buffer = 0; // 4rem buffer instead of 1rem
+				maxScrollDistance += buffer;
+			}
+
 			if (maxScrollDistance <= 0) {
-				console.warn("maxScrollDistance calculation may be incorrect - no scrolling will occur");
+				console.info("Content fits in viewport, no scrolling needed");
 			}
 		};
 
 		// Track vertical scroll position and convert to horizontal scroll
 		let ticking = false;
-		let lastScrollY = window.scrollY;
 		const handleScroll = () => {
-			// Skip processing if we're already handling a frame or scroll position hasn't changed enough
-			if (ticking || Math.abs(window.scrollY - lastScrollY) < 5) return;
-
+			if (ticking) return;
 			ticking = true;
-			lastScrollY = window.scrollY;
 
 			requestAnimationFrame(() => {
 				if (!wrapperRef) return;
@@ -96,7 +101,10 @@
 		let resizeTimer: number;
 		const handleResize = () => {
 			clearTimeout(resizeTimer);
-			resizeTimer = setTimeout(updateDimensions, 100);
+			resizeTimer = setTimeout(() => {
+				updateDimensions();
+				handleScroll();
+			}, 100);
 		};
 
 		// Initialize and set up listeners
@@ -130,7 +138,7 @@
 		>
 			{#each testimonials as testimonial}
 				<article
-					class="lg:container-xs items-between grid aspect-video max-h-[60ch] max-w-full min-w-[50%] transform-gpu grid-cols-1 gap-8 rounded-(--radius) bg-gray-50 p-(--gap) transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform contain-layout md:grid-cols-[2fr_3fr] dark:bg-gray-900 dark:text-white"
+					class="lg:container-xs items-between grid aspect-video max-w-full min-w-full transform-gpu grid-cols-1 gap-8 rounded-(--radius) bg-gray-50 p-(--gap) transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform contain-layout lg:max-h-[60ch] lg:min-w-[50%] lg:grid-cols-[2fr_3fr] dark:bg-gray-900 dark:text-white"
 					style:transform="translateX(calc(-{scrollProgress} * {maxScrollDistance}px))"
 				>
 					<div class="hidden rounded-(--inner-radius) lg:block">
@@ -166,6 +174,8 @@
 					</div>
 				</article>
 			{/each}
+			<!-- Empty spacer to ensure last card has breathing room -->
+			<div class="min-w-(--gap) lg:min-w-[calc(var(--gap)*3)]"></div>
 		</div>
 
 		<!-- Pagination Indicators -->
