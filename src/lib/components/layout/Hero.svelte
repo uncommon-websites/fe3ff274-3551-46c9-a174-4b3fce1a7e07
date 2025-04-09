@@ -56,7 +56,7 @@
 </script>
 
 <header
-	class="section-px container mx-auto grid items-end gap-16 py-12 pt-24 text-balance xl:grid-cols-[1fr_auto]"
+	class="section-px container mx-auto grid items-end gap-16 gap-y-9 py-12 pt-24 text-balance xl:grid-cols-[1fr_auto]"
 	data-enter-container
 >
 	<h1 class="text-display w-full" data-enter>
@@ -67,8 +67,17 @@
 	{#if callsToAction.length > 0}
 		<div class="flex gap-4" data-enter>
 			{#each callsToAction as cta, index}
-				<Button href={cta.href} size="lg" variant={index % 2 === 0 ? "primary" : "secondary"}
-					>{cta.label}</Button
+				<Button
+					href={cta.href}
+					size="lg"
+					variant={index % 2 === 0 ? "primary" : "secondary"}
+					class="max-lg:hidden">{cta.label}</Button
+				>
+				<Button
+					href={cta.href}
+					size="md"
+					variant={index % 2 === 0 ? "primary" : "secondary"}
+					class="lg:hidden">{cta.label}</Button
 				>
 			{/each}
 		</div>

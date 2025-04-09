@@ -25,12 +25,12 @@
 		title,
 		text
 	}: {
-		title: string;
+		title?: string;
 		text: string;
 	} = $props();
 
 	// State
-	let words = $derived(text.split(" "));
+	let segments = $derived(text.split("\n\n"));
 	let containerElement: HTMLDivElement;
 
 	onMount(() => {
@@ -63,15 +63,22 @@
 </script>
 
 <div
-	class="section-py section-px items-startgap-8 relative container mx-auto flex flex-col text-pretty lg:grid lg:grid-cols-[1fr_2fr] xl:flex-row"
+	class="section-my section-px relative container mx-auto flex flex-col items-start gap-8 text-pretty lg:grid xl:flex-row"
 	bind:this={containerElement}
+	class:lg:grid-cols-[1fr_2fr]={!!title}
 >
-	<p class="text-emphasis-dim word">{title}</p>
-	<p class="text-title1 container-sm relative mx-auto">
-		{#each words as word}
-			<span>
-				<span class="word relative inline-block transition duration-150 ease-out">{word}</span>{" "}
-			</span>
+	{#if title}
+		<p class="text-emphasis-dim word">{title}</p>
+	{/if}
+
+	<div class="text-title1 container-sm gap relative mx-auto grid">
+		{#each segments as paragraph, i}
+			<p class="mb-[1.5em] last:mb-0">
+				{#each paragraph.split(" ").filter(Boolean) as word}
+					<span class="word relative inline-block transition duration-150 ease-out">{word}</span
+					>{" "}
+				{/each}
+			</p>
 		{/each}
-	</p>
+	</div>
 </div>

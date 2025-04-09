@@ -233,11 +233,3 @@
 		</div>
 	</div>
 </section>
-
-<!-- CTA Section -->
-<CallToAction
-	title="Don't see the right fit?"
-	subtitle="We're always looking for talent"
-	description="Send us your resume and we'll keep you in mind for future opportunities that match your skills and interests."
-	href="mailto:careers@example.com"
-/>

@@ -87,7 +87,11 @@
 						</div>
 					{/if}
 
-					<div class="text-caption z-10 text-white">
+					<div
+						class="text-caption z-10 {stakeholderType !== 'team'
+							? 'text-gray-700 dark:text-gray-50'
+							: 'text-white'}"
+					>
 						<div class={type === "join" ? "grid grid-cols-2 items-center" : ""}>
 							<div>
 								<div>{name}</div>

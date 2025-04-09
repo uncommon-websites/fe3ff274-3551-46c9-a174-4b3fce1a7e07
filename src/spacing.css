@@ -27,6 +27,34 @@
 	@apply pb-8 md:pb-10 lg:pb-12 xl:pb-14;
 }
 
+.section-mx {
+	@apply mx-4 md:mx-5 lg:mx-8;
+}
+
+.section-my {
+	@apply my-16 md:my-20 lg:my-24 xl:my-28;
+}
+
+.section-mt {
+	@apply mt-16 md:mt-20 lg:mt-24 xl:mt-28;
+}
+
+.section-mb {
+	@apply mb-16 md:mb-20 lg:mb-24 xl:mb-28;
+}
+
+.section-my-sm {
+	@apply my-8 md:my-10 lg:my-12 xl:my-14;
+}
+
+.section-mt-sm {
+	@apply mt-8 md:mt-10 lg:mt-12 xl:mt-14;
+}
+
+.section-mb-sm {
+	@apply mb-8 md:mb-10 lg:mb-12 xl:mb-14;
+}
+
 .container-sm {
 	@apply max-w-5xl;
 }

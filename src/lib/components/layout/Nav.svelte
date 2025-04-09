@@ -3,7 +3,6 @@
 
 Do not modify this file, as it is generated.
 -->
-
 <script lang="ts">
 	// Types
 	import type { NavItem } from "$lib/navigation";
@@ -35,6 +34,7 @@ Do not modify this file, as it is generated.
 	let isDesktopNavOpen = $state(false);
 	let activeDesktopNavItem: number = $state(null)!;
 	let activeChildItem: number | null = $state(null); // Track hovered child item
+	let lastActiveChildItem: number | null = $state(null); // Track last hovered child item
 	let itemRects: DOMRectReadOnly[] = $state([]);
 	let itemElements: HTMLElement[] = $state([]);
 	let tooltip: HTMLElement | null = $state(null);
@@ -253,12 +253,20 @@ Do not modify this file, as it is generated.
 						data-item
 						{...item.children && {
 							onmouseover: () => {
+								if (activeDesktopNavItem !== index) {
+									// Only reset lastActiveChildItem when switching to a different nav item
+									lastActiveChildItem = null;
+								}
 								activeDesktopNavItem = index;
 								activeChildItem = null;
 								isDesktopNavOpen = true;
 							},
 
 							onfocus: () => {
+								if (activeDesktopNavItem !== index) {
+									// Only reset lastActiveChildItem when switching to a different nav item
+									lastActiveChildItem = null;
+								}
 								activeDesktopNavItem = index;
 								activeChildItem = null;
 								isDesktopNavOpen = true;
@@ -278,7 +286,7 @@ Do not modify this file, as it is generated.
 					</svelte:element>
 				{/each}
 			</div>
-			<Button size="md" variant="secondary" href={cta.href}>{cta.label}</Button>
+			<Button size="sm" variant="secondary" href={cta.href}>{cta.label}</Button>
 
 			<Button
 				aria-label="Toggle nav"
@@ -305,7 +313,9 @@ Do not modify this file, as it is generated.
 				{@const currentImage =
 					activeChildItem !== null && item.children?.[activeChildItem]?.image
 						? item.children[activeChildItem].image
-						: item.image}
+						: lastActiveChildItem !== null && item.children?.[lastActiveChildItem]?.image
+							? item.children[lastActiveChildItem].image
+							: item.children?.find((child) => child.image)?.image || item.image}
 
 				<img
 					class="row-span-full aspect-square h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover transition-opacity duration-300 dark:bg-gray-700"
@@ -324,6 +334,7 @@ Do not modify this file, as it is generated.
 							onmouseenter={() => {
 								if (child.image) {
 									activeChildItem = childIndex;
+									lastActiveChildItem = childIndex;
 								}
 							}}
 							onmouseleave={() => {

@@ -7,7 +7,7 @@
 	}
 
 	.text-title1 {
-		@apply text-3xl leading-[1.15] lg:text-4xl;
+		@apply text-3xl leading-[1.25] lg:text-4xl;
 	}
 
 	.text-title2 {
