@@ -1,8 +1,10 @@
 // Types
 import type { PageLoad } from "./$types";
 
+// Use cases can be considered industries depending on the company.
+
 // Constants
-const industries = {
+const useCases = {
 	healthcare: {
 		meta: {
 			title: "Healthcare",
@@ -376,11 +378,11 @@ const industries = {
 };
 
 export const load: PageLoad = async ({ params }) => {
-	const { industry } = params;
+	const { usecase } = params;
 
-	if (!industry || !(industry in industries)) {
+	if (!usecase || !(usecase in useCases)) {
 		return {};
 	}
 
-	return industries[industry as keyof typeof industries];
+	return useCases[usecase as keyof typeof useCases];
 };

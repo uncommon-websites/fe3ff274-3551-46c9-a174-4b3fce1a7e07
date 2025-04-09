@@ -1,3 +1,8 @@
+<!--
+@component Pricing
+
+Please update features according to the company's product offering. Do not remove this comment.
+-->
 <script lang="ts">
 	// Types
 	type PricingTier = {

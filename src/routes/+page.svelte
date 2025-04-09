@@ -17,9 +17,9 @@
 </script>
 
 <Hero
-	title="Transform your digital experience"
-	subtitle="Powerful solutions designed for modern businesses."
-	imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+	title="Elevate your business with thoughtful design"
+	subtitle="Design solutions that enhance user experience, improve visual communication, and future-proof your brand identity."
+	imageSrc="https://images.unsplash.com/photo-1725027090555-40b031f52b01?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 />
 <LogoScroller />
 
@@ -37,7 +37,7 @@
 			quote:
 				"This solution transformed our workflow and increased productivity by 35% in just two months.",
 			image:
-				"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+				"https://images.unsplash.com/photo-1571513722275-4b41940f54b8?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 		},
 		{
 			name: "John Doe",
@@ -46,7 +46,7 @@
 			quote:
 				"The implementation was seamless and the support team was exceptional throughout the process.",
 			image:
-				"https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+				"https://images.unsplash.com/photo-1600603405959-6d623e92445c?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 		},
 		{
 			name: "Sarah Johnson",
@@ -55,7 +55,7 @@
 			quote:
 				"We've tried multiple solutions, but this is the only one that perfectly addressed all our requirements.",
 			image:
-				"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&estimonial-3.jpg"
+				"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 		}
 	]}
 />
@@ -86,36 +86,43 @@
 	subtitle="Real-world applications for your business needs"
 	useCases={[
 		{
-			title: "Streamlined Workflows",
-			description:
-				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings.",
+			title: "Healthcare",
+			description: "Innovative solutions for patient care",
 			image:
-				"https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+				"https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1920&auto=format&fit=crop",
 			link: {
-				href: "/use-cases/workflows",
+				href: "/industries/healthcare",
 				label: "Learn more"
 			}
 		},
 		{
-			title: "Data Analysis",
-			description:
-				"Extract meaningful insights from your data with powerful analytical tools backed by proprietary AI algorithms that are 3x more accurate than competitors.",
+			title: "Finance",
+			description: "Streamlining operations and compliance",
 			image:
-				"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2488&q=80",
+				"https://images.unsplash.com/photo-1638913662180-afc4334cf422?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			link: {
-				href: "/use-cases/data-analysis",
-				label: "Explore analytics"
+				href: "/industries/finance",
+				label: "Explore solutions"
 			}
 		},
 		{
-			title: "Secure Collaboration",
-			description:
-				"Work together seamlessly while maintaining strict data privacy standards with our zero-knowledge architecture and military-grade encryption.",
+			title: "Technology",
+			description: "Cutting-edge tools for tech companies",
 			image:
-				"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+				"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			link: {
-				href: "/use-cases/collaboration",
-				label: "See security features"
+				href: "/industries/technology",
+				label: "See tech solutions"
+			}
+		},
+		{
+			title: "Education",
+			description: "Enhancing learning experiences",
+			image:
+				"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			link: {
+				href: "/industries/education",
+				label: "Discover more"
 			}
 		}
 	]}
