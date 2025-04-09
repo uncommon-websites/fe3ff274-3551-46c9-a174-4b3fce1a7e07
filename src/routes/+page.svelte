@@ -59,6 +59,34 @@
 		}
 	]}
 />
+<Features
+	title="Features"
+	subtitle="Some features"
+	features={[
+		{
+			title: "Streamlined Workflows",
+			description:
+				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings."
+		}
+	]}
+/>
+
+<Features
+	title="Features"
+	subtitle="Some features"
+	features={[
+		{
+			title: "Streamlined Workflows",
+			description:
+				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings."
+		},
+		{
+			title: "Data Analysis",
+			description:
+				"Extract meaningful insights from your data with powerful analytical tools backed by proprietary AI algorithms that are 3x more accurate than competitors."
+		}
+	]}
+/>
 
 <Features
 	title="Features"
@@ -81,48 +109,137 @@
 		}
 	]}
 />
+
+<Features
+	title="Features"
+	subtitle="Some features"
+	features={[
+		{
+			title: "Streamlined Workflows",
+			description:
+				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings."
+		},
+		{
+			title: "Data Analysis",
+			description:
+				"Extract meaningful insights from your data with powerful analytical tools backed by proprietary AI algorithms that are 3x more accurate than competitors."
+		},
+		{
+			title: "Secure Collaboration",
+			description:
+				"Work together seamlessly while maintaining strict data privacy standards with our zero-knowledge architecture and military-grade encryption."
+		},
+		{
+			title: "Scalable Infrastructure",
+			description:
+				"Built to grow with your business, our platform handles increasing workloads and user numbers without performance degradation or additional configuration."
+		}
+	]}
+/>
+
+<Features
+	title="Features"
+	subtitle="Some features"
+	features={[
+		{
+			title: "Streamlined Workflows",
+			description:
+				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings."
+		},
+		{
+			title: "Data Analysis",
+			description:
+				"Extract meaningful insights from your data with powerful analytical tools backed by proprietary AI algorithms that are 3x more accurate than competitors."
+		},
+		{
+			title: "Secure Collaboration",
+			description:
+				"Work together seamlessly while maintaining strict data privacy standards with our zero-knowledge architecture and military-grade encryption."
+		},
+		{
+			title: "Scalable Infrastructure",
+			description:
+				"Built to grow with your business, our platform handles increasing workloads and user numbers without performance degradation or additional configuration."
+		},
+		{
+			title: "Customizable Solutions",
+			description:
+				"Tailor our platform to your specific business needs with flexible modules and configurable workflows that adapt to your unique processes."
+		}
+	]}
+/>
+
+<Features
+	title="Features"
+	subtitle="Some features"
+	features={[
+		{
+			title: "Streamlined Workflows",
+			description:
+				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings."
+		},
+		{
+			title: "Data Analysis",
+			description:
+				"Extract meaningful insights from your data with powerful analytical tools backed by proprietary AI algorithms that are 3x more accurate than competitors."
+		},
+		{
+			title: "Secure Collaboration",
+			description:
+				"Work together seamlessly while maintaining strict data privacy standards with our zero-knowledge architecture and military-grade encryption."
+		},
+		{
+			title: "Scalable Infrastructure",
+			description:
+				"Built to grow with your business, our platform handles increasing workloads and user numbers without performance degradation or additional configuration."
+		},
+		{
+			title: "Customizable Solutions",
+			description:
+				"Tailor our platform to your specific business needs with flexible modules and configurable workflows that adapt to your unique processes."
+		},
+		{
+			title: "24/7 Support",
+			description:
+				"Access our dedicated support team anytime with our guaranteed response time of under 1 hour, ensuring your business operations never skip a beat."
+		}
+	]}
+/>
 <UseCases
 	title="Use Cases"
 	subtitle="Real-world applications for your business needs"
 	useCases={[
 		{
-			title: "Healthcare",
-			description: "Innovative solutions for patient care",
+			title: "Streamlined Workflows",
+			description:
+				"Automate repetitive tasks and connect systems to improve productivity with our industry-leading 87% time savings.",
 			image:
-				"https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1920&auto=format&fit=crop",
+				"https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
 			link: {
-				href: "/industries/healthcare",
+				href: "/use-cases/workflows",
 				label: "Learn more"
 			}
 		},
 		{
-			title: "Finance",
-			description: "Streamlining operations and compliance",
+			title: "Data Analysis",
+			description:
+				"Extract meaningful insights from your data with powerful analytical tools backed by proprietary AI algorithms that are 3x more accurate than competitors.",
 			image:
-				"https://images.unsplash.com/photo-1638913662180-afc4334cf422?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2488&q=80",
 			link: {
-				href: "/industries/finance",
-				label: "Explore solutions"
+				href: "/use-cases/data-analysis",
+				label: "Explore analytics"
 			}
 		},
 		{
-			title: "Technology",
-			description: "Cutting-edge tools for tech companies",
+			title: "Secure Collaboration",
+			description:
+				"Work together seamlessly while maintaining strict data privacy standards with our zero-knowledge architecture and military-grade encryption.",
 			image:
-				"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
 			link: {
-				href: "/industries/technology",
-				label: "See tech solutions"
-			}
-		},
-		{
-			title: "Education",
-			description: "Enhancing learning experiences",
-			image:
-				"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-			link: {
-				href: "/industries/education",
-				label: "Discover more"
+				href: "/use-cases/collaboration",
+				label: "See security features"
 			}
 		}
 	]}
