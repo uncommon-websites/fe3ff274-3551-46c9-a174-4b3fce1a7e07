@@ -209,14 +209,6 @@
 <!-- Culture Section -->
 <Culture {values} />
 
-<!-- Employee Testimonials Section -->
-<section class={SECTION_BASE_CLASSES}>
-	<SectionHeader
-		title="Hear from our team"
-		subtitle="What our employees have to say about working here"
-	/>
-</section>
-
 <Testimonials testimonials={employeeTestimonials} />
 
 <!-- Application Process -->
