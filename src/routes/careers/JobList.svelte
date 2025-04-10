@@ -43,7 +43,7 @@
 			<ul class="">
 				{#each openings as opening}
 					<li
-						class="group rounded-xl bg-transparent transition duration-300 ease-out hover:bg-gray-200 hover:dark:bg-gray-900"
+						class="group rounded bg-transparent transition duration-300 ease-out hover:bg-gray-200 hover:dark:bg-gray-900"
 					>
 						<a
 							href={opening.url}
