@@ -3,7 +3,7 @@
 
 	// Components
 	import SectionHeader from "$lib/components/layout/SectionHeader.svelte";
-	import CallToAction from "$lib/components/layout/CallToAction.svelte";
+	import Culture from "$lib/components/layout/Culture.svelte";
 	import Testimonials from "$lib/components/layout/Testimonials.svelte";
 	import SecondaryHero from "$lib/components/layout/SecondaryHero.svelte";
 	import Card from "$lib/components/ui/Card.svelte";
@@ -14,7 +14,6 @@
 	import IconUsers from "~icons/lucide/users";
 	import IconHeart from "~icons/lucide/heart";
 	import IconGlobe from "~icons/lucide/globe";
-	import Culture from "$lib/components/layout/Culture.svelte";
 
 	// Constants
 	const SECTION_BASE_CLASSES = "section-py section-px container mx-auto";
