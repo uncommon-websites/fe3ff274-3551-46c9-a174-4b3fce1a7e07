@@ -126,7 +126,7 @@
 
 <section
 	bind:this={wrapperRef}
-	class="text-pretty [--gap:--spacing(3)] [--inner-radius:calc(var(--radius)-var(--gap))]"
+	class="text-pretty [--gap:--spacing(4)]"
 	style="height: calc(100vh * {testimonials.length});"
 >
 	<div
@@ -134,7 +134,10 @@
 	>
 		<div
 			bind:this={carouselRef}
-			class="flex w-full gap-(--card-gap) pr-8 [--card-gap:--spacing(6)]"
+			class={[
+				"flex w-full gap-(--card-gap) pr-8 [--card-gap:--spacing(6)]",
+				"[--inner-radius:calc(var(--outer-radius)-var(--gap))] [--outer-radius:var(--radius)] lg:[--outer-radius:var(--radius-xl)]"
+			]}
 		>
 			{#each testimonials as testimonial}
 				<article
@@ -144,12 +147,12 @@
 						"bg-card dark:text-white",
 						"aspect-video max-w-full min-w-full",
 						"transform-gpu transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform",
-						"rounded-(--radius) p-(--gap)",
+						"rounded-(--outer-radius) p-(--gap)",
 						"border-border border contain-layout"
 					]}
 					style:transform="translateX(calc(-{scrollProgress} * {maxScrollDistance}px))"
 				>
-					<div class="hidden overflow-clip rounded-(--inner-radius) lg:block">
+					<div class="hidden overflow-clip rounded-[max(var(--inner-radius),2px)] lg:block">
 						{#if testimonial.image}
 							<img
 								src={testimonial.image}
@@ -160,7 +163,7 @@
 						{/if}
 					</div>
 					<div class="flex flex-col justify-between gap-12">
-						<q class="text-title3 max-w-prose dark:text-white">{testimonial.quote}</q>
+						<q class="text-title2 max-w-prose dark:text-white">{testimonial.quote}</q>
 						<cite class="text-caption flex items-center gap-3 not-italic">
 							{#if testimonial.image}
 								<img

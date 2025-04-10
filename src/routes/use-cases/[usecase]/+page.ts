@@ -4,7 +4,62 @@ import type { PageLoad } from "./$types";
 // Use cases can be considered industries depending on the company.
 
 // Constants
-const useCases = {
+const useCases: Record<
+	string,
+	{
+		meta: {
+			title: string;
+			description: string;
+		};
+		hero: {
+			title: string;
+			subtitle: string;
+			imageSrc: string;
+			callsToAction: Array<{
+				href: string;
+				label: string;
+			}>;
+		};
+		summary: {
+			title: string;
+			text: string;
+		};
+		testimonials: Array<{
+			quote: string;
+			author: string;
+			role: string;
+			imageSrc: string;
+		}>;
+		features: {
+			title: string;
+			subtitle: string;
+			items: Array<{
+				title: string;
+				description: string;
+				icon: string;
+			}>;
+		};
+		useCases: {
+			title: string;
+			subtitle: string;
+			items: Array<{
+				title: string;
+				description: string;
+				imageSrc: string;
+			}>;
+		};
+		cta: {
+			title: string;
+			subtitle: string;
+			description: string;
+			callsToAction: Array<{
+				href: string;
+				label: string;
+				variant: string;
+			}>;
+		};
+	}
+> = {
 	healthcare: {
 		meta: {
 			title: "Healthcare",

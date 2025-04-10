@@ -38,7 +38,6 @@ Please update features according to the company's product offering. Do not remov
 		title = "Simple, transparent pricing",
 		subtitle = "Choose the plan that works best for your needs",
 		tierNames = ["Starter", "Pro", "Enterprise"],
-		caption = "Compare all features",
 		features = [
 			{
 				name: "Projects",

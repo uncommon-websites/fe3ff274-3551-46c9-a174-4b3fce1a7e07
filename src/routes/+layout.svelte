@@ -75,6 +75,15 @@
 		)}:ital,wght@0,400..800;1,400..800&display=swap"
 		rel="stylesheet"
 	/>
+
+	<!-- eslint-disable -->
+	{@html `
+    	<style>
+    	   :root {
+    			--font-family: "${data.meta.fontFamily}";
+    		}
+    	</style>
+	`}
 </svelte:head>
 
 <div

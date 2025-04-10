@@ -2,7 +2,7 @@ export const METADATA = {
 	companyName: "Company",
 	description: "Description",
 	title: "Title",
-	image: "/images/social.jpg",
+	image: "/og.png",
 	url: "https://example.com",
-	fontFamily: "Inter"
+	fontFamily: "Inter Variable"
 };

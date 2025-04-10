@@ -219,8 +219,8 @@ Do not modify this file, as it is generated.
 		<!-- Desktop nav -->
 		<div
 			class="grid grid-flow-col items-center gap-2 [--gap:theme(spacing.1)]
-		[--inner-radius:calc(var(--radius-md)-var(--gap))]
-		[--radius:var(--radius-lg)]"
+		[--inner-radius:calc(var(--radius)-var(--gap))]
+		"
 			onmouseleave={() => {
 				isDesktopNavOpen = false;
 				activeChildItem = null;
@@ -331,7 +331,7 @@ Do not modify this file, as it is generated.
 					<li class="">
 						<a
 							href={child.href}
-							class="group/link-item text-foreground hover:bg-secondary nav-dropdown-item grid min-w-[10em] gap-1 rounded-[var(--inner-radius)] p-3 py-2 text-sm"
+							class="group/link-item text-foreground hover:bg-secondary active:bg-muted nav-dropdown-item grid min-w-[10em] gap-1 rounded-[var(--inner-radius)] p-3 py-2 text-sm"
 							role="menuitem"
 							onmouseenter={() => {
 								if (child.image) {
