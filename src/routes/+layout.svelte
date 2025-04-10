@@ -82,11 +82,9 @@
 	class:touch={isTouchDevice.current === true}
 	class:no-touch={isTouchDevice.current !== true}
 >
-	<div class="bg-white dark:bg-gray-950">
-		<Nav />
+	<Nav />
 
-		{@render children()}
-	</div>
+	{@render children()}
 
 	<Footer />
 </div>

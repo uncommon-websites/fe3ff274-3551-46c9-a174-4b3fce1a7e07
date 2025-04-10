@@ -85,8 +85,8 @@ Do not modify this file, as it is generated.
 				} else {
 					// Fallback with theme-aware default
 					themeColor = document.documentElement.classList.contains("dark")
-						? "rgb(17, 24, 39)" // dark mode fallback (gray-900)
-						: "rgb(249, 250, 251)"; // light mode fallback (gray-50)
+						? "hsl(var(--background))" // dark mode fallback using CSS variable
+						: "hsl(var(--background))"; // light mode fallback using CSS variable
 				}
 			} else {
 				// Restore normal scrolling
@@ -176,18 +176,20 @@ Do not modify this file, as it is generated.
 </svelte:head>
 
 <div
-	class="sticky top-0 left-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-lg transition dark:border-gray-800 dark:bg-gray-950/95 dark:text-white"
+	class={[
+		"sticky top-0 left-0 z-50 border-b backdrop-blur-lg transition",
+		scrollY.current !== 0 ? "border-border bg-background/95" : " bg-background border-transparent"
+	]}
 	style:--tw-duration="{DURATION}ms"
-	class:!border-transparent={scrollY.current === 0}
 >
 	<!-- Mobile Nav -->
 	<div
 		id="nav"
 		class={[
-			"items-between group/nav-list fixed inset-0 -z-10 m-0 grid h-[100dvh] content-between overflow-y-auto bg-white pt-32 transition duration-500 ease-out lg:hidden dark:bg-gray-900",
+			"items-between group/nav-list bg-background fixed inset-0 -z-10 m-0 grid h-[100dvh] content-between overflow-y-auto pt-32 transition duration-500 ease-out lg:hidden",
 
 			// State
-			"pointer-events-none  translate-y-[-100%] data-[show]:pointer-events-auto data-[show]:translate-y-0"
+			"pointer-events-none translate-y-[-100%] data-[show]:pointer-events-auto data-[show]:translate-y-0"
 		]}
 		data-show={isMenuOpen || null}
 	>
@@ -206,7 +208,7 @@ Do not modify this file, as it is generated.
 	</div>
 
 	<div
-		class="section-px gap- sticky top-0 left-0 z-50 container mx-auto grid grid-cols-[auto_auto] content-center items-center justify-between border-gray-100 py-2 dark:border-gray-800"
+		class="section-px border-border sticky top-0 left-0 z-50 container mx-auto grid grid-cols-[auto_auto] content-center items-center justify-between gap-8 py-2"
 	>
 		<!-- Mobile Nav -->
 		<a href="/" class="flex items-center gap-3.5">
@@ -216,9 +218,9 @@ Do not modify this file, as it is generated.
 
 		<!-- Desktop nav -->
 		<div
-			class="grid grid-flow-col items-center gap-2 [--gap:--spacing(1)]
-		[--inner-radius:calc(var(--radius)-var(--gap))]
-		[--radius:var(--radius-xl)]"
+			class="grid grid-flow-col items-center gap-2 [--gap:theme(spacing.1)]
+		[--inner-radius:calc(var(--radius-md)-var(--gap))]
+		[--radius:var(--radius-lg)]"
 			onmouseleave={() => {
 				isDesktopNavOpen = false;
 				activeChildItem = null;
@@ -230,7 +232,7 @@ Do not modify this file, as it is generated.
 
 				<div
 					class={[
-						"fixed top-0 left-0 grid h-0 origin-top items-start overflow-hidden rounded-(--radius) border border-gray-100 bg-white text-gray-500 shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300",
+						"border-border bg-popover nav-dropdown fixed top-0 left-0 grid h-0 origin-top items-start overflow-hidden rounded-[var(--radius)] border shadow-lg",
 						isDesktopNavOpen ? "" : "pointer-events-none scale-90 opacity-0 transition select-none"
 					]}
 					bind:this={tooltip}
@@ -249,7 +251,7 @@ Do not modify this file, as it is generated.
 						href={item.children ? undefined : item.href}
 						bind:this={itemElements[index]}
 						class:cursor-default={item.children}
-						class="group group/item relative flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
+						class="group group/item text-muted-foreground hover:text-foreground relative flex items-center gap-1 text-sm"
 						data-item
 						{...item.children && {
 							onmouseover: () => {
@@ -277,7 +279,7 @@ Do not modify this file, as it is generated.
 						<!-- You might want an indicator here if item.children exists -->
 						{#if item.children}
 							<IconChevronDown
-								class="size-4 text-gray-400  transition group-hover/item:opacity-100 dark:text-gray-500 {activeDesktopNavItem ===
+								class="text-muted-foreground size-4 transition group-hover/item:opacity-100  {activeDesktopNavItem ===
 									index && isDesktopNavOpen
 									? 'opacity-100'
 									: ''}"
@@ -305,7 +307,7 @@ Do not modify this file, as it is generated.
 {#snippet dropdownContent(item: NavItem, index: number)}
 	<div bind:contentRect={itemRects[index]} class="grid-center">
 		<div
-			class="grid items-start gap-(--gap) rounded-(--radius) p-(--gap)"
+			class="grid items-start gap-[var(--gap)] rounded-[var(--radius)] p-[var(--gap)]"
 			class:grid-cols-[1fr_1fr]={"image" in item ||
 				item.children?.some((child) => "image" in child)}
 		>
@@ -318,18 +320,18 @@ Do not modify this file, as it is generated.
 							: item.children?.find((child) => child.image)?.image || item.image}
 
 				<img
-					class="row-span-full aspect-square h-full max-h-80 rounded-(--inner-radius) bg-gray-200 object-cover transition-opacity duration-300 dark:bg-gray-700"
+					class="bg-muted row-span-full aspect-square h-full max-h-80 rounded-[var(--inner-radius)] object-cover transition-opacity duration-300"
 					src={currentImage}
 					alt=""
 				/>
 			{/if}
 
-			<ul class="grid max-w-[20em] gap-(--gap)">
+			<ul class="grid max-w-[20em] gap-[var(--gap)]">
 				{#each item.children || [] as child, childIndex}
 					<li class="">
 						<a
 							href={child.href}
-							class="group/link-item grid min-w-[10em] gap-1 rounded-(--inner-radius) p-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+							class="group/link-item text-foreground hover:bg-secondary nav-dropdown-item grid min-w-[10em] gap-1 rounded-[var(--inner-radius)] p-3 py-2 text-sm"
 							role="menuitem"
 							onmouseenter={() => {
 								if (child.image) {
@@ -341,11 +343,11 @@ Do not modify this file, as it is generated.
 								activeChildItem = null;
 							}}
 						>
-							<span class="text-body font-medium">
+							<span class="font-medium">
 								{child.label}
 							</span>
 							{#if child.description}
-								<span class="text-gray-400 dark:text-gray-500">{child.description}</span>
+								<span class="text-muted-foreground">{child.description}</span>
 							{/if}
 						</a>
 					</li>
@@ -366,7 +368,7 @@ Do not modify this file, as it is generated.
 		href={item?.href}
 	>
 		{#if item.children}
-			<span class="text-body text-emphasis-dim dark:text-gray-400">{item.label}</span>
+			<span class="text-muted-foreground">{item.label}</span>
 			<ul class="grid gap-2.5">
 				{#each item.children as child, index}
 					{@render linkOrGroup(child, index)}
@@ -375,7 +377,7 @@ Do not modify this file, as it is generated.
 		{:else}
 			<span
 				style:transition-delay="{index * 150}ms"
-				class="text-title2 font-medium transition-all duration-500 ease-out [clip-path:inset(0)] dark:text-white"
+				class="text-foreground font-medium transition-all duration-500 ease-out [clip-path:inset(0)]"
 			>
 				<span
 					style:transition-delay="{index * 50}ms"

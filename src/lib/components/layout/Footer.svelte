@@ -13,7 +13,7 @@
 </script>
 
 <footer
-	class=" inset-x-0 bottom-0 -z-10 grid overflow-hidden bg-white dark:bg-gray-950 dark:text-white"
+	class="inset-x-0 bottom-0 -z-10 grid overflow-hidden"
 	aria-labelledby="footer-heading"
 	{...props}
 >

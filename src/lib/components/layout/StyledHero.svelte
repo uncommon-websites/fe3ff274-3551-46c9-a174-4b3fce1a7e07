@@ -1,10 +1,10 @@
 <!--
     @component
-    Bold hero banner with eye-catching text and strong call-to-action. NEVER use title case.
+    Styled hero banner with themed background colors and eye-catching text.
 
     Usage:
     ```html
-    <Hero
+    <StyledHero
       title="Bold Claim"
       subtitle="Quick Value"
       imageSrc="/hero.jpg"
@@ -55,7 +55,7 @@
 	let { title, subtitle, imageSrc, callsToAction = [cta] }: Props = $props();
 </script>
 
-<div class="bg-background">
+<div class="bg-[var(--color-bg-secondary)] w-full">
 	<header
 		class="section-px container mx-auto grid items-end gap-16 gap-y-9 py-12 pt-24 text-balance xl:grid-cols-[1fr_auto]"
 		data-enter-container
@@ -86,13 +86,8 @@
 	</header>
 
 	{#if imageSrc}
-		<div class="col-span-full aspect-video" data-enter>
-			<img
-				src={imageSrc}
-				alt="Customer"
-				class="size-full object-cover"
-				onerror={handleImageError}
-			/>
+		<div class="col-span-full aspect-video px-4 md:px-8 lg:px-10" data-enter>
+			<img src={imageSrc} alt="Hero" class="size-full object-cover" onerror={handleImageError} />
 		</div>
 	{/if}
 </div>

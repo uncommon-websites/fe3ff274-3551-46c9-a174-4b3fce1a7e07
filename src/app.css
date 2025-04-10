@@ -4,10 +4,10 @@
 @import "./base.css";
 @import "./typography.css";
 @import "./spacing.css";
+@import "./theme.css";
 
 @theme {
 	/* Colors */
-
 	--color-gray-50: oklch(0.985 0.001 106.423);
 	--color-gray-100: oklch(0.97 0.001 106.424);
 	--color-gray-200: oklch(0.923 0.003 48.717);
@@ -32,6 +32,18 @@
 	--color-primary-900: oklch(30% 0.1 135);
 	--color-primary-950: oklch(20% 0.11 135);
 
+	--color-primary-50: oklch(0.982 0.018 155.826);
+	--color-primary-100: oklch(0.962 0.044 156.743);
+	--color-primary-200: oklch(0.925 0.084 155.995);
+	--color-primary-300: oklch(0.871 0.15 154.449);
+	--color-primary-400: oklch(0.792 0.209 151.711);
+	--color-primary-500: oklch(0.723 0.219 149.579);
+	--color-primary-600: oklch(0.627 0.194 149.214);
+	--color-primary-700: oklch(0.527 0.154 150.069);
+	--color-primary-800: oklch(0.448 0.119 151.328);
+	--color-primary-900: oklch(0.393 0.095 152.535);
+	--color-primary-950: oklch(0.266 0.065 152.934);
+
 	--color-secondary-50: oklch(97% 0.015 30);
 	--color-secondary-100: oklch(92% 0.02 30);
 	--color-secondary-200: oklch(86% 0.03 30);
@@ -48,4 +60,85 @@
 	--font-family: "Inter Variable";
 	--font-body: var(--font-family), var(--font-fallback);
 	--font-display: var(--font-body);
+
+	/* Theming */
+	--color-radius: 1rem;
+	--color-background: var(--color-white);
+	--color-foreground: var(--color-gray-950);
+
+	--color-card: var(--color-gray-50);
+	--color-card-foreground: var(--color-gray-950);
+	--color-card-hover: var(--color-gray-100);
+
+	--color-popover: var(--color-gray-50);
+	--color-popover-foreground: var(--color-gray-950);
+
+	--color-primary: var(--color-primary-600);
+	--color-primary-foreground: var(--color-primary-50);
+
+	--color-secondary: var(--color-gray-100);
+	--color-secondary-foreground: var(--color-gray-900);
+
+	--color-muted: var(--color-gray-100);
+	--color-muted-foreground: var(--color-gray-500);
+
+	--color-accent: var(--color-gray-100);
+	--color-accent-foreground: var(--color-gray-900);
+
+	--color-destructive: color-mix(in oklch, var(--color-primary-500), var(--color-secondary-500));
+
+	--color-border: var(--color-gray-100);
+	--color-input: var(--color-gray-100);
+	--color-ring: var(--color-primary-600);
+
+	--color-chart-1: color-mix(in oklch, var(--color-primary-600), var(--color-secondary-500));
+	--color-chart-2: color-mix(in oklch, var(--color-primary-500), var(--color-secondary-600));
+	--color-chart-3: color-mix(in oklch, var(--color-primary-400), var(--color-secondary-400));
+	--color-chart-4: color-mix(in oklch, var(--color-primary-700), var(--color-secondary-300));
+	--color-chart-5: color-mix(in oklch, var(--color-primary-600), var(--color-secondary-400));
+
+	--color-sidebar: var(--color-gray-50);
+	--color-sidebar-foreground: var(--color-gray-950);
+	--color-sidebar-primary: var(--color-primary-600);
+	--color-sidebar-primary-foreground: var(--color-primary-50);
+	--color-sidebar-accent: var(--color-gray-100);
+	--color-sidebar-accent-foreground: var(--color-gray-900);
+	--color-sidebar-border: var(--color-gray-200);
+	--color-sidebar-ring: var(--color-primary-600);
+
+	--radius: 3rem;
+}
+
+&:where([data-theme="dark"], [data-theme="dark"] *) {
+	--color-background: color-mix(in oklch, var(--color-gray-950), var(--color-gray-900));
+	--color-foreground: var(--color-gray-50);
+	--color-card: var(--color-gray-900);
+	--color-card-foreground: var(--color-gray-50);
+	--color-popover: var(--color-gray-900);
+	--color-popover-foreground: var(--color-gray-50);
+	--color-primary: var(--color-primary-600);
+	--color-primary-foreground: var(--color-primary-50);
+	--color-secondary: color-mix(in oklch, var(--color-gray-800), var(--color-gray-900));
+	--color-secondary-foreground: var(--color-gray-50);
+	--color-muted: color-mix(in oklch, var(--color-gray-800), var(--color-gray-900));
+	--color-muted-foreground: var(--color-gray-400);
+	--color-accent: color-mix(in oklch, var(--color-gray-800), var(--color-gray-900));
+	--color-accent-foreground: var(--color-gray-50);
+	--color-destructive: color-mix(in oklch, var(--color-primary-500), var(--color-primary-600));
+	--color-border: color-mix(in oklch, var(--color-gray-50), transparent 90%);
+	--color-input: color-mix(in oklch, var(--color-gray-50), transparent 85%);
+	--color-ring: var(--color-primary-600);
+	--color-chart-1: color-mix(in oklch, var(--color-primary-700), var(--color-secondary-600));
+	--color-chart-2: color-mix(in oklch, var(--color-primary-400), var(--color-secondary-500));
+	--color-chart-3: var(--color-primary-500);
+	--color-chart-4: color-mix(in oklch, var(--color-primary-600), var(--color-secondary-700));
+	--color-chart-5: color-mix(in oklch, var(--color-primary-600), var(--color-secondary-300));
+	--color-sidebar: var(--color-gray-900);
+	--color-sidebar-foreground: var(--color-gray-50);
+	--color-sidebar-primary: var(--color-primary-600);
+	--color-sidebar-primary-foreground: var(--color-primary-50);
+	--color-sidebar-accent: color-mix(in oklch, var(--color-gray-800), var(--color-gray-900));
+	--color-sidebar-accent-foreground: var(--color-gray-50);
+	--color-sidebar-border: color-mix(in oklch, var(--color-gray-50), transparent 90%);
+	--color-sidebar-ring: var(--color-primary-600);
 }
