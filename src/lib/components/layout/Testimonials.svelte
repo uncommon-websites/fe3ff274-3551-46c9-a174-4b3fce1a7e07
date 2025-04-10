@@ -175,7 +175,7 @@
 							{/if}
 							<div>
 								<p class="text-callout">{testimonial.name}</p>
-								<p class=" ">
+								<p class="text-muted-foreground">
 									{testimonial.position}, {testimonial.company}
 								</p>
 							</div>

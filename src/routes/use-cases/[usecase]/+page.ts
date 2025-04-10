@@ -52,6 +52,7 @@ const useCases: Record<
 			title: string;
 			subtitle: string;
 			description: string;
+			imageSrc: string;
 			callsToAction: Array<{
 				href: string;
 				label: string;
@@ -143,6 +144,8 @@ const useCases: Record<
 		cta: {
 			title: "Elevate Your Healthcare Practice",
 			subtitle: "Join leading healthcare organizations using our platform",
+			imageSrc:
+				"https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1920&auto=format&fit=crop",
 			description:
 				"Schedule a consultation to see how we can help you improve patient care and operational efficiency.",
 			callsToAction: [
@@ -237,6 +240,8 @@ const useCases: Record<
 		cta: {
 			title: "Transform Your Financial Services",
 			subtitle: "Join leading financial institutions already using our platform",
+			imageSrc:
+				"https://images.unsplash.com/photo-1638913662180-afc4334cf422?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			description:
 				"Schedule a demo to see how we can help you improve efficiency and customer satisfaction.",
 			callsToAction: [
@@ -330,6 +335,8 @@ const useCases: Record<
 		cta: {
 			title: "Elevate Your Tech Company",
 			subtitle: "Join innovative technology companies using our platform",
+			imageSrc:
+				"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			description: "See how our solutions can help you build better products faster.",
 			callsToAction: [
 				{ href: "/demo", label: "Schedule Demo", variant: "primary" },
@@ -422,6 +429,8 @@ const useCases: Record<
 		cta: {
 			title: "Transform Your Educational Institution",
 			subtitle: "Join leading schools and universities using our platform",
+			imageSrc:
+				"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 			description:
 				"Schedule a demo to see how we can help improve learning outcomes and institutional efficiency.",
 			callsToAction: [
