@@ -39,19 +39,23 @@
 	]}
 	style:--tw-duration="{DURATION}ms"
 >
-	<div class="section-px container mx-auto grid grid-cols-2 py-3">
+	<div class="section-px container mx-auto grid grid-cols-[auto_1fr] gap-8 py-3">
 		<a href="/" class="flex items-center gap-3.5">
 			<Logo class="z-50 size-7" />
 
-			<span class="hidden font-medium lg:inline">{CONFIG.companyName}</span>
+			<span class="font-medium">{CONFIG.companyName}</span>
 		</a>
 
 		<!-- items + cta -->
-		<div class="debug">
-			{#if mobile.current}
-				<MobileNav items={navItems} isTouchDevice={touch.current} />
+		<div class="">
+			{#if mobile?.current}
+				<div class="lg:hidden">
+					<MobileNav items={navItems} />
+				</div>
 			{:else}
-				<DesktopNav items={navItems} />
+				<hidden class="lg-block">
+					<DesktopNav items={navItems} />
+				</hidden>
 			{/if}
 		</div>
 	</div>

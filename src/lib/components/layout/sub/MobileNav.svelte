@@ -103,13 +103,13 @@
 	]}
 	data-show={isMenuOpen || null}
 >
-	<ul class="nav-list divide-y-gray-100 container mx-auto divide-y">
+	<ul class="nav-list container mx-auto divide-y *:border-gray-200">
 		{#each items as item, index}
 			{@render linkOrGroup(item, index)}
 		{/each}
 	</ul>
 
-	<div class="section-px container mx-auto w-full">
+	<div class="section-px section-pb container mx-auto w-full">
 		<Button size="lg" variant="primary" class="z-0 w-full md:w-auto" href={cta.href}
 			>{cta.label}</Button
 		>
@@ -133,14 +133,14 @@
 
 {#snippet linkOrGroup(item: NavItem, index: number)}
 	{#if item.children}
-		<details
-			class="section-px group nav-item transition-all duration-300 ease-out [--offset:1] group-[[data-show]]/nav-list:![--offset:0]"
-		>
+		<details class="group transition-all duration-300 ease-out">
 			<summary
-				class="text-muted-foreground flex cursor-pointer list-none items-center justify-between"
-				>{item.label} <IconChevronRight /></summary
+				class="section-px nav-item text-title2 text-foreground hover:bg-muted flex cursor-pointer list-none items-center justify-between transition-all select-none group-open:font-medium"
+				>{item.label}
+				<IconChevronRight class="transition duration-300 ease-out group-open:rotate-90" /></summary
 			>
-			<ul class="mt-2 flex flex-col gap-2.5 pl-4">
+
+			<ul class="my-3 grid">
 				{#each item.children as child, childIndex}
 					{@render linkOrGroup(child, childIndex)}
 				{/each}
@@ -149,17 +149,16 @@
 	{:else}
 		<a
 			href={item?.href}
-			class="section-px group nav-item flex flex-col transition-all duration-300 ease-out [--offset:1] group-[[data-show]]/nav-list:![--offset:0]"
+			class="section-px group nav-item hover:bg-muted text-title2 flex flex-col transition-all duration-300 ease-out"
 			aria-label={item.label}
 		>
 			<span
 				style:transition-delay="{index * 150}ms"
-				class="text-foreground font-medium transition-all duration-500 ease-out [clip-path:inset(0)]"
+				class="text-foreground transition-all duration-500 ease-out"
 			>
 				<span
 					style:transition-delay="{index * 50}ms"
-					class="inline-block translate-y-[calc(200%*var(--offset))] opacity-[calc(1-var(--offset))] transition duration-300 ease-out"
-					>{item.label}</span
+					class="inline-block transition duration-300 ease-out">{item.label}</span
 				>
 			</span>
 		</a>
