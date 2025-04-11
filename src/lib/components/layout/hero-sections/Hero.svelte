@@ -30,7 +30,7 @@
 
 <script lang="ts">
 	// Components
-	import AnimateText from "../animation/AnimateText.svelte";
+	import AnimateText from "$lib/components/animation/AnimateText.svelte";
 	import Button from "$lib/components/ui/Button.svelte";
 
 	// Constants
@@ -43,6 +43,7 @@
 
 	// Types
 	type Props = {
+		centered?: boolean;
 		title: string;
 		subtitle: string;
 		imageSrc?: string;
@@ -52,18 +53,37 @@
 		}>; // A maximum of two calls to action, with the first one being primary and the second one being secondary
 	};
 
-	let { title, subtitle, imageSrc, callsToAction = [cta] }: Props = $props();
+	let { title, subtitle, imageSrc, callsToAction = [cta], centered = false }: Props = $props();
 </script>
 
 <div class="bg-background">
 	<header
-		class="section-px container mx-auto grid items-end gap-16 gap-y-9 py-12 pt-24 text-balance xl:grid-cols-[1fr_auto]"
+		class={[
+			"section-px container mx-auto grid items-end gap-16 gap-y-9 py-12 pt-24 text-balance",
+			centered ? "place-items-center text-center" : " xl:grid-cols-[1fr_auto]"
+		]}
 		data-enter-container
 	>
-		<h1 class="text-display w-full" data-enter>
-			<span class="block"><AnimateText text={title} /></span>
-			<span class="text-emphasis-dim block"><AnimateText text={subtitle} /></span>
-		</h1>
+		<div class="grid gap-6" class:max-w-prose={centered}>
+			<h1 class="text-display w-full" data-enter>
+				<span class="block"><AnimateText text={title} /></span>
+				{#if !centered}
+					<span class="text-emphasis-dim block"><AnimateText text={subtitle} /></span>
+				{/if}
+			</h1>
+
+			{#if centered}
+				<p
+					data-enter
+					class={[
+						"text-muted-foreground text-headline mx-auto block max-w-[45ch] transition duration-500 ease-out"
+						// isTitleComplete ? "opacity-100" : "translate-y-2 opacity-0 blur-sm"
+					]}
+				>
+					{subtitle}
+				</p>
+			{/if}
+		</div>
 
 		{#if callsToAction.length > 0}
 			<div class="flex gap-4" data-enter>

@@ -14,7 +14,7 @@ Do not modify this file, as it is generated.
 	import Logo from "../Logo.svelte";
 
 	// Constants
-	import { METADATA } from "$lib/content";
+	import { CONFIG } from "$lib/content";
 	import { cta, navigation } from "$lib/navigation";
 
 	// Utils
@@ -23,6 +23,7 @@ Do not modify this file, as it is generated.
 	import { computePosition, autoUpdate, size, shift } from "@floating-ui/dom";
 	import { animate } from "motion";
 	import { scrollY } from "svelte/reactivity/window";
+	import { navHeight } from "$lib/state/nav.svelte";
 
 	// State
 	const DURATION = 500;
@@ -176,6 +177,7 @@ Do not modify this file, as it is generated.
 </svelte:head>
 
 <div
+	bind:clientHeight={navHeight.current}
 	class={[
 		"sticky top-0 left-0 z-50 border-b backdrop-blur-lg transition",
 		scrollY.current !== 0 ? "border-border bg-background/95" : " bg-background border-transparent"
@@ -213,7 +215,7 @@ Do not modify this file, as it is generated.
 		<!-- Mobile Nav -->
 		<a href="/" class="flex items-center gap-3.5">
 			<Logo class="z-50 size-7" />
-			<span class="hidden font-medium lg:inline">{METADATA.companyName}</span>
+			<span class="hidden font-medium lg:inline">{CONFIG.companyName}</span>
 		</a>
 
 		<!-- Desktop nav -->

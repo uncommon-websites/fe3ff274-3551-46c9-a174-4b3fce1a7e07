@@ -3,7 +3,7 @@
 	/* Typography Scale */
 
 	.text-display {
-		@apply text-[2.025rem] leading-[1.1] font-normal lg:text-[2.7rem];
+		@apply text-[2.025rem] leading-[1.1] font-normal lg:text-[3.25rem];
 		letter-spacing: -0.0055em;
 	}
 
@@ -45,7 +45,7 @@
 	}
 
 	.text-caption {
-		@apply tracking-normal] text-sm leading-[1.5] font-normal;
+		@apply text-sm leading-[1.5] font-normal tracking-normal;
 	}
 
 	.text-footnote {
