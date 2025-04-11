@@ -55,7 +55,7 @@
 	let { title, subtitle, imageSrc, callsToAction = [cta] }: Props = $props();
 </script>
 
-<div class="bg-[var(--color-bg-secondary)] w-full">
+<div class="w-full bg-[var(--color-bg-secondary)]">
 	<header
 		class="section-px container mx-auto grid items-end gap-16 gap-y-9 py-12 pt-24 text-balance xl:grid-cols-[1fr_auto]"
 		data-enter-container

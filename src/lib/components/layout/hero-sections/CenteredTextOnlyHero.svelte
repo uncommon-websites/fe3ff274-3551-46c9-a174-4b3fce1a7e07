@@ -18,20 +18,21 @@ Takes up the full viewport height and centers content vertically.
 	type Props = {
 		title: string;
 		subtitle: string;
+		imageSrc: string;
 		callsToAction?: Array<{
 			href: string;
 			label: string;
 		}>; // A maximum of two calls to action, with the first one being primary and the second one being secondary
 	};
 
-	let { title, subtitle, callsToAction = [cta] }: Props = $props();
+	let { title, subtitle, callsToAction = [cta], imageSrc }: Props = $props();
 </script>
 
 <div
 	class="bg-background relative isolate flex h-[calc(100vh-var(--nav-height))] items-center justify-center"
 >
 	<div
-		style:background-image="url('https://replicate.delivery/xezq/OW3T5q5t5FL0CZYmhCvhNTbUUsuBT6g3n0BXpkdoGXffwthUA/tmpgwst0qgk.png')"
+		style:background-image="url('{imageSrc}')"
 		class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
 	></div>
 

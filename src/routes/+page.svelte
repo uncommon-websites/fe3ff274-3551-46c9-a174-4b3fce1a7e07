@@ -1,7 +1,4 @@
 <script lang="ts">
-	// Types
-	import type { PageProps } from "./$types";
-
 	// Components
 	import UseCases from "$lib/components/layout/UseCases.svelte";
 	import Summary from "$lib/components/layout/Summary.svelte";
@@ -10,14 +7,13 @@
 	import CallToAction from "$lib/components/layout/CallToAction.svelte";
 	import AboutTeaser from "$lib/components/layout/AboutTeaser.svelte";
 	import LogoScroller from "$lib/components/layout/LogoScroller.svelte";
-	import CenteredTextOnlyHero from "$lib/components/layout/hero-sections/CenteredTextOnlyHero.svelte";
+	import CustomerCardHero from "$lib/components/layout/hero-sections/CustomerCardHero.svelte";
 </script>
 
-<CenteredTextOnlyHero
+<CustomerCardHero
 	title="Elevate your business with thoughtful design"
 	subtitle="Solutions that enhance user experience, and improve visual communication."
-/>
-<!-- customers={[
+	customers={[
 		{
 			name: "Jane Smith",
 			position: "CTO at Tech Innovations",
@@ -49,7 +45,8 @@
 			imageSrc:
 				"https://plus.unsplash.com/premium_photo-1708276242787-387acf1bbd4b?q=80&w=3735&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 		}
-	]} -->
+	]}
+/>
 <LogoScroller label="" />
 
 <Summary
