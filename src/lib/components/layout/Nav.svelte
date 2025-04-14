@@ -13,7 +13,7 @@
 
 	// State
 	const touch = new MediaQuery("(hover: none) and (pointer: coarse)");
-	const mobile = new MediaQuery("(max-width: 768px)");
+	const mobile = new MediaQuery("(max-width: 1024px)");
 
 	const DURATION = 500;
 
