@@ -4,10 +4,6 @@
 		{
 			"command": "pnpm install",
 			"name": "Installing Dependencies"
-		},
-		{
-			"command": "pnpm dev --host 0.0.0.0",
-			"name": "Starting Development Server"
 		}
 	],
 
