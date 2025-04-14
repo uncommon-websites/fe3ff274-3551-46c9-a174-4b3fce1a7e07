@@ -170,4 +170,10 @@
 	.nav-item {
 		@apply py-2.5;
 	}
+
+	/* Hide default details marker */
+	:global(summary::marker),
+	:global(summary::-webkit-details-marker) {
+		display: none;
+	}
 </style>

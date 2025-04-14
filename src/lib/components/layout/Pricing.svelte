@@ -115,8 +115,8 @@ Please update features according to the company's product offering. Do not remov
 		tiers = [
 			{
 				name: "Starter",
-				monthlyPrice: 9,
-				yearlyPrice: 7.2, // 20% savings
+				monthlyPrice: 9.99,
+				yearlyPrice: 7.99, // 20% savings
 				description: "Perfect for individuals and small projects",
 				features: [
 					"Up to 5 projects",
@@ -131,8 +131,8 @@ Please update features according to the company's product offering. Do not remov
 			},
 			{
 				name: "Pro",
-				monthlyPrice: 29,
-				yearlyPrice: 23.2, // 20% savings
+				monthlyPrice: 29.99,
+				yearlyPrice: 23.99, // 20% savings
 				description: "For growing teams and businesses",
 				features: [
 					"Unlimited projects",

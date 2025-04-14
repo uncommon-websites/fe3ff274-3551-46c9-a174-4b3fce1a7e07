@@ -36,26 +36,6 @@ type UseCase = {
 			icon: string;
 		}>;
 	};
-	useCases: {
-		title: string;
-		subtitle: string;
-		items: Array<{
-			title: string;
-			description: string;
-			imageSrc: string;
-		}>;
-	};
-	cta: {
-		title: string;
-		subtitle: string;
-		description: string;
-		imageSrc: string;
-		callsToAction: Array<{
-			href: string;
-			label: string;
-			variant: string;
-		}>;
-	};
 };
 
 // Constants
@@ -118,27 +98,7 @@ const healthcareUseCase: UseCase = {
 			}
 		]
 	},
-	useCases: {
-		title: "Healthcare Applications",
-		subtitle: "How healthcare organizations leverage our platform",
-		items: [
-			{
-				title: "Care Coordination",
-				description: "Coordinate care across providers and settings for better patient outcomes",
-				imageSrc: "/images/use-cases/care-coordination.jpg"
-			},
-			{
-				title: "Revenue Cycle Management",
-				description: "Optimize billing processes and reduce claim denials",
-				imageSrc: "/images/use-cases/revenue-cycle.jpg"
-			},
-			{
-				title: "Population Health",
-				description: "Identify at-risk patients and manage care for specific populations",
-				imageSrc: "/images/use-cases/population-health.jpg"
-			}
-		]
-	},
+
 	cta: {
 		title: "Elevate Your Healthcare Practice",
 		subtitle: "Join leading healthcare organizations using our platform",
@@ -213,28 +173,7 @@ const financeUseCase: UseCase = {
 			}
 		]
 	},
-	useCases: {
-		title: "Financial Success Stories",
-		subtitle: "How financial institutions leverage our platform",
-		items: [
-			{
-				title: "Wealth Management",
-				description: "Personalized investment strategies based on client goals and risk tolerance",
-				imageSrc: "/images/use-cases/wealth-management.jpg"
-			},
-			{
-				title: "Banking Operations",
-				description: "Streamlined processes for improved customer service and reduced costs",
-				imageSrc: "/images/use-cases/banking-operations.jpg"
-			},
-			{
-				title: "Financial Planning",
-				description:
-					"Comprehensive tools for individuals and businesses to achieve financial goals",
-				imageSrc: "/images/use-cases/financial-planning.jpg"
-			}
-		]
-	},
+
 	cta: {
 		title: "Transform Your Financial Services",
 		subtitle: "Join leading financial institutions already using our platform",
@@ -310,27 +249,7 @@ const technologyUseCase: UseCase = {
 			}
 		]
 	},
-	useCases: {
-		title: "Tech Success Stories",
-		subtitle: "How technology companies leverage our platform",
-		items: [
-			{
-				title: "Continuous Integration",
-				description: "Automate testing and deployment for faster release cycles",
-				imageSrc: "/images/use-cases/continuous-integration.jpg"
-			},
-			{
-				title: "Product Development",
-				description: "Streamline the entire product lifecycle from ideation to launch",
-				imageSrc: "/images/use-cases/product-development.jpg"
-			},
-			{
-				title: "Technical Support",
-				description: "Improve customer satisfaction with integrated support tools",
-				imageSrc: "/images/use-cases/technical-support.jpg"
-			}
-		]
-	},
+
 	cta: {
 		title: "Elevate Your Tech Company",
 		subtitle: "Join innovative technology companies using our platform",
@@ -405,27 +324,7 @@ const educationUseCase = {
 			}
 		]
 	},
-	useCases: {
-		title: "Education Success Stories",
-		subtitle: "How educational institutions leverage our platform",
-		items: [
-			{
-				title: "Personalized Learning",
-				description: "Adapt educational content to individual student needs and learning styles",
-				imageSrc: "/images/use-cases/personalized-learning.jpg"
-			},
-			{
-				title: "Remote Education",
-				description: "Deliver quality instruction regardless of physical location",
-				imageSrc: "/images/use-cases/remote-education.jpg"
-			},
-			{
-				title: "Professional Development",
-				description: "Support educator growth with targeted training opportunities",
-				imageSrc: "/images/use-cases/professional-development.jpg"
-			}
-		]
-	},
+
 	cta: {
 		title: "Transform Your Educational Institution",
 		subtitle: "Join leading schools and universities using our platform",
@@ -454,5 +353,5 @@ export const load: PageLoad = async ({ params }) => {
 		return {};
 	}
 
-	return useCases[usecase as keyof typeof useCases];
+	return useCases[usecase as keyof typeof useCases] ?? healthcare;
 };
