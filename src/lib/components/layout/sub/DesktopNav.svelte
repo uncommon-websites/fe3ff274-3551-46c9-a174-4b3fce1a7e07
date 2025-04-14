@@ -11,10 +11,6 @@
 
 	// Props
 	const { items }: { items: typeof navigation } = $props();
-
-	function handleValueChange(value: string) {
-		console.log("Selected value:", value);
-	}
 </script>
 
 <div
@@ -25,10 +21,7 @@
 		"[--inner-radius:calc(var(--outer-radius)-var(--gap))]"
 	]}
 >
-	<NavigationMenu.Root
-		class="text-foreground relative z-10 flex justify-end"
-		onValueChange={handleValueChange}
-	>
+	<NavigationMenu.Root class="text-foreground relative z-10 flex justify-end">
 		<NavigationMenu.List class="group flex list-none items-center justify-center gap-5 p-1">
 			{#each items as item}
 				<NavigationMenu.Item
