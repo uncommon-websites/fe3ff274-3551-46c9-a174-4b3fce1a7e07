@@ -98,7 +98,7 @@
 <div
 	id="nav"
 	class={[
-		"items-between group/nav-list bg-background fixed inset-0 -z-10 m-0 grid h-[100dvh] content-between overflow-y-auto pt-32 transition duration-500 ease-out lg:hidden",
+		"items-between group/nav-list bg-background fixed inset-0 -z-10 m-0 grid h-[100dvh] content-between overflow-y-auto pt-32 transition duration-500 ease-out",
 		"pointer-events-none translate-y-[-100%] data-[show]:pointer-events-auto data-[show]:translate-y-0"
 	]}
 	data-show={isMenuOpen || null}
@@ -140,7 +140,9 @@
 				<IconChevronRight class="transition duration-300 ease-out group-open:rotate-90" /></summary
 			>
 
-			<ul class="my-3 grid">
+			<ul
+				class="my-3 grid transition-all [clip-path:inset(0,0,100%,0)] group-open:[clip-path:inset(0)]"
+			>
 				{#each item.children as child, childIndex}
 					{@render linkOrGroup(child, childIndex)}
 				{/each}

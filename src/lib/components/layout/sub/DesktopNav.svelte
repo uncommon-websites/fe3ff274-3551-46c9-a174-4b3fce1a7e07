@@ -1,16 +1,18 @@
 <script lang="ts">
-	// Types
+	type Props = {
+		items: typeof navigation;
+	};
 
 	// Components
 	import Button from "$lib/components/ui/Button.svelte";
-
-	// Utils
-	import { cta, navigation } from "$lib/navigation";
 	import { NavigationMenu } from "bits-ui";
 	import DesktopNavDropdown from "./_DesktopNavDropdown.svelte";
 
+	// Utils
+	import { cta, navigation } from "$lib/navigation";
+
 	// Props
-	const { items }: { items: typeof navigation } = $props();
+	const { items }: Props = $props();
 </script>
 
 <div
@@ -42,7 +44,7 @@
 				<div class="bg-border relative top-[70%] size-2.5 rotate-[45deg] rounded-tl-[2px]"></div>
 			</NavigationMenu.Indicator>
 		</NavigationMenu.List>
-		<div class="absolute top-full left-0 flex w-full justify-center perspective-[2000px]">
+		<div class="absolute top-full right-0 justify-center perspective-[2000px]">
 			<NavigationMenu.Viewport
 				forceMount
 				class="text-popover-foreground bg-background data-[state=closed]:animate-scale-out data-[state=open]:animate-scale-in border-border  relative mt-2.5 h-[var(--bits-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-(--outer-radius) border p-(--gap) shadow-lg transition-[width,_height] duration-200 data-[state=closed]:pointer-events-none data-[state=closed]:translate-y-4 data-[state=closed]:opacity-0 sm:w-[var(--bits-navigation-menu-viewport-width)]"
@@ -63,19 +65,23 @@
 	:global([data-navigation-menu-content]) {
 		position: absolute;
 		top: 0;
-		left: 0;
+		right: 0;
 		animation-duration: 200ms;
-		animation-timing-function: ease;
+		animation-timing-function: var(--ease-in-out);
 	}
+
 	:global([data-motion="from-start"]) {
 		animation-name: enter-from-left;
 	}
+
 	:global([data-motion="from-end"]) {
 		animation-name: enter-from-right;
 	}
+
 	:global([data-motion="to-start"]) {
 		animation-name: exit-to-left;
 	}
+
 	:global([data-motion="to-end"]) {
 		animation-name: exit-to-right;
 	}
