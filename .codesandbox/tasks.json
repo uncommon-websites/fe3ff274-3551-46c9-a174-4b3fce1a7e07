@@ -2,8 +2,12 @@
 	// These tasks will run in order when initializing your CodeSandbox project.
 	"setupTasks": [
 		{
-			"name": "Installing Dependencies",
-			"command": "pnpm install"
+			"command": "pnpm install",
+			"name": "Installing Dependencies"
+		},
+		{
+			"command": "pnpm dev --host 0.0.0.0",
+			"name": "Starting Development Server"
 		}
 	],
 
@@ -19,38 +23,31 @@
 		},
 		"build": {
 			"name": "build",
-			"command": "pnpm build",
-			"runAtStart": false
+			"command": "pnpm build"
 		},
 		"preview": {
 			"name": "preview",
-			"command": "pnpm preview",
-			"runAtStart": false
+			"command": "pnpm preview"
 		},
 		"prepare": {
 			"name": "prepare",
-			"command": "pnpm prepare",
-			"runAtStart": false
+			"command": "pnpm prepare"
 		},
 		"check": {
 			"name": "check",
-			"command": "pnpm check",
-			"runAtStart": false
+			"command": "pnpm check"
 		},
 		"check:watch": {
 			"name": "check:watch",
-			"command": "pnpm check:watch",
-			"runAtStart": false
+			"command": "pnpm check:watch"
 		},
 		"format": {
 			"name": "format",
-			"command": "pnpm format",
-			"runAtStart": false
+			"command": "pnpm format"
 		},
 		"lint": {
 			"name": "lint",
-			"command": "pnpm lint",
-			"runAtStart": false
+			"command": "pnpm lint"
 		}
 	}
 }
