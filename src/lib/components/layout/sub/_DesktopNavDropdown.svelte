@@ -24,28 +24,25 @@
 </NavigationMenu.Trigger>
 
 <NavigationMenu.Content
-	class="data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left absolute top-0 left-0 w-full data-[state=closed]:hidden sm:w-auto"
+	class="data-[motion=from-end]:animate-enter-from-right data-[motion=from-start]:animate-enter-from-left data-[motion=to-end]:animate-exit-to-right data-[motion=to-start]:animate-exit-to-left top-0 left-0 w-max data-[state=closed]:hidden "
 	forceMount
 >
-	<div
-		class={[
-			"grid gap-(--gap) p-(--gap)"
-			// hasImages && "aspect-[2/1] min-w-[500px] grid-cols-2 items-start"
-		]}
-	>
-		<!-- {#if hasImages}
-			<div class="grid">
+	<div class={["grid min-w-40 gap-(--gap) p-(--gap)", hasImages && "grid-cols-2 items-start"]}>
+		{#if hasImages}
+			<div
+				class="relative grid aspect-square size-full max-h-full max-w-84 overflow-hidden rounded-(--inner-radius) bg-gray-100"
+			>
 				{#each item.children as child, index}
 					<img
 						src={child.image}
 						alt=""
-						class="grid-center aspect-square h-full max-w-full object-cover transition duration-300 ease-out"
+						class="grid-center inset-0 size-full object-cover transition duration-300 ease-out"
 						class:opacity-100={index === activeImageIndex}
 						class:opacity-0={index !== activeImageIndex}
 					/>
 				{/each}
 			</div>
-		{/if} -->
+		{/if}
 		<ul class="grid w-full list-none content-start items-start">
 			{#each item.children as child, index}
 				<li
@@ -55,9 +52,14 @@
 				>
 					<NavigationMenu.Link
 						href={child.href}
-						class="link hover:bg-muted  min-w-40 rounded-(--inner-radius) px-3.5 py-3 leading-none no-underline outline-hidden transition-colors select-none"
-					>
-						{child.label}
+						class="link hover:bg-muted grid grid-flow-row rounded-(--inner-radius) px-3.5 py-3 leading-none font-medium no-underline outline-hidden transition-colors select-none"
+						><div class="grid gap-2">
+							<span class="inline-block">{child.label}</span>
+
+							{#if child.description}
+								<span class="text-muted-foreground inline-block">{child.description}</span>
+							{/if}
+						</div>
 					</NavigationMenu.Link>
 				</li>
 			{/each}

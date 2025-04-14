@@ -32,7 +32,7 @@
 
 <ul class="flex items-center justify-end gap-5">
 	<div
-		class="debug absolute inset-0 bg-red-500 transition-all duration-300"
+		class="debug border-border bg-popover absolute inset-0 rounded-xl border shadow-xl transition-all duration-300"
 		style:width="{width}px"
 		style:height="{height}px"
 		style:top="{y}px"
@@ -59,7 +59,6 @@
 						<div
 							bind:this={dropdowns[index]}
 							class={[
-								"debug bg-white",
 								"rounded-(--outer-radius) [--outer-radius:var(--radius)]",
 								"p-(--gap) [--gap:--spacing(1))]",
 								"[--inner-radius:calc(var(--outer-radius)-var(--gap))]"

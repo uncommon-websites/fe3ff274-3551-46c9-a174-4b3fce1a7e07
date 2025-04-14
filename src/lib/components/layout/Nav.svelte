@@ -53,9 +53,9 @@
 					<MobileNav items={navItems} />
 				</div>
 			{:else}
-				<hidden class="lg-block">
+				<div class="hidden lg:block">
 					<DesktopNav items={navItems} />
-				</hidden>
+				</div>
 			{/if}
 		</div>
 	</div>
