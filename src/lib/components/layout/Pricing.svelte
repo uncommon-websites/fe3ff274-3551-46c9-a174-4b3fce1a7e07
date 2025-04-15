@@ -320,7 +320,7 @@ Please update features according to the company's product offering. Do not remov
 			<div class="overflow-x-auto">
 				<table class="w-full border-collapse">
 					<!-- Sticky header with tier names -->
-					<thead class="sticky top-0 z-10 border-b border-gray-200">
+					<thead class="border-border sticky top-0 z-10 border-b">
 						<tr>
 							<th class="min-w-[120px] py-3 text-left">
 								<span class="sr-only">Feature</span>
@@ -332,7 +332,7 @@ Please update features according to the company's product offering. Do not remov
 							{/each}
 						</tr>
 					</thead>
-					<tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+					<tbody class="divide-border divide-y">
 						{#each features as feature}
 							<tr>
 								<td class="text-body py-3 pr-8 font-medium lg:pr-0 dark:text-white">

@@ -6,7 +6,6 @@ import Icons from "unplugin-icons/vite";
 export default defineConfig(({ mode }) => {
 	// Load env file based on mode
 	const env = loadEnv(mode, process.cwd(), "");
-	console.log(env.UNC_ENV);
 
 	return {
 		plugins: [

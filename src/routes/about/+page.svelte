@@ -7,6 +7,7 @@
 	import Story from "./Story.svelte";
 	import SecondaryHero from "$lib/components/layout/hero-sections/SecondaryHero.svelte";
 	import Culture from "$lib/components/layout/Culture.svelte";
+	import CenteredTextOnlyHero from "$lib/components/layout/hero-sections/CenteredTextOnlyHero.svelte";
 
 	// Constants
 	const values = [
@@ -24,6 +25,12 @@
 		}
 	];
 </script>
+
+<CenteredTextOnlyHero
+	title="Solving world hunger"
+	subtitle="one step at a time"
+	imageSrc="https://source.unsplash.com/random/?people"
+/>
 
 <SecondaryHero
 	title="Solving world hunger"

@@ -142,10 +142,10 @@
 			{#each testimonials as testimonial}
 				<article
 					class={[
-						"lg:container-xs lg:max-h-[60ch] lg:min-w-[50%] lg:grid-cols-[2fr_3fr]",
+						"lg:container-xs  lg:min-w-[50%] lg:grid-cols-[2fr_3fr]",
 						"items-between grid grid-cols-1 gap-8",
 						"bg-card dark:text-white",
-						"aspect-video max-w-full min-w-full",
+						"aspect-video max-w-full min-w-full xl:aspect-[auto]",
 						"transform-gpu transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform",
 						"rounded-(--outer-radius) p-(--gap)",
 						"border-border border contain-layout"
@@ -163,7 +163,7 @@
 						{/if}
 					</div>
 					<div class="flex flex-col justify-between gap-12">
-						<q class="text-title2 max-w-prose dark:text-white">{testimonial.quote}</q>
+						<q class="text-title2 max-w-prose">{testimonial.quote}</q>
 						<cite class="text-caption flex items-center gap-3 not-italic">
 							{#if testimonial.image}
 								<img

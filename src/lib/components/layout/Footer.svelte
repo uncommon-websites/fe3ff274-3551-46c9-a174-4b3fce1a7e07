@@ -31,9 +31,7 @@
 			{#each navigation
 				.filter((item) => item.showInFooter !== false)
 				.sort((a, b) => (b?.children?.length || 0) - (a?.children?.length || 0)) as section}
-				<div
-					class="inline-block text-gray-400 transition-all duration-300 ease-out dark:text-gray-700"
-				>
+				<div class="text-muted-foreground inline-block transition-all duration-300 ease-out">
 					<h3 class="text-caption text-xs" class:hidden={!section?.children}>
 						{section.label}
 					</h3>

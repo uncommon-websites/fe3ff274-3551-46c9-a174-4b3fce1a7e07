@@ -13,6 +13,7 @@ Takes up the full viewport height and centers content vertically.
 
 	// Constants
 	import { cta } from "$lib/navigation";
+	import LogoScroller from "../LogoScroller.svelte";
 
 	// Types
 	type Props = {
@@ -28,45 +29,48 @@ Takes up the full viewport height and centers content vertically.
 	let { title, subtitle, callsToAction = [cta], imageSrc }: Props = $props();
 </script>
 
-<div
-	class="bg-background relative isolate flex h-[calc(100vh-var(--nav-height))] items-center justify-center"
->
-	<div
-		style:background-image="url('{imageSrc}')"
-		class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
-	></div>
+<div class="grid h-[calc(100vh-var(--nav-height))] grid-rows-[1fr_auto]">
+	<div class="bg-background relative isolate flex items-center justify-center">
+		<div
+			style:background-image="url('{imageSrc}')"
+			class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
+		></div>
 
-	<header
-		class="section-px container mx-auto grid place-items-center text-center text-balance"
-		data-enter-container
-	>
-		<div class="grid max-w-prose gap-6">
-			<h1 class="text-display w-full text-balance" data-enter>
-				<span class="block"><AnimateText text={title} /></span>
-			</h1>
+		<header
+			class="section-px container mx-auto grid place-items-center text-center text-balance"
+			data-enter-container
+		>
+			<div class="grid max-w-prose gap-6">
+				<h1 class="text-display w-full text-balance" data-enter>
+					<span class="block"><AnimateText text={title} /></span>
+				</h1>
 
-			<p
-				data-enter
-				class="text-headline mx-auto block max-w-[45ch] text-pretty transition duration-500 ease-out"
-			>
-				{subtitle}
-			</p>
-		</div>
-
-		{#if callsToAction.length > 0}
-			<div class="mt-8 flex gap-4" data-enter>
-				{#each callsToAction as cta, index}
-					<Button href={cta.href} size="lg" variant="secondary" class="max-lg:hidden"
-						>{cta.label}</Button
-					>
-					<Button
-						href={cta.href}
-						size="md"
-						variant={index % 2 === 0 ? "secondary" : "ghost"}
-						class="lg:hidden">{cta.label}</Button
-					>
-				{/each}
+				<p
+					data-enter
+					class="text-headline mx-auto block max-w-[45ch] text-pretty transition duration-500 ease-out"
+				>
+					{subtitle}
+				</p>
 			</div>
-		{/if}
-	</header>
+
+			{#if callsToAction.length > 0}
+				<div class="mt-8 flex gap-4" data-enter>
+					{#each callsToAction as cta, index}
+						<Button href={cta.href} size="lg" variant="secondary" class="max-lg:hidden"
+							>{cta.label}</Button
+						>
+						<Button
+							href={cta.href}
+							size="md"
+							variant={index % 2 === 0 ? "secondary" : "ghost"}
+							class="lg:hidden">{cta.label}</Button
+						>
+					{/each}
+				</div>
+			{/if}
+		</header>
+	</div>
+	<div class="mx-auto">
+		<LogoScroller label={null} />
+	</div>
 </div>
