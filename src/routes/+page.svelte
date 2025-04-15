@@ -7,45 +7,13 @@
 	import CallToAction from "$lib/components/layout/CallToAction.svelte";
 	import AboutTeaser from "$lib/components/layout/AboutTeaser.svelte";
 	import LogoScroller from "$lib/components/layout/LogoScroller.svelte";
-	import CustomerCardHero from "$lib/components/layout/hero-sections/CustomerCardHero.svelte";
+	import Hero from "$lib/components/layout/hero-sections/Hero.svelte";
 </script>
 
-<CustomerCardHero
+<Hero
 	title="Elevate your business with thoughtful design"
 	subtitle="Solutions that enhance user experience, and improve visual communication."
-	customers={[
-		{
-			name: "Jane Smith",
-			position: "CTO at Tech Innovations",
-
-			imageSrc:
-				"https://images.unsplash.com/flagged/photo-1555475693-6e207bee0737?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-		},
-		{
-			name: "Michael Johnson",
-			position: "Director of Marketing at Global Solutions",
-			imageSrc:
-				"https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=3578&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-		},
-		{
-			name: "Sarah Williams",
-			position: "Product Designer at Future Systems",
-			imageSrc:
-				"https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?q=80&w=2586&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-		},
-		{
-			name: "Robert Chen",
-			position: "CEO at Apex Innovations",
-			imageSrc:
-				"https://plus.unsplash.com/premium_photo-1727942413448-2f06f240e743?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-		},
-		{
-			name: "Emily Rodriguez",
-			position: "Creative Director at Design Forward",
-			imageSrc:
-				"https://plus.unsplash.com/premium_photo-1708276242787-387acf1bbd4b?q=80&w=3735&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-		}
-	]}
+	imageSrc="/sample.png"
 />
 <LogoScroller label="" />
 
