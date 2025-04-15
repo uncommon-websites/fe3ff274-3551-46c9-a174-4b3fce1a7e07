@@ -26,28 +26,33 @@ Takes up the full viewport height and centers content vertically.
 		}>; // A maximum of two calls to action, with the first one being primary and the second one being secondary
 	};
 
-	let { title, subtitle, callsToAction = [cta], imageSrc }: Props = $props();
+	let {
+		title,
+		subtitle,
+		callsToAction = [cta],
+		imageSrc = "https://replicate.delivery/xezq/lQnI0U8akfw1eUrgmpEf1cy4T9genFxt32vXoMeuXsjzzgXkC/tmp7iuryuhw.png"
+	}: Props = $props();
 </script>
 
 <div class="grid h-[calc(100vh-var(--nav-height))] grid-rows-[1fr_auto]">
 	<div class="bg-background relative isolate flex items-center justify-center">
 		<div
 			style:background-image="url('{imageSrc}')"
-			class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
+			class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover brightness-20 after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
 		></div>
 
 		<header
-			class="section-px container mx-auto grid place-items-center text-center text-balance"
+			class="section-px container mx-auto grid items-end justify-start text-balance text-white"
 			data-enter-container
 		>
 			<div class="grid max-w-prose gap-6">
-				<h1 class="text-display w-full text-balance" data-enter>
+				<h1 class="text-display w-full text-balance text-shadow-lg" data-enter>
 					<span class="block"><AnimateText text={title} /></span>
 				</h1>
 
 				<p
 					data-enter
-					class="text-headline mx-auto block max-w-[45ch] text-pretty transition duration-500 ease-out"
+					class="text-headline block max-w-[45ch] text-pretty opacity-80 transition duration-500 ease-out text-shadow-lg"
 				>
 					{subtitle}
 				</p>

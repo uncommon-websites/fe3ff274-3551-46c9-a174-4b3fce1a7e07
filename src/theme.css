@@ -54,10 +54,10 @@
 	--radius-3xl: calc(var(--radius) * 4);
 	--radius-4xl: calc(var(--radius) * 5);
 }
-/*
-&:where([data-theme="dark"], [data-theme="dark"] *),
-[data-theme="dark"] {
-	@theme inline {
+
+/* Uncomment this next block for dark mode. Do not remove this line. */
+/* html[data-theme="dark"] {
+	@theme {
 		--color-background: var(--color-gray-950);
 		--color-foreground: var(--color-gray-50);
 		--color-card: var(--color-gray-900);

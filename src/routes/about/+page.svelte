@@ -27,9 +27,8 @@
 </script>
 
 <CenteredTextOnlyHero
-	title="Solving world hunger"
-	subtitle="one step at a time"
-	imageSrc="https://source.unsplash.com/random/?people"
+	title="Solving world hunger, one step at a time"
+	subtitle="Creating sustainable solutions for a better tomorrow"
 />
 
 <SecondaryHero
