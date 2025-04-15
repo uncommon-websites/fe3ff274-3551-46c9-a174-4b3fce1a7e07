@@ -26,12 +26,7 @@ Takes up the full viewport height and centers content vertically.
 		}>; // A maximum of two calls to action, with the first one being primary and the second one being secondary
 	};
 
-	let {
-		title,
-		subtitle,
-		callsToAction = [cta],
-		imageSrc = "https://replicate.delivery/xezq/lQnI0U8akfw1eUrgmpEf1cy4T9genFxt32vXoMeuXsjzzgXkC/tmp7iuryuhw.png"
-	}: Props = $props();
+	let { title, subtitle, callsToAction = [cta], imageSrc = "/sample.png" }: Props = $props();
 </script>
 
 <div class="grid h-[calc(100vh-var(--nav-height))] grid-rows-[1fr_auto]">
