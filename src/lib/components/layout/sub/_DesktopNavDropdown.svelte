@@ -52,12 +52,14 @@
 				>
 					<NavigationMenu.Link
 						href={child.href}
-						class="link hover:bg-muted grid grid-flow-row rounded-(--inner-radius) px-3.5 py-3 leading-none font-medium no-underline outline-hidden transition-colors select-none"
-						><div class="grid gap-2">
+						class="link hover:bg-muted grid max-w-full grid-flow-row rounded-(--inner-radius) px-3.5 py-3 leading-none font-medium no-underline outline-hidden transition-colors select-none"
+						><div class="grid max-h-[4em] max-w-[30ch] gap-2 leading-6 text-ellipsis">
 							<span class="inline-block">{child.label}</span>
 
 							{#if child.description}
-								<span class="text-muted-foreground inline-block">{child.description}</span>
+								<span class="text-muted-foreground inline-block max-h-[2em] truncate text-ellipsis"
+									>{child.description}</span
+								>
 							{/if}
 						</div>
 					</NavigationMenu.Link>
