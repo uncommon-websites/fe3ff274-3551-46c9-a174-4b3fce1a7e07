@@ -5,7 +5,7 @@
 	import { onMount } from "svelte";
 
 	// Types
-	type TeamMember = {
+	type Stakeholder = {
 		name: string;
 		position?: string;
 		bio?: string;
@@ -19,7 +19,7 @@
 		subtitle,
 		stakeholders
 	}: {
-		stakeholders: TeamMember[];
+		stakeholders: Stakeholder[];
 		title: string;
 		subtitle: string;
 		stakeholderType?: "team" | "investor";
@@ -79,7 +79,9 @@
 					]}
 					style={type === "join"
 						? ""
-						: `background-image: url('${image}'); background-position: center; background-size: cover;`}
+						: stakeholderType === "investor"
+							? ""
+							: `background-image: url('${image}'); background-position: center; background-size: cover;`}
 				>
 					{#if type === "team" && stakeholderType === "team"}
 						<div
@@ -87,6 +89,14 @@
 						>
 							<div class="linear-blur-down absolute right-0 bottom-0 left-0 h-[25%]"></div>
 						</div>
+					{/if}
+
+					{#if stakeholderType === "investor" && image}
+						<img
+							src={image}
+							alt=""
+							class="absolute top-1/2 left-1/2 size-[50%] max-h-10 -translate-x-1/2 -translate-y-1/2 object-contain opacity-70 saturate-0 dark:invert"
+						/>
 					{/if}
 
 					<div

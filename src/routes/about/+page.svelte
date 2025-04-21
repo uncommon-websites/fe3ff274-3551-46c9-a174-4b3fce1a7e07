@@ -81,15 +81,15 @@
 	stakeholders={[
 		{
 			name: "Point Nine Capital",
-			image: "/assets/logos/point-nine-capital-logo.svg"
+			image: "https://cdn.brandfetch.io/pointnine.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7"
 		},
 		{
 			name: "TSIC Ventures",
-			image: "/assets/logos/tsic-ventures-logo.svg"
+			image: "https://cdn.brandfetch.io/tiny.vc/w/400/h/400/logo?c=1a2b3c4d5e"
 		},
 		{
 			name: "Sequoia Capital",
-			image: "/assets/logos/sequoia-capital-logo.svg"
+			image: "https://cdn.brandfetch.io/sequoiacap.com/w/400/h/400/logo"
 		}
 	]}
 />
