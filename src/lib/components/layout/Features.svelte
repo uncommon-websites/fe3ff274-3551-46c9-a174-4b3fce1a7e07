@@ -18,7 +18,8 @@
 	const {
 		title,
 		subtitle,
-		features = []
+		features = [],
+		...rest
 	}: { title: string; subtitle: string; features: Feature[] } = $props();
 
 	let featureCountClass = $derived(
@@ -26,7 +27,7 @@
 	);
 </script>
 
-<section class="[--gap:--spacing(2)]">
+<section class="[--gap:--spacing(2)]" {...rest}>
 	<div class="section-px section-py container mx-auto grid">
 		<SectionHeader {title} {subtitle} />
 

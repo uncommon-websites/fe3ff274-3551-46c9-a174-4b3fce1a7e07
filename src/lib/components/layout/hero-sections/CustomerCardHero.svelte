@@ -41,7 +41,8 @@ It should ALWAYS have between 3 and 5 customers!
 		subtitle,
 		customers = [],
 		callsToAction = [cta],
-		centered = false
+		centered = false,
+		...rest
 	}: Props = $props();
 
 	onMount(() => {
@@ -65,7 +66,7 @@ It should ALWAYS have between 3 and 5 customers!
 	});
 </script>
 
-<div class="bg-background">
+<div class="bg-background" {...rest}>
 	<header
 		class={[
 			"section-px container mx-auto grid items-end gap-16 gap-y-9 text-balance",

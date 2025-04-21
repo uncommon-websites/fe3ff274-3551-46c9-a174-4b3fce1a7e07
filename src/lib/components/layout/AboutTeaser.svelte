@@ -13,10 +13,11 @@ A minimalist teaser for the about page.
 	// Components
 	import Button from "../ui/Button.svelte";
 	import ScrollText from "./sub/ScrollText.svelte";
-	import Summary from "./Summary.svelte";
 
 	// State
 	let sectionRef: HTMLElement;
+
+	let props = $props();
 
 	// Data
 	const teamMember: TeamMember = {
@@ -27,7 +28,7 @@ A minimalist teaser for the about page.
 	};
 </script>
 
-<section bind:this={sectionRef}>
+<section bind:this={sectionRef} {...props}>
 	<div class="section-px section-py container mx-auto">
 		<div class="relative mx-auto grid max-w-2xl place-items-center gap-16">
 			<ScrollText

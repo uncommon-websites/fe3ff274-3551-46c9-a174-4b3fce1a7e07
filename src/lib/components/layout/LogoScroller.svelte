@@ -13,7 +13,8 @@
 			"https://cdn.brandfetch.io/amazon.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
 			"https://cdn.brandfetch.io/google.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
 			"https://cdn.brandfetch.io/apple.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7"
-		]
+		],
+		...rest
 	}: {
 		paused?: boolean;
 		label?: string;
@@ -28,6 +29,7 @@
 	class="grid place-items-center gap-4 self-end py-4 {label ? 'sm:py-12' : 'sm:py-8'}"
 	class:!flex={layout === "horizontal"}
 	class:dark={mode === "dark"}
+	{...rest}
 >
 	{#if label}
 		<p

@@ -18,7 +18,8 @@
 	const {
 		title,
 		subtitle,
-		useCases = []
+		useCases = [],
+		...rest
 	}: { title: string; subtitle: string; useCases: UseCase[] } = $props();
 
 	let current = $state(0);
@@ -42,7 +43,7 @@
 	});
 </script>
 
-<section class="[--gap:--spacing(4)] [--inner-radius:calc(var(--radius)-var(--gap))]">
+<section class="[--gap:--spacing(4)] [--inner-radius:calc(var(--radius)-var(--gap))]" {...rest}>
 	<div class="section-px section-py container mx-auto grid">
 		<SectionHeader {title} {subtitle} />
 

@@ -9,7 +9,7 @@
 	};
 
 	// Props
-	let { testimonials }: { testimonials: Testimonial[] } = $props();
+	let { testimonials, ...rest }: { testimonials: Testimonial[] } = $props();
 
 	// State
 	let current = $state(0);
@@ -128,6 +128,7 @@
 	bind:this={wrapperRef}
 	class="text-pretty [--gap:--spacing(4)]"
 	style="height: calc(100vh * {testimonials.length});"
+	{...rest}
 >
 	<div
 		class="section-py section-px sticky top-0 flex min-h-screen w-full items-center overflow-hidden"

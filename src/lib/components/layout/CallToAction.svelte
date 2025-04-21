@@ -54,7 +54,8 @@
 		subtitle = "Join now",
 		description = "Ready to experience the difference? Join our community of satisfied customers and see how our solution can transform your workflow. ",
 		imageSrc = "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-		callsToAction = [cta]
+		callsToAction = [cta],
+		...rest
 	}: {
 		title?: string;
 		subtitle?: string;
@@ -64,7 +65,7 @@
 	} = $props();
 </script>
 
-<div class="">
+<div class="" {...rest}>
 	<section class="section-px section-py container mx-auto">
 		<div
 			class="bg-card border-border grid content-start items-center justify-between gap-(--gap) rounded-(--radius) border p-(--gap) text-balance [--gap:--spacing(8)] [--inner-radius:calc(var(--radius)-var(--gap))] [--radius:var(--radius-xl)] lg:grid-cols-[2fr_1fr]"

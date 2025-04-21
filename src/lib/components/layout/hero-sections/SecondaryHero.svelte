@@ -4,7 +4,8 @@
 	let {
 		title,
 		subtitle,
-		imageSrc = "https://source.unsplash.com/random/?people"
+		imageSrc = "https://source.unsplash.com/random/?people",
+		...rest
 	}: {
 		title: string;
 		subtitle: string;
@@ -12,7 +13,7 @@
 	} = $props();
 </script>
 
-<header class="border-b border-gray-100 dark:border-gray-900">
+<header class="border-b border-gray-100 dark:border-gray-900" {...rest}>
 	<div class="text-title3 section-px section-py container mx-auto grid gap-16 gap-y-0">
 		<SectionHeader {title} {subtitle} size="lg" />
 		<div class="aspect-video overflow-clip rounded-xl bg-gray-100">
