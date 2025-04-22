@@ -14,18 +14,18 @@
 	title="Elevate your business with thoughtful design"
 	subtitle="Solutions that enhance user experience, and improve visual communication."
 	imageSrc="/sample.png"
-	hidden
+	generating
 />
-<LogoScroller label="" hidden />
+<LogoScroller label="" generating />
 
 <Summary
-	hidden
+	generating
 	title="What we do"
 	text="Our technology delivers measurable results through secure, adaptable solutions that directly increase productivity and drive growth."
 />
 
 <Testimonials
-	hidden
+	generating
 	testimonials={[
 		{
 			name: "Jane Smith",
@@ -58,7 +58,7 @@
 />
 
 <Features
-	hidden
+	generating
 	title="Features"
 	subtitle="Some features"
 	features={[
@@ -81,7 +81,7 @@
 />
 
 <UseCases
-	hidden
+	generating
 	title="Use Cases"
 	subtitle="Real-world applications for your business needs"
 	useCases={[
@@ -121,5 +121,5 @@
 	]}
 />
 
-<AboutTeaser hidden />
-<CallToAction hidden />
+<AboutTeaser generating />
+<CallToAction generating />

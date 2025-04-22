@@ -178,4 +178,23 @@
 	img {
 		@apply rounded-xs;
 	}
+
+	[generating] {
+		@apply relative;
+		margin: 1rem;
+		/* aspect-ratio: 16/9; */
+		@apply min-h-80;
+		transition: all 300ms var(--ease-out);
+
+		&::before {
+			content: "";
+			@apply absolute inset-0 z-50 flex items-center justify-center border border-gray-100 bg-gray-50 text-gray-400;
+
+			filter: brightness(100%) saturate(0%);
+		}
+		&::after {
+			content: "Generating...";
+			@apply absolute inset-0 z-50 flex animate-pulse items-center justify-center text-gray-400;
+		}
+	}
 }
