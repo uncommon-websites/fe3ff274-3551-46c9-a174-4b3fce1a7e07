@@ -63,7 +63,7 @@
 </script>
 
 <div bind:this={containerElement} class={classes}>
-	<span class=" inline-block">
+	<span class="inline-block">
 		{#each words as word}
 			<span>
 				<span class="word relative inline-block transition duration-150 ease-out">{word}</span>{" "}

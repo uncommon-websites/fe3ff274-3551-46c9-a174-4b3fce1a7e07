@@ -39,21 +39,23 @@ Takes up the full viewport height and centers content vertically.
 	<div class="bg-background relative isolate flex items-center justify-center">
 		<div
 			style:background-image="url('{imageSrc}')"
-			class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover brightness-20 after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
+			class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover brightness-100 after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
 		></div>
 
+		<div class="bg-background/50 absolute inset-0"></div>
+
 		<header
-			class="section-px container mx-auto grid items-end justify-start text-balance text-white"
+			class="section-px z-50 container mx-auto grid place-items-center text-center text-balance dark:text-white"
 			data-enter-container
 		>
-			<div class="grid max-w-prose gap-6">
-				<h1 class="text-display w-full text-balance text-shadow-lg" data-enter>
+			<div class="grid max-w-prose place-items-center justify-center gap-6">
+				<h1 class="text-display w-full text-balance dark:text-shadow-lg" data-enter>
 					<span class="block"><AnimateText text={title} /></span>
 				</h1>
 
 				<p
 					data-enter
-					class="text-headline block max-w-[45ch] text-pretty opacity-80 transition duration-500 ease-out text-shadow-lg"
+					class="text-headline block max-w-[45ch] text-pretty opacity-80 transition duration-500 ease-out dark:text-shadow-lg"
 				>
 					{subtitle}
 				</p>
@@ -62,7 +64,7 @@ Takes up the full viewport height and centers content vertically.
 			{#if callsToAction.length > 0}
 				<div class="mt-8 flex gap-4" data-enter>
 					{#each callsToAction as cta, index}
-						<Button href={cta.href} size="lg" variant="secondary" class="max-lg:hidden"
+						<Button href={cta.href} size="lg" variant="secondary" class="text-black max-lg:hidden"
 							>{cta.label}</Button
 						>
 						<Button
