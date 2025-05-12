@@ -13,7 +13,6 @@ Takes up the full viewport height and centers content vertically.
 
 	// Constants
 	import { cta } from "$lib/navigation";
-	import LogoScroller from "../LogoScroller.svelte";
 
 	// Types
 	type Props = {
@@ -39,7 +38,7 @@ Takes up the full viewport height and centers content vertically.
 	<div class="bg-background relative isolate flex items-center justify-center">
 		<div
 			style:background-image="url('{imageSrc}')"
-			class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover brightness-100 after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
+			class="absolute top-0 right-4 bottom-4 left-4 -z-10 rounded-(--radius-xl) bg-cover bg-center brightness-100 after:absolute after:inset-0 after:rounded-(--radius-xl) after:shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.3)]"
 		></div>
 
 		<div class="bg-background/50 absolute inset-0"></div>
@@ -48,8 +47,8 @@ Takes up the full viewport height and centers content vertically.
 			class="section-px z-50 container mx-auto grid place-items-center text-center text-balance dark:text-white"
 			data-enter-container
 		>
-			<div class="grid max-w-prose place-items-center justify-center gap-6">
-				<h1 class="text-display w-full text-balance dark:text-shadow-lg" data-enter>
+			<div class="grid max-w-prose place-items-center justify-center gap-6 lg:max-w-[80ch]">
+				<h1 class="text-display w-full text-balance lg:!text-7xl dark:text-shadow-lg" data-enter>
 					<span class="block"><AnimateText text={title} /></span>
 				</h1>
 
@@ -77,8 +76,5 @@ Takes up the full viewport height and centers content vertically.
 				</div>
 			{/if}
 		</header>
-	</div>
-	<div class="mx-auto">
-		<LogoScroller label={null} />
 	</div>
 </div>
