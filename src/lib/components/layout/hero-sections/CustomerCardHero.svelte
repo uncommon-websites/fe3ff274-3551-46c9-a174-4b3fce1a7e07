@@ -112,7 +112,7 @@ It should ALWAYS have between 3 and 5 customers!
 	</header>
 
 	<div
-		class="mt-4 grid flex-nowrap gap-(--card-gap) overflow-x-auto px-(--card-gap) whitespace-nowrap [--card-gap:calc(var(--radius)/2)] [--gap:--spacing(5)] max-lg:auto-cols-max max-lg:grid-flow-col md:whitespace-normal lg:grid-cols-5 lg:flex-wrap"
+		class="mt-4 grid flex-nowrap gap-(--card-gap) overflow-x-auto px-(--card-gap) whitespace-nowrap [--card-gap:calc(var(--radius)/2)] [--gap:--spacing(5)] max-lg:auto-cols-max max-lg:grid-flow-col md:whitespace-normal lg:grid-cols-4 lg:flex-wrap"
 	>
 		{#each customers as customer, index}
 			<div class="h-full overflow-clip">
