@@ -7,8 +7,7 @@
 	let {
 		text = "",
 		oncomplete = () => {},
-		show = $bindable(false),
-		block = $bindable(false)
+		show = $bindable(true)
 	}: { text: string; show?: boolean; oncomplete?: () => void } = $props();
 
 	// State
@@ -23,15 +22,15 @@
 		}
 	}
 
-	onMount(() => {
-		if (element) {
-			inView(element, (element, entry) => {
-				if (entry.isIntersecting) {
-					show = true;
-				}
-			});
-		}
-	});
+	// onMount(() => {
+	// 	if (element) {
+	// 		inView(element, (element, entry) => {
+	// 			if (entry.isIntersecting) {
+	// 				show = true;
+	// 			}
+	// 		});
+	// 	}
+	// });
 </script>
 
 <span class:show bind:this={element}>

@@ -1,3 +1,3 @@
 export const navHeight = $state({
-	current: 50
+	current: 58
 });
