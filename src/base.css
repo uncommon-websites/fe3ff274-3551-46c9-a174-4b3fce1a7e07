@@ -188,7 +188,7 @@
 
 		&::before {
 			content: "";
-			@apply absolute inset-0 z-50 flex items-center justify-center border border-gray-100 bg-gray-50 text-gray-400;
+			@apply absolute inset-0 z-50 flex items-center justify-center border border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-muted-foreground)];
 
 			filter: brightness(100%) saturate(0%);
 		}
