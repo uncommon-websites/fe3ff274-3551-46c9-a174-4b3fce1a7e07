@@ -49,6 +49,7 @@
 	}
 
 	.text-footnote {
-		@apply text-xs leading-[1.5] font-normal tracking-normal text-black/65;
+		@apply text-xs leading-[1.5] font-normal tracking-normal;
+		color: var(--color-muted-foreground);
 	}
 }

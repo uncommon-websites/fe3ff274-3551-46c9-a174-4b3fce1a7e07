@@ -186,24 +186,19 @@ Please update features according to the company's product offering. Do not remov
 		<SectionHeader {title} {subtitle} />
 
 		<div class="mb-8 flex justify-center">
-			<div class="inline-flex items-center rounded-full bg-gray-100 p-0.5 dark:bg-gray-800">
-				<Button
-					variant="ghost"
-					size="sm"
-					class=" {!annual ? 'bg-white shadow-sm dark:bg-gray-700' : ''}"
+			<div class="inline-flex items-center rounded-full bg-gray-200 p-0.5 gap-0.5">
+				<button
+					class="rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200 {!annual ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'}"
 					onclick={() => (annual = false)}
 				>
 					Monthly
-				</Button>
-				<Button
-					variant="ghost"
-					size="sm"
-					rounded
-					class={annual ? "bg-white shadow-sm dark:bg-gray-700" : ""}
+				</button>
+				<button
+					class="rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200 {annual ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'}"
 					onclick={() => (annual = true)}
 				>
-					Annual <span class="text-primary-600 dark:text-primary-400 text-footnote">Save 20%</span>
-				</Button>
+					Annual <span class="text-xs ml-1 text-gray-500">Save 20%</span>
+				</button>
 			</div>
 		</div>
 	</div>

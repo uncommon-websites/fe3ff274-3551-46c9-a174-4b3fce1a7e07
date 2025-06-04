@@ -79,7 +79,7 @@
 					<p class="text-headline text-emphasis-low">
 						{description}
 					</p>
-					<div class="flex flex-wrap gap-2">
+					<div class="flex flex-col md:flex-row md:flex-wrap gap-2 w-full">
 						{#each callsToAction as cta}
 							<Button class="w-full md:w-auto" href={cta.href} variant={cta.variant || "primary"}
 								>{cta.label}</Button

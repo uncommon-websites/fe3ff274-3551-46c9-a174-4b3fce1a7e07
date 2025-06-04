@@ -193,6 +193,7 @@
 <SecondaryHero
 	title="Join our team of innovators"
 	subtitle="We're looking for passionate people to help us build the future of digital experiences. Discover your next opportunity with us."
+	imageSrc="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
 />
 
 <!-- Why Join Us Section -->

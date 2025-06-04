@@ -14,29 +14,29 @@
 
 @theme inline {
 	/* Emphasis */
-	--color-emphasis-dim: var(--color-gray-400);
-	--color-emphasis-low: var(--color-gray-500);
-	--color-emphasis-medium: var(--color-gray-700);
-	--color-emphasis-high: var(--color-gray-950);
+	--color-emphasis-dim: var(--color-muted-foreground);
+	--color-emphasis-low: color-mix(in oklch, var(--color-foreground), var(--color-background) 30%);
+	--color-emphasis-medium: color-mix(in oklch, var(--color-foreground), var(--color-background) 15%);
+	--color-emphasis-high: var(--color-foreground);
 
 	/* Background colors */
-	--color-bg-primary: var(--color-white);
+	--color-bg-primary: var(--color-background);
 }
 
 :where([data-theme="dark"], [data-theme="dark"] *) {
 	:root {
-		--color-emphasis-dim: var(--color-gray-600);
-		--color-emphasis-low: var(--color-gray-500);
-		--color-emphasis-medium: var(--color-gray-300);
-		--color-emphasis-high: var(--color-gray-50);
+		--color-emphasis-dim: var(--color-muted-foreground);
+		--color-emphasis-low: color-mix(in oklch, var(--color-foreground), var(--color-background) 30%);
+		--color-emphasis-medium: color-mix(in oklch, var(--color-foreground), var(--color-background) 15%);
+		--color-emphasis-high: var(--color-foreground);
 
 		/* Background colors for dark mode */
-		--color-bg-primary: var(--color-gray-950);
-		--color-bg-secondary: var(--color-gray-900);
-		--color-bg-tertiary: var(--color-gray-800);
-		--color-bg-accent: var(--color-primary-900);
-		--color-bg-hover: var(--color-gray-800);
-		--color-bg-active: var(--color-gray-700);
+		--color-bg-primary: var(--color-background);
+		--color-bg-secondary: var(--color-card);
+		--color-bg-tertiary: var(--color-muted);
+		--color-bg-accent: var(--color-accent);
+		--color-bg-hover: var(--color-card-hover);
+		--color-bg-active: var(--color-accent);
 	}
 }
 
@@ -123,34 +123,96 @@
 
 @layer components {
 	[data-button-root] {
-		@apply focus-visible:outline-primary-500 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-medium transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50;
+		@apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-medium transition-colors disabled:pointer-events-none disabled:opacity-50;
+		color: var(--color-foreground);
+		border-radius: var(--radius);
+
+		&:focus-visible {
+			outline: 1px solid var(--color-ring);
+			outline-offset: 2px;
+		}
 
 		&[data-variant="primary"] {
-			@apply bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white;
+			background-color: var(--color-primary);
+			color: var(--color-primary-foreground);
+
+			&:hover {
+				background-color: var(--color-primary);
+				filter: brightness(0.9);
+			}
+
+			&:active {
+				background-color: var(--color-primary);
+				filter: brightness(0.8);
+			}
 		}
 
 		&[data-variant="secondary"] {
-			@apply bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300 dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-700 dark:active:bg-gray-600;
+			background-color: color-mix(in oklch, var(--color-card), var(--color-black) 2%);
+			color: var(--color-foreground);
+			border: 1px solid color-mix(in oklch, var(--color-white), transparent 85%);
+
+			&:hover {
+				background-color: var(--color-card-hover);
+			}
+
+			&:active {
+				background-color: var(--color-card-hover);
+				filter: brightness(0.95);
+			}
 		}
 
 		&[data-variant="outline"] {
-			@apply border border-gray-300 bg-transparent text-gray-900 hover:bg-gray-100 active:bg-gray-200 dark:border-gray-700 dark:text-gray-50 dark:hover:bg-gray-800 dark:active:bg-gray-700;
+			border: 1px solid var(--color-border);
+			background-color: var(--color-background);
+			color: var(--color-foreground);
+
+			&:hover {
+				background-color: var(--color-accent);
+			}
+
+			&:active {
+				background-color: var(--color-accent);
+				filter: brightness(0.95);
+			}
 		}
 
 		&[data-variant="ghost"] {
-			@apply bg-transparent text-gray-900 hover:bg-gray-100 active:bg-gray-200 dark:text-gray-50 dark:hover:bg-gray-800 dark:active:bg-gray-700;
+			background-color: transparent;
+			color: var(--color-foreground);
+
+			&:hover {
+				background-color: var(--color-accent);
+			}
+
+			&:active {
+				background-color: var(--color-accent);
+				filter: brightness(0.95);
+			}
 		}
 
 		&[data-variant="link"] {
-			@apply text-primary-600 dark:text-primary-400 bg-transparent p-0 underline-offset-4 hover:underline;
+			background-color: transparent;
+			color: var(--color-primary);
+			padding: 0;
+			text-decoration: underline;
+			text-underline-offset: 4px;
+
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 
 		&[data-size="sm"] {
-			@apply rounded px-3 py-1.5 text-xs;
+			border-radius: var(--radius-sm);
+			padding: 0.375rem 0.75rem;
+			font-size: 0.75rem;
 		}
 
 		&[data-size="lg"] {
-			@apply rounded-lg px-5 py-2.5 text-base;
+			border-radius: var(--radius-lg);
+			padding: 0.625rem 1.25rem;
+			font-size: 1rem;
 		}
 	}
 
@@ -179,22 +241,25 @@
 		@apply rounded-xs;
 	}
 
-	[generating] {
+	/* [generating] {
 		@apply relative;
 		margin: 1rem;
-		/* aspect-ratio: 16/9; */
 		@apply min-h-80;
 		transition: all 300ms var(--ease-out);
 
 		&::before {
 			content: "";
-			@apply absolute inset-0 z-50 flex items-center justify-center border border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-muted-foreground)];
+			@apply absolute inset-0 z-50 flex items-center justify-center;
+			border: 1px solid var(--color-border);
+			background-color: var(--color-muted);
+			color: var(--color-muted-foreground);
 
 			filter: brightness(100%) saturate(0%);
 		}
 		&::after {
 			content: "Generating...";
-			@apply absolute inset-0 z-50 flex animate-pulse items-center justify-center text-gray-400;
+			@apply absolute inset-0 z-50 flex animate-pulse items-center justify-center;
+			color: var(--color-muted-foreground);
 		}
-	}
+	} */
 }

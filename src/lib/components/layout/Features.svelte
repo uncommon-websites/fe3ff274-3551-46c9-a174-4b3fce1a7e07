@@ -2,9 +2,15 @@
 	import Card from "../ui/Card.svelte";
 
 	// Types
+	import type { ComponentType } from "svelte";
+	
 	type Feature = {
 		title: string;
 		description: string;
+		icon?: ComponentType;
+		iconClass?: string;
+		imageSrc?: string;
+		imageAspect?: "16/9" | "9/16";
 		link?: {
 			href: string;
 			label: string;
@@ -48,6 +54,10 @@ Make the feature descriptions one short sentence that clearly articulates the fe
 
 Usage:
 ```html
+<script>
+  import IconStar from '~icons/lucide/star';
+</script>
+
 <FeatureSection
   title="Section Title"
   subtitle="Section Subtitle"
@@ -55,6 +65,8 @@ Usage:
     {
       title: "Feature Title",
       description: "Feature description text",
+      icon: IconStar, // optional - Lucide icon component
+      imageSrc: "https://example.com/image.jpg", // optional - image URL (use either icon OR imageSrc)
       link: { href: "/optional-link", label: "Learn more" } // optional
     }
     // more features...

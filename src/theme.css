@@ -24,7 +24,7 @@
 
 	--color-destructive: color-mix(in oklch, var(--color-primary-500), var(--color-secondary-500));
 
-	--color-border: var(--color-gray-50);
+	--color-border: var(--color-gray-100);
 	--color-input: var(--color-gray-100);
 	--color-ring: var(--color-primary-600);
 
