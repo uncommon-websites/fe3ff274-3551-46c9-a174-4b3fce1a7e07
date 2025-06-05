@@ -16,7 +16,11 @@
 	/* Emphasis */
 	--color-emphasis-dim: var(--color-muted-foreground);
 	--color-emphasis-low: color-mix(in oklch, var(--color-foreground), var(--color-background) 30%);
-	--color-emphasis-medium: color-mix(in oklch, var(--color-foreground), var(--color-background) 15%);
+	--color-emphasis-medium: color-mix(
+		in oklch,
+		var(--color-foreground),
+		var(--color-background) 15%
+	);
 	--color-emphasis-high: var(--color-foreground);
 
 	/* Background colors */
@@ -27,7 +31,11 @@
 	:root {
 		--color-emphasis-dim: var(--color-muted-foreground);
 		--color-emphasis-low: color-mix(in oklch, var(--color-foreground), var(--color-background) 30%);
-		--color-emphasis-medium: color-mix(in oklch, var(--color-foreground), var(--color-background) 15%);
+		--color-emphasis-medium: color-mix(
+			in oklch,
+			var(--color-foreground),
+			var(--color-background) 15%
+		);
 		--color-emphasis-high: var(--color-foreground);
 
 		/* Background colors for dark mode */
@@ -241,7 +249,7 @@
 		@apply rounded-xs;
 	}
 
-	/* [generating] {
+	[generating] {
 		@apply relative;
 		margin: 1rem;
 		@apply min-h-80;
@@ -261,5 +269,5 @@
 			@apply absolute inset-0 z-50 flex animate-pulse items-center justify-center;
 			color: var(--color-muted-foreground);
 		}
-	} */
+	}
 }
