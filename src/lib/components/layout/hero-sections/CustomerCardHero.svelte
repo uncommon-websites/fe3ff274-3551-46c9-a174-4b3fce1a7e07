@@ -17,6 +17,7 @@ It should ALWAYS have between 3 and 5 customers!
 	import { onMount } from "svelte";
 	import StakeholderCard from "../sub/StakeholderCard.svelte";
 	import { animate, stagger } from "motion";
+	import { page } from "$app/state";
 
 	let cards: HTMLElement[] = $state([]);
 
@@ -46,6 +47,7 @@ It should ALWAYS have between 3 and 5 customers!
 	}: Props = $props();
 
 	onMount(() => {
+		if (window.self !== window.top) return;
 		animate(
 			cards,
 			{
