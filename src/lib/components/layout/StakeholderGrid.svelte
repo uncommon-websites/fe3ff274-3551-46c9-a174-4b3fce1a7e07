@@ -28,6 +28,7 @@
 	let cards: HTMLElement[] = $state([]);
 
 	onMount(() => {
+		if (window.self !== window.top) return;
 		animate(
 			cards,
 			{

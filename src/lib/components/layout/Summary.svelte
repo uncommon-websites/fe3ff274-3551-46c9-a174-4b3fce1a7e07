@@ -36,6 +36,7 @@
 
 	onMount(() => {
 		if (!containerElement) return;
+		if (window.self !== window.top) return;
 
 		// Get all word elements as an array
 		const wordElements = Array.from(containerElement.querySelectorAll(".word"));

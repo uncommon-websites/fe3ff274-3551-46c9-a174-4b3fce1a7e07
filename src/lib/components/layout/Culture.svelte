@@ -16,6 +16,8 @@
 
 	onMount(() => {
 		if (!cards.length) return;
+		if (window.self !== window.top) return;
+
 		animate(
 			cards,
 			{
