@@ -251,11 +251,6 @@
 
 	[generating] {
 		@apply pointer-events-none relative select-none;
-		/* opacity-10 grayscale  */
-		/* animation-name: light-pulse;
-		animation-duration: 3s;
-		animation-iteration-count: infinite;
-		animation-timing-function: ease-out; */
 
 		&,
 		& * {
@@ -295,9 +290,3 @@
 		}
 	}
 }
-
-/* @apply relative;
-		margin: 1rem;
-		@apply min-h-80;
-		transition: all 300ms var(--ease-out);
-*/
