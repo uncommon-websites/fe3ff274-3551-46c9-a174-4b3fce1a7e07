@@ -40,7 +40,7 @@
 		// Get all word elements as an array
 		const wordElements = Array.from(containerElement.querySelectorAll(".word"));
 
-		const sequence = [
+		const sequence: any = [
 			[
 				wordElements,
 				{

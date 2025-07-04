@@ -28,6 +28,7 @@
 	{#if icon || imageSrc}
 		<div class="mb-8">
 			{#if icon && imageSrc}
+				{@const Icon = icon}
 				<div class="relative">
 					<img
 						src={imageSrc}
@@ -39,8 +40,7 @@
 						class="absolute top-3 left-3 bg-white/90 p-1.5 backdrop-blur-sm"
 						style="border-radius: max(2px, calc(var(--radius) - 1.25rem));"
 					>
-						<svelte:component
-							this={icon}
+						<Icon
 							class="size-4 {iconClass.includes('text-')
 								? iconClass.split(' ').find((c) => c.startsWith('text-'))
 								: 'text-primary'}"
@@ -48,7 +48,8 @@
 					</div>
 				</div>
 			{:else if icon}
-				<svelte:component this={icon} class={iconClass} />
+				{@const Icon = icon}
+				<Icon class={iconClass} />
 			{:else if imageSrc}
 				<img
 					src={imageSrc}

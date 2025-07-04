@@ -1,18 +1,21 @@
 <script lang="ts">
-	// Components
-	import { NavigationMenu } from "bits-ui";
-	import IconChevronDown from "~icons/lucide/chevron-down";
+  // Types
+  import type { NavItem } from '$lib/navigation';
+  // Components
+  import { NavigationMenu } from 'bits-ui';
+  import IconChevronDown from '~icons/lucide/chevron-down';
 
-	// Props
-	const { item } = $props();
+  // Props
+  let { item }: { item: NavItem } = $props();
 
-	// State
-	let activeImageIndex = $state(0);
-	let hasImages = $derived(item.children.some((child) => child.image));
+  // State
+  let activeImageIndex = $state(0);
+  // Determine if any children have images
+  let hasImages = $derived((item.children ?? []).some(child => !!child.image));
 
-	function setActiveImageIndex(index: number) {
-		activeImageIndex = index;
-	}
+  function setActiveImageIndex(index: number) {
+    activeImageIndex = index;
+  }
 </script>
 
 <NavigationMenu.Trigger class="group/item inline-flex h-full items-center gap-1">
@@ -32,7 +35,7 @@
 			<div
 				class="relative grid aspect-square size-full max-h-full max-w-84 overflow-hidden rounded-(--inner-radius) bg-gray-100"
 			>
-				{#each item.children as child, index}
+				{#each item.children ?? [] as child, index}
 					<img
 						src={child.image}
 						alt=""
@@ -44,7 +47,7 @@
 			</div>
 		{/if}
 		<ul class="grid w-full list-none content-start items-start">
-			{#each item.children as child, index}
+			{#each item.children ?? [] as child, index}
 				<li
 					class="w-full"
 					onmouseover={() => setActiveImageIndex(index)}

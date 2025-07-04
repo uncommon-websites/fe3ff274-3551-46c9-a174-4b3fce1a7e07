@@ -36,6 +36,17 @@ type UseCase = {
 			icon: string;
 		}>;
 	};
+	cta: {
+		title: string;
+		subtitle: string;
+		imageSrc: string;
+		description: string;
+		callsToAction: Array<{
+			href: string;
+			label: string;
+			variant?: "primary" | "secondary" | "ghost";
+		}>;
+	};
 };
 
 // Constants
@@ -263,7 +274,7 @@ const technologyUseCase: UseCase = {
 	}
 };
 
-const educationUseCase = {
+const educationUseCase: UseCase = {
 	meta: {
 		title: "Education",
 		description: "Educational solutions for institutions of all levels"
@@ -350,8 +361,15 @@ export const load: PageLoad = async ({ params }) => {
 	const { usecase } = params;
 
 	if (!usecase || !(usecase in useCases)) {
-		return {};
+		return {
+			meta: {
+				title: "Use Case",
+				description: "Learn how our platform can help your industry",
+				image: "",
+				url: ""
+			}
+		};
 	}
 
-	return useCases[usecase as keyof typeof useCases] ?? healthcare;
+	return useCases[usecase as keyof typeof useCases] ?? healthcareUseCase;
 };

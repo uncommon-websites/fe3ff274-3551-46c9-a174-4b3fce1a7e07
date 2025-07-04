@@ -11,3 +11,5 @@ declare global {
 }
 
 export {};
+// Allow unplugin-icons imports
+declare module "~icons/*";

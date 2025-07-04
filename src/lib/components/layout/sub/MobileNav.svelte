@@ -26,7 +26,8 @@
 
 	$effect(() => {
 		const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-		originalThemeColor = metaThemeColor?.getAttribute("content");
+		// Ensure no undefined: default to null if missing
+		originalThemeColor = metaThemeColor?.getAttribute("content") ?? null;
 	});
 
 	$effect(() => {

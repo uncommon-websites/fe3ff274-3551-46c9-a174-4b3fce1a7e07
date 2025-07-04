@@ -31,9 +31,11 @@
 	features={data.features.items}
 />
 
-<CallToAction
-	title={data.cta.title}
-	subtitle={data.cta.subtitle}
-	description={data.cta.description}
-	callsToAction={data.cta.callsToAction}
-/>
+{#if data.cta}
+	<CallToAction
+		title={data.cta.title}
+		subtitle={data.cta.subtitle}
+		description={data.cta.description}
+		callsToAction={data.cta.callsToAction}
+	/>
+{/if}
