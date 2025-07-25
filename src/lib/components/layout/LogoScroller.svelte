@@ -50,7 +50,7 @@
 			{#each logoUrls as logo, i}
 				<img
 					src={logo}
-					alt="Company logo {i + 1}"
+					
 					class="mx-8 h-5 w-fit object-contain opacity-70 saturate-0 dark:invert
 					"
 				/>

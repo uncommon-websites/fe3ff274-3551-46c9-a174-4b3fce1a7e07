@@ -49,7 +49,7 @@
 	});
 </script>
 
-<section class="" {...rest}>
+<section {...rest}>
 	<div class="section-py section-px container mx-auto grid [--gap:--spacing(4)]">
 		<SectionHeader {title} {subtitle} />
 

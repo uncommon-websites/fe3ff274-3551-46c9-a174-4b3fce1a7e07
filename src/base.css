@@ -249,7 +249,7 @@
 		@apply rounded-xs;
 	}
 
-	[generating], [data-generating] {
+	[generating] {
 		@apply pointer-events-none relative select-none;
 
 		&,
