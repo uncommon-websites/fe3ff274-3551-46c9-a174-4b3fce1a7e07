@@ -7,7 +7,7 @@
     <Hero
       title="Bold Claim"
       subtitle="Quick Value"
-      imageSrc="/hero.jpg"
+      imageSrc="https://www.unc.mn/image-placeholder.svg"
       callsToAction={[
         {
           href: "/start",

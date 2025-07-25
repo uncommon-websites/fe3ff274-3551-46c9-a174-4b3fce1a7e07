@@ -12,7 +12,7 @@
 <Hero
 	title="Elevate your business with thoughtful design"
 	subtitle="Solutions that enhance user experience, and improve visual communication."
-	imageSrc="/sample.png"
+	imageSrc="https://www.unc.mn/image-placeholder.svg"
 	generating
 />
 <LogoScroller label="" generating />
@@ -32,8 +32,7 @@
 			company: "Tech Innovations",
 			quote:
 				"Their cutting-edge automation boosted our productivity by 35%.\nThe intuitive interface reduced training time and improved team adoption.",
-			image:
-				"https://images.unsplash.com/photo-1571513722275-4b41940f54b8?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+			image: "https://www.unc.mn/image-placeholder.svg"
 		},
 		{
 			name: "John Doe",
@@ -41,8 +40,7 @@
 			company: "Global Solutions",
 			quote:
 				"Their robust security protocols gave us confidence in handling sensitive data.\nThe 24/7 support team resolved issues within hours, not days.",
-			image:
-				"https://images.unsplash.com/photo-1600603405959-6d623e92445c?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+			image: "https://www.unc.mn/image-placeholder.svg"
 		},
 		{
 			name: "Sarah Johnson",
@@ -50,8 +48,7 @@
 			company: "Future Systems",
 			quote:
 				"The scalable platform grew seamlessly with our business needs.\nTheir customization options allowed us to tailor solutions perfectly to our workflows.",
-			image:
-				"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+			image: "https://www.unc.mn/image-placeholder.svg"
 		}
 	]}
 />
