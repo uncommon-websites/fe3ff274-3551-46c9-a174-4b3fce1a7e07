@@ -128,10 +128,8 @@
 		iconOnly
 		class="z-50 max-h-full"
 		onclick={() => (isMenuOpen = !isMenuOpen)}
+		suffix={IconMenu}
 	>
-		{#snippet suffix()}
-			<IconMenu />
-		{/snippet}
 		Menu
 	</Button>
 </div>
