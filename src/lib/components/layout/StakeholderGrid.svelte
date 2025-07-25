@@ -17,12 +17,14 @@
 		title,
 		stakeholderType = "team",
 		subtitle,
-		stakeholders
+		stakeholders,
+		...rest
 	}: {
 		stakeholders: Stakeholder[];
 		title: string;
 		subtitle: string;
 		stakeholderType?: "team" | "investor";
+		[key: string]: any;
 	} = $props();
 
 	let cards: HTMLElement[] = $state([]);
@@ -47,7 +49,7 @@
 	});
 </script>
 
-<section class="">
+<section class="" {...rest}>
 	<div class="section-py section-px container mx-auto grid [--gap:--spacing(4)]">
 		<SectionHeader {title} {subtitle} />
 

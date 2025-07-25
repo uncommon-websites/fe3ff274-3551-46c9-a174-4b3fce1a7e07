@@ -62,6 +62,7 @@
 		description?: string;
 		imageSrc?: string;
 		callsToAction?: CTA[];
+		[key: string]: any;
 	} = $props();
 </script>
 

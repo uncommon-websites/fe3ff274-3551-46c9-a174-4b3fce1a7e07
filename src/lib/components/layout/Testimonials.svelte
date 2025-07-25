@@ -9,7 +9,7 @@
 	};
 
 	// Props
-	let { testimonials, ...rest }: { testimonials: Testimonial[] } = $props();
+	let { testimonials, ...rest }: { testimonials: Testimonial[]; [key: string]: any } = $props();
 
 	// State
 	let current = $state(0);
@@ -203,13 +203,3 @@
 	</div>
 </section>
 
-<style>
-	/* Hide scrollbar while preserving functionality */
-	.hide-scrollbar {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-	}
-	.hide-scrollbar::-webkit-scrollbar {
-		display: none;
-	}
-</style>

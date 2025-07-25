@@ -26,7 +26,7 @@
 		subtitle,
 		features = [],
 		...rest
-	}: { title: string; subtitle: string; features: Feature[] } = $props();
+	}: { title: string; subtitle: string; features: Feature[]; [key: string]: any } = $props();
 
 	let featureCountClass = $derived(
 		features.length <= 6 ? `feature-count-${features.length}` : "feature-count-many"

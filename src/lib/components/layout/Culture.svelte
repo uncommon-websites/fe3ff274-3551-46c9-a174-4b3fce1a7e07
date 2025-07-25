@@ -10,7 +10,7 @@
 	};
 
 	// Props
-	const { values = [] }: { values: Value[] } = $props();
+	const { values = [], ...rest }: { values: Value[]; [key: string]: any } = $props();
 
 	let cards: HTMLElement[] = $state([]);
 
@@ -36,7 +36,7 @@
 	});
 </script>
 
-<section class="bg-white dark:bg-gray-950">
+<section class="bg-white dark:bg-gray-950" {...rest}>
 	<div
 		class="section-py section-px container mx-auto grid gap-8 [--gap:--spacing(8)] [--radius:var(--radius-2xl)]"
 	>

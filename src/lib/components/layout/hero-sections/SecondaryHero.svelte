@@ -10,6 +10,7 @@
 		title: string;
 		subtitle: string;
 		imageSrc: string;
+		[key: string]: any;
 	} = $props();
 </script>
 
