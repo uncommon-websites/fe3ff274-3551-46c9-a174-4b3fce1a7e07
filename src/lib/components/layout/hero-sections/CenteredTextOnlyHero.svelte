@@ -29,7 +29,7 @@ Takes up the full viewport height and centers content vertically.
 		title,
 		subtitle,
 		callsToAction = [cta],
-		imageSrc = "/sample.png",
+		imageSrc = "https://www.unc.mn/image-placeholder.svg",
 		...rest
 	}: Props = $props();
 </script>

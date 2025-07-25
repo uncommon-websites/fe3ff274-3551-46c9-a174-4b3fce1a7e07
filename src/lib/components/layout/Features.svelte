@@ -66,7 +66,7 @@ Usage:
       title: "Feature Title",
       description: "Feature description text",
       icon: IconStar, // optional - Lucide icon component
-      imageSrc: "https://example.com/image.jpg", // optional - image URL (use either icon OR imageSrc)
+      imageSrc: "https://www.unc.mn/image-placeholder.svg", // optional - image URL (use either icon OR imageSrc)
       link: { href: "/optional-link", label: "Learn more" } // optional
     }
     // more features...

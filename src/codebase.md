@@ -184,7 +184,7 @@ This project uses **Lucide icons** with a specific import pattern:
 <Card
 	title="Beautiful UI"
 	description="Stunning visual design."
-	imageSrc="https://example.com/image.jpg"
+	imageSrc="https://www.unc.mn/image-placeholder.svg"
 	imageAspect="16/9"
 />
 
@@ -193,7 +193,7 @@ This project uses **Lucide icons** with a specific import pattern:
 	title="Secure & Fast"
 	description="Best of both worlds."
 	icon={IconZap}
-	imageSrc="https://example.com/image.jpg"
+	imageSrc="https://www.unc.mn/image-placeholder.svg"
 	imageAspect="9/16"
 	iconClass="size-5 text-blue-500"
 />
