@@ -125,11 +125,13 @@
 		size="lg"
 		variant="ghost"
 		hideLabel
-		suffix={IconMenu}
 		iconOnly
 		class="z-50 max-h-full"
-		onclick={() => (isMenuOpen = !isMenuOpen)}>Menu</Button
+		onclick={() => (isMenuOpen = !isMenuOpen)}
+		suffix={IconMenu}
 	>
+		Menu
+	</Button>
 </div>
 
 {#snippet linkOrGroup(item: NavItem, index: number)}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Types
-	import type { Snippet } from "svelte";
+	import type { Component, Snippet } from "svelte";
 	import type { ButtonRootProps } from "bits-ui";
 	import { Button } from "bits-ui";
 
@@ -14,8 +14,8 @@
 		iconOnly?: boolean;
 		hideLabel?: boolean;
 		rounded?: boolean;
-		prefix?: Snippet;
-		suffix?: Snippet;
+		prefix?: Component;
+		suffix?: Component;
 	};
 
 	// Props

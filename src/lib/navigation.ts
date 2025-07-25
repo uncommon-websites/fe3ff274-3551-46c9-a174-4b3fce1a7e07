@@ -7,7 +7,6 @@
  * - Overview
  * - Solutions
  * - Use Cases
- * - Pricing
  * ---
  * **Resources**
  * - Blog
@@ -20,7 +19,6 @@
  * - Community
  * ---
  * **Company**
- * - Careers
  * - About us
  * - News
  * - Legal
@@ -55,36 +53,23 @@ export const cta = {
 
 export const navigation: NavItem[] = [
 	{
-		label: "Pricing",
-		href: "/pricing",
-		showInNav: true,
-		showInFooter: false
-	},
-
-	{
 		label: "Company",
-		showInNav: true,
+		showInNav: false,
 		showInFooter: true,
 		children: [
 			{
 				label: "About us",
 				href: "/about",
-				showInNav: true,
-				showInFooter: true
-			},
-			{
-				label: "Pricing",
-				href: "/pricing",
 				showInNav: false,
-				showInFooter: true
-			},
-			{
-				label: "Careers",
-				href: "/careers",
-				showInNav: true,
 				showInFooter: true
 			}
 		]
+	},
+	{
+		label: "About",
+		href: "/about",
+		showInNav: true,
+		showInFooter: false
 	},
 	{
 		label: "More",

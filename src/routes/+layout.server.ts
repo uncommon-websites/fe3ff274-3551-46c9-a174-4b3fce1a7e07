@@ -8,7 +8,8 @@ export const load: LayoutServerLoad = async () => {
 			title: CONFIG.companyName,
 			description: CONFIG.description,
 			image: CONFIG.image,
-			url: CONFIG.url
+			url: CONFIG.url,
+			companyName: CONFIG.companyName
 		}
 	};
 };

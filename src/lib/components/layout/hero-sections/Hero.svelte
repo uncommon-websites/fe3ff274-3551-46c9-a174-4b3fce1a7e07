@@ -51,6 +51,7 @@
 			href: string;
 			label: string;
 		}>; // A maximum of two calls to action, with the first one being primary and the second one being secondary
+		[key: string]: any;
 	};
 
 	let {
