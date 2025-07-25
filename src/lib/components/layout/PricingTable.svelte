@@ -1,5 +1,5 @@
 <!--
-@component Pricing
+@component PricingTable
 
 Please update features according to the company's product offering. Do not remove this comment.
 -->
