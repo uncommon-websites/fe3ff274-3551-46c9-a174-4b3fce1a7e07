@@ -51,7 +51,9 @@
 
 				<!-- Radius Control -->
 				<div class="space-y-2">
-					<label for="radius-control" class="text-sm font-medium">Border Radius: {themeRadius}px</label>
+					<label for="radius-control" class="text-sm font-medium"
+						>Border Radius: {themeRadius}px</label
+					>
 					<input
 						id="radius-control"
 						type="range"
@@ -77,7 +79,9 @@
 
 				<!-- Background Shade -->
 				<div class="space-y-2">
-					<label for="bg-control" class="text-sm font-medium">Background: Gray-{backgroundShade}</label>
+					<label for="bg-control" class="text-sm font-medium"
+						>Background: Gray-{backgroundShade}</label
+					>
 					<select
 						id="bg-control"
 						bind:value={backgroundShade}

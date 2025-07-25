@@ -127,7 +127,8 @@
 		hideLabel
 		iconOnly
 		class="z-50 max-h-full"
-		onclick={() => (isMenuOpen = !isMenuOpen)}>
+		onclick={() => (isMenuOpen = !isMenuOpen)}
+	>
 		{#snippet suffix()}
 			<IconMenu />
 		{/snippet}

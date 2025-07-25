@@ -23,7 +23,10 @@
 		<div class="text-headline flex items-center gap-4">
 			<!-- <Logo class="size-7" /> -->
 			<div class="text-headline">
-				{CONFIG.companyName}<sup class="ml-0.5 align-super text-[.25em]" style="color: var(--color-foreground);">TM</sup>
+				{CONFIG.companyName}<sup
+					class="ml-0.5 align-super text-[.25em]"
+					style="color: var(--color-foreground);">TM</sup
+				>
 			</div>
 		</div>
 
@@ -57,7 +60,7 @@
 		<!-- Footer bottom section -->
 		<div
 			class="col-span-full border-t py-6"
-		style="border-color: var(--color-border); color: var(--color-muted-foreground);"
+			style="border-color: var(--color-border); color: var(--color-muted-foreground);"
 		>
 			<div class="grid grid-cols-2 items-start justify-between gap-4 gap-x-32 text-sm">
 				<div>
@@ -78,7 +81,7 @@
 	a {
 		@apply inline-block underline decoration-transparent transition-all duration-300 ease-out;
 		color: var(--color-foreground);
-		
+
 		&:hover {
 			color: var(--color-muted-foreground);
 		}

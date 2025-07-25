@@ -186,18 +186,22 @@ Please update features according to the company's product offering. Do not remov
 		<SectionHeader {title} {subtitle} />
 
 		<div class="mb-8 flex justify-center">
-			<div class="inline-flex items-center rounded-full bg-gray-200 p-0.5 gap-0.5">
+			<div class="inline-flex items-center gap-0.5 rounded-full bg-gray-200 p-0.5">
 				<button
-					class="rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200 {!annual ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'}"
+					class="rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200 {!annual
+						? 'bg-white text-gray-900 shadow-sm'
+						: 'text-gray-600 hover:text-gray-900'}"
 					onclick={() => (annual = false)}
 				>
 					Monthly
 				</button>
 				<button
-					class="rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200 {annual ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'}"
+					class="rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200 {annual
+						? 'bg-white text-gray-900 shadow-sm'
+						: 'text-gray-600 hover:text-gray-900'}"
 					onclick={() => (annual = true)}
 				>
-					Annual <span class="text-xs ml-1 text-gray-500">Save 20%</span>
+					Annual <span class="ml-1 text-xs text-gray-500">Save 20%</span>
 				</button>
 			</div>
 		</div>

@@ -2,12 +2,12 @@
 	import Card from "../ui/Card.svelte";
 
 	// Types
-	import type { ComponentType } from "svelte";
-	
+	import type { Component } from "svelte";
+
 	type Feature = {
 		title: string;
 		description: string;
-		icon?: ComponentType;
+		icon?: Component;
 		iconClass?: string;
 		imageSrc?: string;
 		imageAspect?: "16/9" | "9/16";
