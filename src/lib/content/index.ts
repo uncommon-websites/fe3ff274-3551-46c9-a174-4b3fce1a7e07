@@ -1,7 +1,7 @@
 export const CONFIG = {
-	companyName: "Company",
-	description: "Description",
+	companyName: "Neptune Studio",
+	description: "Transform your website into a 24/7 revenue-generating asset with conversion-focused design and data-driven optimization frameworks",
 	image: "/og.png",
-	url: "https://example.com",
-	fontFamily: "Inter Variable"
+	url: "https://neptunestudio.com",
+	fontFamily: "Space Mono"
 };
