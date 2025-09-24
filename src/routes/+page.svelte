@@ -51,28 +51,28 @@
 <Testimonials
 	testimonials={[
 		{
-			name: "Jane Smith",
-			position: "CTO",
-			company: "Tech Innovations",
+			name: "Marcus Thompson",
+			position: "CEO",
+			company: "Velocity Capital",
 			quote:
-				"Their cutting-edge automation boosted our productivity by 35%.\nThe intuitive interface reduced training time and improved team adoption.",
-			image: "https://www.unc.mn/image-placeholder.svg"
+				"Neptune Studio's conversion optimization increased our lead generation by 340% in just 8 weeks. We went from 12 qualified leads per month to over 50, saving us $180,000 annually on paid advertising while tripling our revenue pipeline.",
+			image: "/generated/image-professional-corporate-headshot-of-marcu.webp"
 		},
 		{
-			name: "John Doe",
-			position: "Director of Operations",
-			company: "Global Solutions",
+			name: "Elena Rodriguez",
+			position: "Marketing Director",
+			company: "StreamlineLogistics",
 			quote:
-				"Their robust security protocols gave us confidence in handling sensitive data.\nThe 24/7 support team resolved issues within hours, not days.",
-			image: "https://www.unc.mn/image-placeholder.svg"
+				"Their data-driven redesign eliminated our 6-month sales cycle bottleneck. We reduced customer acquisition time by 60% and increased conversion rates from 2.3% to 8.1%, directly contributing to our $2.4M revenue growth this quarter.",
+			image: "/generated/image-professional-corporate-headshot-of-elena.webp"
 		},
 		{
-			name: "Sarah Johnson",
-			position: "Product Manager",
-			company: "Future Systems",
+			name: "James Chen",
+			position: "Founder",
+			company: "TechScale Solutions",
 			quote:
-				"The scalable platform grew seamlessly with our business needs.\nTheir customization options allowed us to tailor solutions perfectly to our workflows.",
-			image: "https://www.unc.mn/image-placeholder.svg"
+				"Neptune Studio's conversion framework saved us from a costly rebrand. Instead of spending $400K on external agencies, their optimization increased our closing rate by 285% while preserving our existing brand equity and customer relationships.",
+			image: "/generated/image-professional-corporate-headshot-of-james.webp"
 		}
 	]}
 />
