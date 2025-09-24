@@ -6,25 +6,49 @@
 	import CallToAction from "$lib/components/layout/CallToAction.svelte";
 	import AboutTeaser from "$lib/components/layout/AboutTeaser.svelte";
 	import LogoScroller from "$lib/components/layout/LogoScroller.svelte";
-	import Hero from "$lib/components/layout/hero-sections/Hero.svelte";
+	import CustomerCardHero from "$lib/components/layout/hero-sections/CustomerCardHero.svelte";
 </script>
 
-<Hero
-	title="Elevate your business with thoughtful design"
-	subtitle="Solutions that enhance user experience, and improve visual communication."
-	imageSrc="https://www.unc.mn/image-placeholder.svg"
-	generating
+<CustomerCardHero
+	centered={true}
+	title="Transform websites into 24/7 revenue machines"
+	subtitle="Join 500+ enterprise brands who increased conversions by 3x with our proven design frameworks and data-driven optimization."
+	customers={[
+		{
+			name: "Maya Johnson",
+			position: "CEO, TechVenture Solutions",
+			imageSrc: "/generated/image-editorial-corporate-portrait-of-a-profes.webp"
+		},
+		{
+			name: "Arjun Patel", 
+			position: "Founder, ScaleWorks",
+			imageSrc: "/generated/image-editorial-corporate-portrait-of-a-confid.webp"
+		},
+		{
+			name: "Sofia Rodriguez",
+			position: "Marketing Director, GrowthCorp",
+			imageSrc: "/generated/image-editorial-corporate-portrait-of-a-market.webp"
+		},
+		{
+			name: "David Mitchell",
+			position: "CEO, ProMax Industries",
+			imageSrc: "/generated/image-editorial-corporate-portrait-of-a-succes.webp"
+		},
+		{
+			name: "Helen Chen",
+			position: "VP Marketing, InnovateNow",
+			imageSrc: "/generated/image-editorial-corporate-portrait-of-a-female.webp"
+		}
+	]}
 />
-<LogoScroller label="" generating />
+<LogoScroller label="" />
 
 <Summary
-	generating
 	title="What we do"
 	text="Our technology delivers measurable results through secure, adaptable solutions that directly increase productivity and drive growth."
 />
 
 <Testimonials
-	generating
 	testimonials={[
 		{
 			name: "Jane Smith",
@@ -54,7 +78,6 @@
 />
 
 <Features
-	generating
 	title="Features"
 	subtitle="Some features"
 	features={[
@@ -75,5 +98,5 @@
 		}
 	]}
 />
-<AboutTeaser generating />
-<CallToAction generating />
+<AboutTeaser />
+<CallToAction />
