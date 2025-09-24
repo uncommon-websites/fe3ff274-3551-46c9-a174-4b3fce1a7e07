@@ -99,4 +99,21 @@
 	]}
 />
 <AboutTeaser />
-<CallToAction />
+<CallToAction 
+	title="Stop losing revenue to poor-converting websites"
+	subtitle="Your next high-converting website is just one conversation away"
+	description="Join 500+ enterprise brands who've transformed their websites into revenue-generating assets. Our satisfaction guarantee means zero risk—and our proven frameworks deliver an average 340% increase in conversions within 8 weeks."
+	imageSrc="/generated/image-photorealistic-candid-editorial-photo-of.webp"
+	callsToAction={[
+		{
+			href: "/contact",
+			label: "Get your conversion audit",
+			variant: "primary"
+		},
+		{
+			href: "/portfolio",
+			label: "View 50+ case studies",
+			variant: "secondary"
+		}
+	]}
+/>
