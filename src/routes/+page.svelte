@@ -7,6 +7,7 @@
 	import AboutTeaser from "$lib/components/layout/AboutTeaser.svelte";
 	import LogoScroller from "$lib/components/layout/LogoScroller.svelte";
 	import CustomerCardHero from "$lib/components/layout/hero-sections/CustomerCardHero.svelte";
+	import Hero from "$lib/components/layout/hero-sections/Hero.svelte";
 </script>
 
 <Hero
