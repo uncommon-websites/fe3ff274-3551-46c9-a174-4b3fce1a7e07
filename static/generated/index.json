@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "prompt": "Photorealistic candid environmental portrait of a professional business woman CEO in a modern corner office. She stands by a floor-to-ceiling window with a city skyline softly defocused, arms gently crossed, confident warm expression. Natural morning daylight with soft rim light. Wardrobe: tailored dark navy suit, ivory blouse, minimal jewelry. Real objects only: wooden desk, closed leather notebook, ceramic mug, large leafy potted plant. Clean neutral palette with warm wood accents. Camera: 50mm lens, waist-up medium shot at eye level, shallow depth of field. No tech devices, no screens, no whiteboards, no posters, no visible text or logos anywhere.",
     "filename": "/generated/image-photorealistic-candid-environmental-port.webp"
   },
@@ -38,5 +39,49 @@
   {
     "prompt": "Consistent series style: warm, modern, candid editorial photography with natural light, shallow depth of field, soft shadows, neutral color palette; no text anywhere, no logos, no screens, no electronic devices, no whiteboards, no posters, no abstract shapes or patterns. Scene: a confident professional woman founder/executive in a sunlit loft office leads a small discussion with two teammates around a wooden table; she wears a tailored blazer and trousers with subtle jewelry, natural makeup; colleagues listen attentively; table holds blank open notebooks, pencils, ceramic mugs, a small potted plant; exposed brick and large window in background; 50mm lens look, mid-shot, gentle motion in hands, relaxed smiles.",
     "filename": "/generated/image-consistent-series-style-warm-modern-cand.webp"
+=======
+    "prompt": "Editorial corporate portrait of a professional business woman CEO in a modern high‑end office, 40s Black woman with neatly styled natural curls, standing near a floor‑to‑ceiling window with soft morning daylight, confident relaxed posture with arms at sides and gentle smile. Wardrobe: tailored navy sheath dress, subtle jewelry, polished look. Environment: walnut desk with closed leather portfolio, ceramic cup, fountain pen, small potted green plant; built‑in wood shelves holding clothbound books turned with pages outward (no visible text), small smooth stone paperweight; blurred city skyline beyond glass with no readable signage. Camera and look: 85mm lens, medium close‑up, slight angle, shallow depth of field (f/2), warm neutral palette, soft natural shadows, clean editorial finish. Absolutely no computers, no phones, no tablets, no monitors, no screens, no posters, no whiteboards, no visible text anywhere.",
+    "filename": "/generated/image-editorial-corporate-portrait-of-a-profes.webp"
+  },
+  {
+    "prompt": "Editorial corporate portrait of a confident business man founder in a sleek workspace, 30s South Asian man with neatly trimmed beard, seated at a marble‑topped desk, hands resting lightly on a closed notebook, calm assured expression. Wardrobe: tailored charcoal suit, crisp white shirt, no tie. Environment: glass partition and walnut wall paneling, large indoor plant, leather desk mat, metal pen holder; clean surfaces only. Camera and look: 85mm lens, three‑quarter view at eye level, soft afternoon window light with gentle rim light, shallow depth of field, warm neutral color grade, minimal retouching. Absolutely no computers, no phones, no tablets, no monitors, no screens, no posters, no whiteboards, no visible text anywhere.",
+    "filename": "/generated/image-editorial-corporate-portrait-of-a-confid.webp"
+  },
+  {
+    "prompt": "Editorial corporate portrait of a marketing director woman in a contemporary office setting, 30s Latina woman with shoulder‑length straight hair, seated on a tan leather armchair beside a round wooden side table, holding a ceramic cup, engaged approachable expression. Wardrobe: light gray tailored blazer over a silk blouse, minimal necklace. Environment: textured light plaster wall, tall indoor plant, stack of plain neutral hardcover books with spines turned inward (no visible text), simple cylindrical ceramic vase with fresh greenery, wide window casting soft side light across the scene. Camera and look: 85mm lens, medium shot using rule‑of‑thirds composition, shallow depth of field, warm natural tones, soft shadows. Absolutely no computers, no phones, no tablets, no monitors, no screens, no posters, no whiteboards, no visible text anywhere.",
+    "filename": "/generated/image-editorial-corporate-portrait-of-a-market.webp"
+  },
+  {
+    "prompt": "Editorial corporate portrait of a successful entrepreneur man in a premium business environment, 40s White man with short dark hair, standing casually with one hand in pocket in front of a walnut bookcase, confident relaxed gaze. Wardrobe: mid‑blue tailored suit, light blue shirt, brown leather belt, no tie. Environment: walnut shelves with clothbound books facing pages outward (no visible text), marble bookends, small potted succulent; adjacent stone accent wall; clean open space with natural light from nearby windows. Camera and look: 85mm lens, medium full shot with a slightly low angle for presence, golden‑hour window light, soft vignetting, shallow depth of field, consistent warm‑neutral color grade. Absolutely no computers, no phones, no tablets, no monitors, no screens, no posters, no whiteboards, no visible text anywhere.",
+    "filename": "/generated/image-editorial-corporate-portrait-of-a-succes.webp"
+  },
+  {
+    "prompt": "Editorial corporate portrait of a female executive in a high‑end corporate office, 50s East Asian woman with a sleek bob haircut, standing beside a long dark‑wood conference table with hands gently on the tabletop, poised focused expression. Wardrobe: black tailored blazer and trousers with a silk blouse, understated earrings. Environment: floor‑to‑ceiling window with sheer curtains diffusing daylight, fabric‑shaded pendant lights, centerpiece bowl with fresh green branches on the table, upholstered chairs in neutral fabric, clean walls with no artwork. Camera and look: 85mm lens, three‑quarter length portrait with a slight diagonal composition, soft daylight, shallow depth of field, warm neutral palette, refined editorial finish. Absolutely no computers, no phones, no tablets, no monitors, no screens, no posters, no whiteboards, no visible text anywhere.",
+    "filename": "/generated/image-editorial-corporate-portrait-of-a-female.webp"
+  },
+  {
+    "prompt": "Professional corporate headshot of Marcus Thompson, confident African American business executive. Realistic photo, shoulders-up portrait with slight angle and direct eye contact, calm assured expression. Wardrobe: tailored charcoal suit, crisp white dress shirt, deep navy tie; no visible logos. Grooming: neat short haircut, well-trimmed facial hair. Background: real hand-painted dark slate gray canvas backdrop with subtle texture; no props. Lighting: soft Rembrandt lighting from a large 45° softbox with gentle reflector fill and a faint rim light; clean catchlights. Camera: full-frame 85mm portrait lens, f/2, shallow depth of field, high resolution, natural skin texture, soft contrast, true-to-life color. No text, no screens, no posters, no whiteboards, no abstract shapes or patterns.",
+    "filename": "/generated/image-professional-corporate-headshot-of-marcu.webp"
+  },
+  {
+    "prompt": "Professional corporate headshot of Elena Rodriguez, Hispanic female marketing director with a warm genuine smile. Natural, approachable executive portrait, chest-up, relaxed shoulders, slight head tilt, eyes to camera. Wardrobe: navy blazer over a cream blouse, simple stud earrings; no visible logos. Background: real modern office hallway with greenery and frosted glass softly blurred; ensure no screens, signage, or text are visible. Lighting: bright window light as key with soft bounce fill and a gentle hair light. Camera: 85mm portrait lens, f/2.5, shallow depth of field, crisp detail with subtle skin retouch, warm neutral color grading. No abstract elements, no props, no technology in frame.",
+    "filename": "/generated/image-professional-corporate-headshot-of-elena.webp"
+  },
+  {
+    "prompt": "Professional corporate headshot of James Chen, Asian American male CEO in a business suit. Clean editorial portrait, shoulders-up, straight posture, subtle friendly smile, direct eye contact. Wardrobe: midnight blue suit with a pale blue dress shirt, no tie; no visible logos. Background: real textured warm tan wall or softly lit neutral office corner far behind, softly blurred; avoid any screens or text. Lighting: soft clamshell setup with large diffused key and gentle underfill for even skin tone, faint edge light on shoulder. Camera: 105mm portrait lens, f/2.8, shallow depth of field, high-resolution detail, neutral color balance with subtle vignette. No text, no posters, no whiteboards, no abstract shapes.",
+    "filename": "/generated/image-professional-corporate-headshot-of-james.webp"
+  },
+  {
+    "prompt": "Photorealistic candid editorial photo of a successful business founder in a modern sunlit office, arms raised in celebration as colleagues applaud around a large wooden table; natural light through floor-to-ceiling windows, potted plants and simple shelves with ceramics in background, neutral balloons in a corner; smart-casual wardrobe; shallow depth of field, warm daylight, realistic skin texture, 35mm medium-wide. No screens, no devices, no text, no posters, no whiteboards, no logos.",
+    "filename": "/generated/image-photorealistic-candid-editorial-photo-of.webp"
+  },
+  {
+    "prompt": "Photorealistic candid wide shot of a diverse modern marketing agency team collaborating in a sleek, sunlit open-plan office. Natural oak table, matte concrete floor, white walls, large windows, and indoor plants. Team in smart casual attire gathered around tangible materials: color swatch decks, unbranded product mockups (plain bottles and boxes with blank labels), small fabric samples, and border-only photo prints with no lettering. No screens, laptops, phones, projectors, whiteboards, posters, or text anywhere. Clean contemporary furniture, solid-color surfaces without patterns. Warm daytime window light, soft shadows, 35mm lens, eye-level angle, shallow depth of field.",
+    "filename": "/generated/image-photorealistic-candid-wide-shot-of-a-div.webp"
+  },
+  {
+    "prompt": "Photorealistic editorial portrait of a professional business founder smiling confidently in a modern office; standing by a floor-to-ceiling window with a soft city view bokeh, leaning lightly on a wooden ledge; natural morning light on face, warm neutral palette, indoor plants and a ceramic mug on a simple wooden desk with a closed blank notebook; 85mm lens, shallow depth of field, eye-level composition, clean background; no screens, no devices, no text, no posters, no whiteboards, no logos, only real objects",
+    "filename": "/generated/image-photorealistic-editorial-portrait-of-a-p.webp"
+>>>>>>> 5093140f2ff4a32bdddde6142006d38e47c75443
   }
 ]
